@@ -5,9 +5,11 @@ import Browser.Navigation as Nav
 import Css.Global
 import Html.Styled as H
 import Html.Styled.Attributes as HA
+import Icons
 import Tailwind.Theme as Tw
 import Tailwind.Utilities as Tw
 import Url
+import View as V
 
 
 main : Program Flags Model Msg
@@ -91,7 +93,54 @@ view model =
 
 
 pageView : Model -> H.Html Msg
-pageView model =
-    H.h1
-        [ HA.css [ Tw.p_6, Tw.bg_color Tw.amber_200 ] ]
-        [ H.text "Welcome to ProsSpectre." ]
+pageView _ =
+    H.div
+        [ HA.css
+            [ Tw.p_6
+            , Tw.w_full
+            , Tw.flex
+            , Tw.flex_col
+            ]
+        ]
+        [ prosspectreHeader ]
+
+
+prosspectreHeader : H.Html Msg
+prosspectreHeader =
+    H.div
+        [ HA.css
+            [ Tw.w_full
+            , Tw.flex
+            , Tw.flex_row
+            , Tw.justify_center
+            ]
+        ]
+        [ H.h1
+            [ HA.css
+                [ Tw.p_3
+                , Tw.bg_color Tw.zinc_300
+                , Tw.rounded_full
+                , Tw.border_2
+                , Tw.border_color Tw.violet_900
+                , Tw.flex
+                , Tw.flex_row
+                , Tw.items_center
+                ]
+            ]
+            [ H.span
+                [ HA.css
+                    [ Tw.inline_block
+                    , Tw.text_4xl
+                    , Tw.font_bold
+                    , Tw.h_fit
+                    ]
+                ]
+                [ H.text "ProsSpectre" ]
+            , H.span
+                [ HA.css
+                    [ Tw.inline_block
+                    ]
+                ]
+                [ Icons.spectreIcon 32 32 ]
+            ]
+        ]

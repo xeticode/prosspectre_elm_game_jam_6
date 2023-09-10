@@ -7,7 +7,7 @@ Crazy Cockatoo Games™
 
 # Introducton
 
-You are a "ProsSpectre" – a prospector who searches the asteroid belt for the rare spectrite. But spectrite is illusive, and often sends back an echo to your ground penetrating radar (GPR) that shows up as additional deposites; these are called spectral positives, and are indistinguishable from the real thing. Using your GPR, and good bit of intuition, your goal is to leave your prospecting site with positive ¢reds. However, you only get 12 hours to prospect, and each time you use your GPR or do a dig, it costs both ¢red and time. So, if you want to stay in business, use your resources wisely. Good luck, ProsSpectre!
+You are a "ProsSpectre" – a prospector who searches the asteroid belt for the rare spectrite. But spectrite is illusive, and often sends back an echo to your ground penetrating radar (GPR) that shows up as additional deposits; these are called spectral positives, and are indistinguishable from the real thing. Using your GPR, and good bit of intuition, your goal is to leave your prospecting site with positive ¢reds. However, you only get 12 hours to prospect, and each time you use your GPR or do a dig, it costs both ¢red and time. So, if you want to stay in business, use your resources wisely. Good luck, ProsSpectre!
 
 # How to Play
 
@@ -22,7 +22,7 @@ You have 2 tools at your disposal:
 
 The GPR has 2 modes: Area and Point. Area GPR has a radius of 2 from center. It reports any possible spectrite deposits it sees within that radius. Some of these deposits are real, and some are spectral positives. Thankfully, your GPR is smart enough to predict the number of real deposits there are in the total, however, it cannot tell you which of the deposits they are. You will need your Point GPR to help you determine that.
 
-Point GPR is a more focused radar, and therefore cannot be fooled by spectral positives, howevever, it can only report how close it is to the nearest real deposit and not its actual location - spectrite is just too illusive.
+Point GPR is a more focused radar, and therefore cannot be fooled by spectral positives, however, it can only report how close it is to the nearest real deposit and not its actual location - spectrite is just too illusive.
 
 Whether you use Area or Point GPR, it costs 1 hour and 1 ¢red to use it.
 
