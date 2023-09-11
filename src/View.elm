@@ -5,6 +5,8 @@ import Tailwind.Theme as Tw
 import Tailwind.Utilities as Tw
 
 
+{-| Utility function to help visualize the layout of the page
+-}
 explainTw : List Css.Style
 explainTw =
     [ Tw.outline_2

@@ -6,6 +6,7 @@ import Css.Global
 import Html.Styled as H
 import Html.Styled.Attributes as HA
 import Icons
+import Rules as R
 import Tailwind.Theme as Tw
 import Tailwind.Utilities as Tw
 import Url
@@ -96,51 +97,62 @@ pageView : Model -> H.Html Msg
 pageView _ =
     H.div
         [ HA.css
-            [ Tw.p_6
-            , Tw.w_full
+            [ Tw.max_w_sm
+            , Tw.mx_auto
             , Tw.flex
             , Tw.flex_col
+            , Tw.items_center
+            , Tw.pt_5
+            , Tw.gap_8
             ]
         ]
-        [ prosspectreHeader ]
+        [ prosspectreHeader
+        , asteroidDesignation R.randomAsteroidDesignation
+        , sectorMap
+        ]
 
 
 prosspectreHeader : H.Html Msg
 prosspectreHeader =
     H.div
         [ HA.css
-            [ Tw.w_full
+            [ Tw.w_96
             , Tw.flex
-            , Tw.flex_row
-            , Tw.justify_center
+            , Tw.flex_col
+            , Tw.items_center
+            , Tw.p_1
             ]
         ]
-        [ H.h1
+        [ H.div
             [ HA.css
-                [ Tw.p_3
-                , Tw.bg_color Tw.zinc_300
-                , Tw.rounded_full
-                , Tw.border_2
-                , Tw.border_color Tw.violet_900
-                , Tw.flex
-                , Tw.flex_row
-                , Tw.items_center
+                [ Tw.w_full
+                , Tw.mb_1
                 ]
             ]
-            [ H.span
-                [ HA.css
-                    [ Tw.inline_block
-                    , Tw.text_4xl
-                    , Tw.font_bold
-                    , Tw.h_fit
-                    ]
+            [ Icons.prosspectreLogo ]
+        , H.div
+            [ HA.css
+                [ Tw.italic
                 ]
-                [ H.text "ProsSpectre" ]
-            , H.span
-                [ HA.css
-                    [ Tw.inline_block
-                    ]
-                ]
-                [ Icons.spectreIcon 32 32 ]
+            ]
+            [ H.text "a game by Crazy Cockatoo Games™"
             ]
         ]
+
+
+asteroidDesignation : String -> H.Html Msg
+asteroidDesignation designation =
+    H.div
+        []
+        [ Icons.asteroidDesignation designation
+        ]
+
+
+sectorMap : H.Html Msg
+sectorMap =
+    H.div
+        [ HA.css
+            [ Tw.w_full
+            ]
+        ]
+        [ Icons.sectorMap ]
