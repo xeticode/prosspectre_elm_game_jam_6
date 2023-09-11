@@ -1,67 +1,50 @@
-module Main exposing (..)
+module Frontend exposing (app)
 
 import Browser
 import Browser.Navigation as Nav
 import Css.Global
+import Frontend.Icons as Icons
+import Frontend.View as V
 import Html.Styled as H
 import Html.Styled.Attributes as HA
-import Icons
+import Lamdera
 import Rules as R
 import Tailwind.Theme as Tw
 import Tailwind.Utilities as Tw
+import Types exposing (..)
 import Url
-import View as V
 
 
-main : Program Flags Model Msg
-main =
-    Browser.application
+app =
+    Lamdera.frontend
         { init = init
-        , view = view
+        , onUrlRequest = UrlClicked
+        , onUrlChange = UrlChanged
         , update = update
+        , updateFromBackend = updateFromBackend
         , subscriptions = subscriptions
-        , onUrlChange = ChangedUrl
-        , onUrlRequest = ClickedLink
+        , view = view
         }
 
 
-type alias Flags =
-    {}
-
-
 type alias Model =
-    { key : Nav.Key
-    , url : Url.Url
-    }
+    FrontendModel
 
 
-init : Flags -> Url.Url -> Nav.Key -> ( Model, Cmd Msg )
-init flags url key =
-    let
-        model =
-            { key = key
-            , url = url
-            }
-
-        cmd =
-            Cmd.none
-    in
-    ( model, cmd )
+init : Url.Url -> Nav.Key -> ( Model, Cmd FrontendMsg )
+init url key =
+    ( { key = key
+      , url = url
+      , message = "Welcome to TESTING! You're looking at the auto-generated base implementation. Check out src/Frontend.elm to start coding!"
+      }
+    , Cmd.none
+    )
 
 
-type Msg
-    = NoOp String
-    | ChangedUrl Url.Url
-    | ClickedLink Browser.UrlRequest
-
-
-update : Msg -> Model -> ( Model, Cmd Msg )
+update : FrontendMsg -> Model -> ( Model, Cmd FrontendMsg )
 update msg model =
     case msg of
-        NoOp _ ->
-            ( model, Cmd.none )
-
-        ClickedLink urlRequest ->
+        UrlClicked urlRequest ->
             case urlRequest of
                 Browser.Internal url ->
                     ( model
@@ -73,16 +56,26 @@ update msg model =
                     , Nav.load url
                     )
 
-        ChangedUrl url ->
+        UrlChanged url ->
             ( { model | url = url }, Cmd.none )
 
+        NoOpFrontendMsg _ ->
+            ( model, Cmd.none )
 
-subscriptions : Model -> Sub Msg
-subscriptions model =
+
+updateFromBackend : ToFrontend -> Model -> ( Model, Cmd FrontendMsg )
+updateFromBackend msg model =
+    case msg of
+        NoOpToFrontend ->
+            ( model, Cmd.none )
+
+
+subscriptions : Model -> Sub FrontendMsg
+subscriptions _ =
     Sub.none
 
 
-view : Model -> Browser.Document Msg
+view : Model -> Browser.Document FrontendMsg
 view model =
     { title = "ProsSpectre"
     , body =
@@ -93,7 +86,7 @@ view model =
     }
 
 
-pageView : Model -> H.Html Msg
+pageView : Model -> H.Html FrontendMsg
 pageView _ =
     H.div
         [ HA.css
@@ -113,7 +106,7 @@ pageView _ =
         ]
 
 
-prosspectreHeader : H.Html Msg
+prosspectreHeader : H.Html FrontendMsg
 prosspectreHeader =
     H.div
         [ HA.css
@@ -141,7 +134,7 @@ prosspectreHeader =
         ]
 
 
-asteroidDesignation : String -> H.Html Msg
+asteroidDesignation : String -> H.Html FrontendMsg
 asteroidDesignation designation =
     H.div
         []
@@ -149,7 +142,7 @@ asteroidDesignation designation =
         ]
 
 
-sectorMap : H.Html Msg
+sectorMap : H.Html FrontendMsg
 sectorMap =
     H.div
         [ HA.css

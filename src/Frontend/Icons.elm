@@ -1,4 +1,4 @@
-module Icons exposing (..)
+module Frontend.Icons exposing (..)
 
 import Html.Styled as H
 import Svg.Styled as S exposing (path, svg)

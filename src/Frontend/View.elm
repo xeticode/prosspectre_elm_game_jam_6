@@ -1,4 +1,4 @@
-module View exposing (..)
+module Frontend.View exposing (..)
 
 import Css
 import Tailwind.Theme as Tw
