@@ -106,12 +106,32 @@ pageView _ =
         , asteroidDesignation R.randomAsteroidDesignation
         , sectorMap
         , V.emptyHoleIcon
-        , V.hillsIcon
         , V.possibleSpectireIcon
         , V.confirmedSpectriteIcon
         , V.spectreFlagIcon
         , V.realFlagIcon
         , V.spectreIcon
+        , V.numberedHillIcon 1
+        , V.numberedHillIcon 2
+        , V.numberedHillIcon 3
+        , V.numberedHillIcon 4
+        , V.numberedHillIcon 5
+        , V.numberedHillIcon 6
+        , V.numberedHillIcon 7
+        , V.helpIcon
+        , V.newGameIcon
+        , V.areaGPRIcon
+        , V.pointGPRIcon
+        , V.digIcon
+        , V.point0GPRIcon
+        , V.point1GPRIcon
+        , V.point2GPRIcon
+        , V.point3GPRIcon
+        , V.point4GPRIcon
+        , V.point5GPRIcon
+        , V.point6GPRIcon
+        , V.point7GPRIcon
+        , V.point8GPRIcon
         ]
 
 
