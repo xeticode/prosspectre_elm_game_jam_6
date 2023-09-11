@@ -2110,83 +2110,79 @@ point0GPRIcon =
         , SA.style "fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"
         ]
         [ S.g
-            [ SA.transform "matrix(1,0,0,1,-4057.36,-1232.03)"
+            [ SA.transform "matrix(1,0,0,1,-2843.54,-1231.24)"
             ]
             [ S.g
                 [ SA.transform "matrix(1,0,0,1,-0.333333,0)"
                 ]
                 [ S.g
-                    [ SA.transform "matrix(1,0,0,1,1213.82,0.793655)"
+                    [ SA.transform "matrix(1,0,0,1,1060.34,-667.082)"
+                    ]
+                    [ S.circle
+                        [ SA.cx "1837.91"
+                        , SA.cy "1948.92"
+                        , SA.r "42.217"
+                        , SA.style "fill:rgb(0,84,147);stroke:rgb(0,84,147);stroke-width:6.25px;"
+                        ]
+                        []
+                    ]
+                , S.g
+                    [ SA.transform "matrix(0.65311,0,0,0.65311,1596.82,44.7848)"
+                    ]
+                    [ S.circle
+                        [ SA.cx "2063.08"
+                        , SA.cy "1829.46"
+                        , SA.r "12.843"
+                        , SA.style "fill:rgb(0,84,147);"
+                        ]
+                        []
+                    ]
+                , S.g
+                    [ SA.transform "matrix(0.65311,0,0,0.65311,1504.84,44.7848)"
+                    ]
+                    [ S.circle
+                        [ SA.cx "2063.08"
+                        , SA.cy "1829.46"
+                        , SA.r "12.843"
+                        , SA.style "fill:rgb(0,84,147);"
+                        ]
+                        []
+                    ]
+                , S.g
+                    [ SA.transform "matrix(0.65311,0,0,0.65311,1504.84,132.987)"
+                    ]
+                    [ S.circle
+                        [ SA.cx "2063.08"
+                        , SA.cy "1829.46"
+                        , SA.r "12.843"
+                        , SA.style "fill:rgb(0,84,147);"
+                        ]
+                        []
+                    ]
+                , S.g
+                    [ SA.transform "matrix(0.65311,0,0,0.65311,1596.82,132.987)"
+                    ]
+                    [ S.circle
+                        [ SA.cx "2063.08"
+                        , SA.cy "1829.46"
+                        , SA.r "12.843"
+                        , SA.style "fill:rgb(0,84,147);"
+                        ]
+                        []
+                    ]
+                , S.g
+                    [ SA.transform "matrix(1,0,0,1,607.289,961.402)"
                     ]
                     [ S.g
-                        [ SA.transform "matrix(1,0,0,1,1060.34,-667.082)"
+                        [ SA.transform "matrix(83.3333,0,0,83.3333,2312,353.575)"
                         ]
-                        [ S.circle
-                            [ SA.cx "1837.91"
-                            , SA.cy "1948.92"
-                            , SA.r "42.217"
-                            , SA.style "fill:rgb(0,84,147);stroke:rgb(0,84,147);stroke-width:6.25px;"
-                            ]
-                            []
+                        []
+                    , S.node "text"
+                        [ SA.x "2269.92px"
+                        , SA.y "353.575px"
+                        , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:83.333px;fill:white;"
                         ]
-                    , S.g
-                        [ SA.transform "matrix(0.65311,0,0,0.65311,1596.82,44.7848)"
-                        ]
-                        [ S.circle
-                            [ SA.cx "2063.08"
-                            , SA.cy "1829.46"
-                            , SA.r "12.843"
-                            , SA.style "fill:rgb(0,84,147);"
-                            ]
-                            []
-                        ]
-                    , S.g
-                        [ SA.transform "matrix(0.65311,0,0,0.65311,1504.84,44.7848)"
-                        ]
-                        [ S.circle
-                            [ SA.cx "2063.08"
-                            , SA.cy "1829.46"
-                            , SA.r "12.843"
-                            , SA.style "fill:rgb(0,84,147);"
-                            ]
-                            []
-                        ]
-                    , S.g
-                        [ SA.transform "matrix(0.65311,0,0,0.65311,1504.84,132.987)"
-                        ]
-                        [ S.circle
-                            [ SA.cx "2063.08"
-                            , SA.cy "1829.46"
-                            , SA.r "12.843"
-                            , SA.style "fill:rgb(0,84,147);"
-                            ]
-                            []
-                        ]
-                    , S.g
-                        [ SA.transform "matrix(0.65311,0,0,0.65311,1596.82,132.987)"
-                        ]
-                        [ S.circle
-                            [ SA.cx "2063.08"
-                            , SA.cy "1829.46"
-                            , SA.r "12.843"
-                            , SA.style "fill:rgb(0,84,147);"
-                            ]
-                            []
-                        ]
-                    , S.g
-                        [ SA.transform "matrix(1,0,0,1,607.289,961.402)"
-                        ]
-                        [ S.g
-                            [ SA.transform "matrix(83.3333,0,0,83.3333,2315.96,353.575)"
-                            ]
-                            []
-                        , S.node "text"
-                            [ SA.x "2265.96px"
-                            , SA.y "353.575px"
-                            , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:83.333px;fill:white;"
-                            ]
-                            [ H.text "0" ]
-                        ]
+                        [ H.text "0" ]
                     ]
                 ]
             ]
@@ -2204,13 +2200,13 @@ point1GPRIcon =
         , SA.style "fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"
         ]
         [ S.g
-            [ SA.transform "matrix(1,0,0,1,-4057.36,-1232.03)"
+            [ SA.transform "matrix(1,0,0,1,-3000.4,-1232.03)"
             ]
             [ S.g
                 [ SA.transform "matrix(1,0,0,1,-0.333333,0)"
                 ]
                 [ S.g
-                    [ SA.transform "matrix(1,0,0,1,1213.82,0.793655)"
+                    [ SA.transform "matrix(1,0,0,1,156.855,0.793655)"
                     ]
                     [ S.g
                         [ SA.transform "matrix(1,0,0,1,1060.34,-667.082)"
@@ -2271,11 +2267,11 @@ point1GPRIcon =
                         [ SA.transform "matrix(1,0,0,1,607.289,961.402)"
                         ]
                         [ S.g
-                            [ SA.transform "matrix(83.3333,0,0,83.3333,2315.96,353.575)"
+                            [ SA.transform "matrix(83.3333,0,0,83.3333,2299.3,353.575)"
                             ]
                             []
                         , S.node "text"
-                            [ SA.x "2265.96px"
+                            [ SA.x "2282.63px"
                             , SA.y "353.575px"
                             , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:83.333px;fill:white;"
                             ]
@@ -2298,13 +2294,13 @@ point2GPRIcon =
         , SA.style "fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"
         ]
         [ S.g
-            [ SA.transform "matrix(1,0,0,1,-4057.36,-1232.03)"
+            [ SA.transform "matrix(1,0,0,1,-3151.39,-1232.03)"
             ]
             [ S.g
                 [ SA.transform "matrix(1,0,0,1,-0.333333,0)"
                 ]
                 [ S.g
-                    [ SA.transform "matrix(1,0,0,1,1213.82,0.793655)"
+                    [ SA.transform "matrix(1,0,0,1,307.85,0.793655)"
                     ]
                     [ S.g
                         [ SA.transform "matrix(1,0,0,1,1060.34,-667.082)"
@@ -2365,11 +2361,11 @@ point2GPRIcon =
                         [ SA.transform "matrix(1,0,0,1,607.289,961.402)"
                         ]
                         [ S.g
-                            [ SA.transform "matrix(83.3333,0,0,83.3333,2315.96,353.575)"
+                            [ SA.transform "matrix(83.3333,0,0,83.3333,2312.05,353.575)"
                             ]
                             []
                         , S.node "text"
-                            [ SA.x "2265.96px"
+                            [ SA.x "2269.88px"
                             , SA.y "353.575px"
                             , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:83.333px;fill:white;"
                             ]
@@ -2392,13 +2388,13 @@ point3GPRIcon =
         , SA.style "fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"
         ]
         [ S.g
-            [ SA.transform "matrix(1,0,0,1,-4057.36,-1232.03)"
+            [ SA.transform "matrix(1,0,0,1,-3302.39,-1232.03)"
             ]
             [ S.g
                 [ SA.transform "matrix(1,0,0,1,-0.333333,0)"
                 ]
                 [ S.g
-                    [ SA.transform "matrix(1,0,0,1,1213.82,0.793655)"
+                    [ SA.transform "matrix(1,0,0,1,458.845,0.793655)"
                     ]
                     [ S.g
                         [ SA.transform "matrix(1,0,0,1,1060.34,-667.082)"
@@ -2459,11 +2455,11 @@ point3GPRIcon =
                         [ SA.transform "matrix(1,0,0,1,607.289,961.402)"
                         ]
                         [ S.g
-                            [ SA.transform "matrix(83.3333,0,0,83.3333,2315.96,353.575)"
+                            [ SA.transform "matrix(83.3333,0,0,83.3333,2312,353.575)"
                             ]
                             []
                         , S.node "text"
-                            [ SA.x "2265.96px"
+                            [ SA.x "2269.92px"
                             , SA.y "353.575px"
                             , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:83.333px;fill:white;"
                             ]
@@ -2486,13 +2482,13 @@ point4GPRIcon =
         , SA.style "fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"
         ]
         [ S.g
-            [ SA.transform "matrix(1,0,0,1,-4057.36,-1232.03)"
+            [ SA.transform "matrix(1,0,0,1,-3453.38,-1232.03)"
             ]
             [ S.g
                 [ SA.transform "matrix(1,0,0,1,-0.333333,0)"
                 ]
                 [ S.g
-                    [ SA.transform "matrix(1,0,0,1,1213.82,0.793655)"
+                    [ SA.transform "matrix(1,0,0,1,609.839,0.793655)"
                     ]
                     [ S.g
                         [ SA.transform "matrix(1,0,0,1,1060.34,-667.082)"
@@ -2553,11 +2549,11 @@ point4GPRIcon =
                         [ SA.transform "matrix(1,0,0,1,607.289,961.402)"
                         ]
                         [ S.g
-                            [ SA.transform "matrix(83.3333,0,0,83.3333,2315.96,353.575)"
+                            [ SA.transform "matrix(83.3333,0,0,83.3333,2311.8,353.575)"
                             ]
                             []
                         , S.node "text"
-                            [ SA.x "2265.96px"
+                            [ SA.x "2270.13px"
                             , SA.y "353.575px"
                             , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:83.333px;fill:white;"
                             ]
@@ -2580,13 +2576,13 @@ point5GPRIcon =
         , SA.style "fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"
         ]
         [ S.g
-            [ SA.transform "matrix(1,0,0,1,-4057.36,-1232.03)"
+            [ SA.transform "matrix(1,0,0,1,-3604.38,-1232.03)"
             ]
             [ S.g
                 [ SA.transform "matrix(1,0,0,1,-0.333333,0)"
                 ]
                 [ S.g
-                    [ SA.transform "matrix(1,0,0,1,1213.82,0.793655)"
+                    [ SA.transform "matrix(1,0,0,1,760.834,0.793655)"
                     ]
                     [ S.g
                         [ SA.transform "matrix(1,0,0,1,1060.34,-667.082)"
@@ -2647,11 +2643,11 @@ point5GPRIcon =
                         [ SA.transform "matrix(1,0,0,1,607.289,961.402)"
                         ]
                         [ S.g
-                            [ SA.transform "matrix(83.3333,0,0,83.3333,2315.96,353.575)"
+                            [ SA.transform "matrix(83.3333,0,0,83.3333,2313.63,353.575)"
                             ]
                             []
                         , S.node "text"
-                            [ SA.x "2265.96px"
+                            [ SA.x "2268.3px"
                             , SA.y "353.575px"
                             , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:83.333px;fill:white;"
                             ]
@@ -2674,13 +2670,13 @@ point6GPRIcon =
         , SA.style "fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"
         ]
         [ S.g
-            [ SA.transform "matrix(1,0,0,1,-4057.36,-1232.03)"
+            [ SA.transform "matrix(1,0,0,1,-3755.37,-1232.03)"
             ]
             [ S.g
                 [ SA.transform "matrix(1,0,0,1,-0.333333,0)"
                 ]
                 [ S.g
-                    [ SA.transform "matrix(1,0,0,1,1213.82,0.793655)"
+                    [ SA.transform "matrix(1,0,0,1,911.829,0.793655)"
                     ]
                     [ S.g
                         [ SA.transform "matrix(1,0,0,1,1060.34,-667.082)"
@@ -2741,11 +2737,11 @@ point6GPRIcon =
                         [ SA.transform "matrix(1,0,0,1,607.289,961.402)"
                         ]
                         [ S.g
-                            [ SA.transform "matrix(83.3333,0,0,83.3333,2315.96,353.575)"
+                            [ SA.transform "matrix(83.3333,0,0,83.3333,2316,353.575)"
                             ]
                             []
                         , S.node "text"
-                            [ SA.x "2265.96px"
+                            [ SA.x "2265.92px"
                             , SA.y "353.575px"
                             , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:83.333px;fill:white;"
                             ]
@@ -2768,13 +2764,13 @@ point7GPRIcon =
         , SA.style "fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"
         ]
         [ S.g
-            [ SA.transform "matrix(1,0,0,1,-4057.36,-1232.03)"
+            [ SA.transform "matrix(1,0,0,1,-3906.37,-1232.03)"
             ]
             [ S.g
                 [ SA.transform "matrix(1,0,0,1,-0.333333,0)"
                 ]
                 [ S.g
-                    [ SA.transform "matrix(1,0,0,1,1213.82,0.793655)"
+                    [ SA.transform "matrix(1,0,0,1,1062.82,0.793655)"
                     ]
                     [ S.g
                         [ SA.transform "matrix(1,0,0,1,1060.34,-667.082)"
@@ -2835,11 +2831,11 @@ point7GPRIcon =
                         [ SA.transform "matrix(1,0,0,1,607.289,961.402)"
                         ]
                         [ S.g
-                            [ SA.transform "matrix(83.3333,0,0,83.3333,2315.96,353.575)"
+                            [ SA.transform "matrix(83.3333,0,0,83.3333,2312,353.575)"
                             ]
                             []
                         , S.node "text"
-                            [ SA.x "2265.96px"
+                            [ SA.x "2269.92px"
                             , SA.y "353.575px"
                             , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:83.333px;fill:white;"
                             ]
@@ -2938,6 +2934,1002 @@ point8GPRIcon =
                             , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:83.333px;fill:white;"
                             ]
                             [ H.text "8" ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+
+
+area0GPRIcon : S.Svg msg
+area0GPRIcon =
+    svg
+        [ SA.width "100%"
+        , SA.height "100%"
+        , SA.viewBox "0 0 115 115"
+        , SA.version "1.1"
+        , SA.xmlSpace "preserve"
+        , SA.style "fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"
+        ]
+        [ S.g
+            [ SA.transform "matrix(1,0,0,1,-2841.38,-1385.95)"
+            ]
+            [ S.g
+                [ SA.transform "matrix(1,0,0,1,-0.333333,0)"
+                ]
+                [ S.g
+                    [ SA.transform "matrix(1.2862,0,0,1.2862,535.214,-1063.33)"
+                    ]
+                    [ S.circle
+                        [ SA.cx "1837.91"
+                        , SA.cy "1948.92"
+                        , SA.r "42.217"
+                        , SA.style "fill:rgb(0,84,147);stroke:rgb(0,84,147);stroke-width:4.86px;"
+                        ]
+                        []
+                    ]
+                , S.g
+                    [ SA.transform "matrix(1,0,0,1,608.203,1127.25)"
+                    ]
+                    [ S.g
+                        [ SA.transform "matrix(100,0,0,100,2316.21,353.575)"
+                        ]
+                        []
+                    , S.node "text"
+                        [ SA.x "2265.71px"
+                        , SA.y "353.575px"
+                        , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:100px;fill:white;"
+                        ]
+                        [ H.text "0" ]
+                    ]
+                ]
+            ]
+        ]
+
+
+area1GPRIcon : S.Svg msg
+area1GPRIcon =
+    svg
+        [ SA.width "100%"
+        , SA.height "100%"
+        , SA.viewBox "0 0 115 115"
+        , SA.version "1.1"
+        , SA.xmlSpace "preserve"
+        , SA.style "fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"
+        ]
+        [ S.g
+            [ SA.transform "matrix(1,0,0,1,-2997.42,-1385.95)"
+            ]
+            [ S.g
+                [ SA.transform "matrix(1,0,0,1,-0.333333,0)"
+                ]
+                [ S.g
+                    [ SA.transform "matrix(1,0,0,1,156.04,0)"
+                    ]
+                    [ S.g
+                        [ SA.transform "matrix(1.2862,0,0,1.2862,535.214,-1063.33)"
+                        ]
+                        [ S.circle
+                            [ SA.cx "1837.91"
+                            , SA.cy "1948.92"
+                            , SA.r "42.217"
+                            , SA.style "fill:rgb(0,84,147);stroke:rgb(0,84,147);stroke-width:4.86px;"
+                            ]
+                            []
+                        ]
+                    , S.g
+                        [ SA.transform "matrix(1,0,0,1,608.203,1127.25)"
+                        ]
+                        [ S.g
+                            [ SA.transform "matrix(100,0,0,100,2300.96,353.575)"
+                            ]
+                            []
+                        , S.node "text"
+                            [ SA.x "2280.96px"
+                            , SA.y "353.575px"
+                            , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:100px;fill:white;"
+                            ]
+                            [ H.text "1" ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+
+
+area2GPRIcon : S.Svg msg
+area2GPRIcon =
+    svg
+        [ SA.width "100%"
+        , SA.height "100%"
+        , SA.viewBox "0 0 115 115"
+        , SA.version "1.1"
+        , SA.xmlSpace "preserve"
+        , SA.style "fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"
+        ]
+        [ S.g
+            [ SA.transform "matrix(1,0,0,1,-3150.27,-1385.95)"
+            ]
+            [ S.g
+                [ SA.transform "matrix(1,0,0,1,-0.333333,0)"
+                ]
+                [ S.g
+                    [ SA.transform "matrix(1,0,0,1,308.892,0)"
+                    ]
+                    [ S.g
+                        [ SA.transform "matrix(1.2862,0,0,1.2862,535.214,-1063.33)"
+                        ]
+                        [ S.circle
+                            [ SA.cx "1837.91"
+                            , SA.cy "1948.92"
+                            , SA.r "42.217"
+                            , SA.style "fill:rgb(0,84,147);stroke:rgb(0,84,147);stroke-width:4.86px;"
+                            ]
+                            []
+                        ]
+                    , S.g
+                        [ SA.transform "matrix(1,0,0,1,608.203,1127.25)"
+                        ]
+                        [ S.g
+                            [ SA.transform "matrix(100,0,0,100,2316.26,353.575)"
+                            ]
+                            []
+                        , S.node "text"
+                            [ SA.x "2265.66px"
+                            , SA.y "353.575px"
+                            , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:100px;fill:white;"
+                            ]
+                            [ H.text "2" ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+
+
+area3GPRIcon : S.Svg msg
+area3GPRIcon =
+    svg
+        [ SA.width "100%"
+        , SA.height "100%"
+        , SA.viewBox "0 0 115 115"
+        , SA.version "1.1"
+        , SA.xmlSpace "preserve"
+        , SA.style "fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"
+        ]
+        [ S.g
+            [ SA.transform "matrix(1,0,0,1,-3298.64,-1385.95)"
+            ]
+            [ S.g
+                [ SA.transform "matrix(1,0,0,1,-0.333333,0)"
+                ]
+                [ S.g
+                    [ SA.transform "matrix(1,0,0,1,457.261,0)"
+                    ]
+                    [ S.g
+                        [ SA.transform "matrix(1.2862,0,0,1.2862,535.214,-1063.33)"
+                        ]
+                        [ S.circle
+                            [ SA.cx "1837.91"
+                            , SA.cy "1948.92"
+                            , SA.r "42.217"
+                            , SA.style "fill:rgb(0,84,147);stroke:rgb(0,84,147);stroke-width:4.86px;"
+                            ]
+                            []
+                        ]
+                    , S.g
+                        [ SA.transform "matrix(1,0,0,1,608.203,1127.25)"
+                        ]
+                        [ S.g
+                            [ SA.transform "matrix(100,0,0,100,2316.21,353.575)"
+                            ]
+                            []
+                        , S.node "text"
+                            [ SA.x "2265.71px"
+                            , SA.y "353.575px"
+                            , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:100px;fill:white;"
+                            ]
+                            [ H.text "3" ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+
+
+area4GPRIcon : S.Svg msg
+area4GPRIcon =
+    svg
+        [ SA.width "100%"
+        , SA.height "100%"
+        , SA.viewBox "0 0 115 115"
+        , SA.version "1.1"
+        , SA.xmlSpace "preserve"
+        , SA.style "fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"
+        ]
+        [ S.g
+            [ SA.transform "matrix(1,0,0,1,-3454.34,-1385.95)"
+            ]
+            [ S.g
+                [ SA.transform "matrix(1,0,0,1,-0.333333,0)"
+                ]
+                [ S.g
+                    [ SA.transform "matrix(1,0,0,1,612.959,0)"
+                    ]
+                    [ S.g
+                        [ SA.transform "matrix(1.2862,0,0,1.2862,535.214,-1063.33)"
+                        ]
+                        [ S.circle
+                            [ SA.cx "1837.91"
+                            , SA.cy "1948.92"
+                            , SA.r "42.217"
+                            , SA.style "fill:rgb(0,84,147);stroke:rgb(0,84,147);stroke-width:4.86px;"
+                            ]
+                            []
+                        ]
+                    , S.g
+                        [ SA.transform "matrix(1,0,0,1,608.203,1127.25)"
+                        ]
+                        [ S.g
+                            [ SA.transform "matrix(100,0,0,100,2315.96,353.575)"
+                            ]
+                            []
+                        , S.node "text"
+                            [ SA.x "2265.96px"
+                            , SA.y "353.575px"
+                            , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:100px;fill:white;"
+                            ]
+                            [ H.text "4" ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+
+
+area5GPRIcon : S.Svg msg
+area5GPRIcon =
+    svg
+        [ SA.width "100%"
+        , SA.height "100%"
+        , SA.viewBox "0 0 115 115"
+        , SA.version "1.1"
+        , SA.xmlSpace "preserve"
+        , SA.style "fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"
+        ]
+        [ S.g
+            [ SA.transform "matrix(1,0,0,1,-3601.53,-1385.95)"
+            ]
+            [ S.g
+                [ SA.transform "matrix(1,0,0,1,-0.333333,0)"
+                ]
+                [ S.g
+                    [ SA.transform "matrix(1,0,0,1,760.145,0)"
+                    ]
+                    [ S.g
+                        [ SA.transform "matrix(1.2862,0,0,1.2862,535.214,-1063.33)"
+                        ]
+                        [ S.circle
+                            [ SA.cx "1837.91"
+                            , SA.cy "1948.92"
+                            , SA.r "42.217"
+                            , SA.style "fill:rgb(0,84,147);stroke:rgb(0,84,147);stroke-width:4.86px;"
+                            ]
+                            []
+                        ]
+                    , S.g
+                        [ SA.transform "matrix(1,0,0,1,608.203,1127.25)"
+                        ]
+                        [ S.g
+                            [ SA.transform "matrix(100,0,0,100,2318.16,353.575)"
+                            ]
+                            []
+                        , S.node "text"
+                            [ SA.x "2263.76px"
+                            , SA.y "353.575px"
+                            , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:100px;fill:white;"
+                            ]
+                            [ H.text "5" ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+
+
+area6GPRIcon : S.Svg msg
+area6GPRIcon =
+    svg
+        [ SA.width "100%"
+        , SA.height "100%"
+        , SA.viewBox "0 0 115 115"
+        , SA.version "1.1"
+        , SA.xmlSpace "preserve"
+        , SA.style "fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"
+        ]
+        [ S.g
+            [ SA.transform "matrix(1,0,0,1,-3751.78,-1385.95)"
+            ]
+            [ S.g
+                [ SA.transform "matrix(1,0,0,1,-0.333333,0)"
+                ]
+                [ S.g
+                    [ SA.transform "matrix(1,0,0,1,910.398,0)"
+                    ]
+                    [ S.g
+                        [ SA.transform "matrix(1.2862,0,0,1.2862,535.214,-1063.33)"
+                        ]
+                        [ S.circle
+                            [ SA.cx "1837.91"
+                            , SA.cy "1948.92"
+                            , SA.r "42.217"
+                            , SA.style "fill:rgb(0,84,147);stroke:rgb(0,84,147);stroke-width:4.86px;"
+                            ]
+                            []
+                        ]
+                    , S.g
+                        [ SA.transform "matrix(1,0,0,1,608.203,1127.25)"
+                        ]
+                        [ S.g
+                            [ SA.transform "matrix(100,0,0,100,2321.01,353.575)"
+                            ]
+                            []
+                        , S.node "text"
+                            [ SA.x "2260.91px"
+                            , SA.y "353.575px"
+                            , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:100px;fill:white;"
+                            ]
+                            [ H.text "6" ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+
+
+area7GPRIcon : S.Svg msg
+area7GPRIcon =
+    svg
+        [ SA.width "100%"
+        , SA.height "100%"
+        , SA.viewBox "0 0 115 115"
+        , SA.version "1.1"
+        , SA.xmlSpace "preserve"
+        , SA.style "fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"
+        ]
+        [ S.g
+            [ SA.transform "matrix(1,0,0,1,-3902.69,-1385.95)"
+            ]
+            [ S.g
+                [ SA.transform "matrix(1,0,0,1,-0.333333,0)"
+                ]
+                [ S.g
+                    [ SA.transform "matrix(1,0,0,1,1061.3,0)"
+                    ]
+                    [ S.g
+                        [ SA.transform "matrix(1.2862,0,0,1.2862,535.214,-1063.33)"
+                        ]
+                        [ S.circle
+                            [ SA.cx "1837.91"
+                            , SA.cy "1948.92"
+                            , SA.r "42.217"
+                            , SA.style "fill:rgb(0,84,147);stroke:rgb(0,84,147);stroke-width:4.86px;"
+                            ]
+                            []
+                        ]
+                    , S.g
+                        [ SA.transform "matrix(1,0,0,1,608.203,1127.25)"
+                        ]
+                        [ S.g
+                            [ SA.transform "matrix(100,0,0,100,2316.21,353.575)"
+                            ]
+                            []
+                        , S.node "text"
+                            [ SA.x "2265.71px"
+                            , SA.y "353.575px"
+                            , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:100px;fill:white;"
+                            ]
+                            [ H.text "7" ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+
+
+area8GPRIcon : S.Svg msg
+area8GPRIcon =
+    svg
+        [ SA.width "100%"
+        , SA.height "100%"
+        , SA.viewBox "0 0 115 115"
+        , SA.version "1.1"
+        , SA.xmlSpace "preserve"
+        , SA.style "fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"
+        ]
+        [ S.g
+            [ SA.transform "matrix(1,0,0,1,-4056.38,-1385.95)"
+            ]
+            [ S.g
+                [ SA.transform "matrix(1,0,0,1,-0.333333,0)"
+                ]
+                [ S.g
+                    [ SA.transform "matrix(1,0,0,1,1214.99,0)"
+                    ]
+                    [ S.g
+                        [ SA.transform "matrix(1.2862,0,0,1.2862,535.214,-1063.33)"
+                        ]
+                        [ S.circle
+                            [ SA.cx "1837.91"
+                            , SA.cy "1948.92"
+                            , SA.r "42.217"
+                            , SA.style "fill:rgb(0,84,147);stroke:rgb(0,84,147);stroke-width:4.86px;"
+                            ]
+                            []
+                        ]
+                    , S.g
+                        [ SA.transform "matrix(1,0,0,1,608.203,1127.25)"
+                        ]
+                        [ S.g
+                            [ SA.transform "matrix(100,0,0,100,2320.96,353.575)"
+                            ]
+                            []
+                        , S.node "text"
+                            [ SA.x "2260.96px"
+                            , SA.y "353.575px"
+                            , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:100px;fill:white;"
+                            ]
+                            [ H.text "8" ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+
+
+area9GPRIcon : S.Svg msg
+area9GPRIcon =
+    svg
+        [ SA.width "100%"
+        , SA.height "100%"
+        , SA.viewBox "0 0 115 115"
+        , SA.version "1.1"
+        , SA.xmlSpace "preserve"
+        , SA.style "fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"
+        ]
+        [ S.g
+            [ SA.transform "matrix(1,0,0,1,-4209.22,-1385.95)"
+            ]
+            [ S.g
+                [ SA.transform "matrix(1,0,0,1,-0.333333,0)"
+                ]
+                [ S.g
+                    [ SA.transform "matrix(1,0,0,1,1367.83,0)"
+                    ]
+                    [ S.g
+                        [ SA.transform "matrix(1.2862,0,0,1.2862,535.214,-1063.33)"
+                        ]
+                        [ S.circle
+                            [ SA.cx "1837.91"
+                            , SA.cy "1948.92"
+                            , SA.r "42.217"
+                            , SA.style "fill:rgb(0,84,147);stroke:rgb(0,84,147);stroke-width:4.86px;"
+                            ]
+                            []
+                        ]
+                    , S.g
+                        [ SA.transform "matrix(1,0,0,1,608.203,1127.25)"
+                        ]
+                        [ S.g
+                            [ SA.transform "matrix(100,0,0,100,2321.01,353.575)"
+                            ]
+                            []
+                        , S.node "text"
+                            [ SA.x "2260.91px"
+                            , SA.y "353.575px"
+                            , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:100px;fill:white;"
+                            ]
+                            [ H.text "9" ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+
+
+area10GPRIcon : S.Svg msg
+area10GPRIcon =
+    svg
+        [ SA.width "100%"
+        , SA.height "100%"
+        , SA.viewBox "0 0 115 115"
+        , SA.version "1.1"
+        , SA.xmlSpace "preserve"
+        , SA.style "fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"
+        ]
+        [ S.g
+            [ SA.transform "matrix(1,0,0,1,-2841.38,-1537.09)"
+            ]
+            [ S.g
+                [ SA.transform "matrix(1,0,0,1,-0.333333,0)"
+                ]
+                [ S.g
+                    [ SA.transform "matrix(1,0,0,1,0,151.14)"
+                    ]
+                    [ S.g
+                        [ SA.transform "matrix(1.2862,0,0,1.2862,535.214,-1063.33)"
+                        ]
+                        [ S.circle
+                            [ SA.cx "1837.91"
+                            , SA.cy "1948.92"
+                            , SA.r "42.217"
+                            , SA.style "fill:rgb(0,84,147);stroke:rgb(0,84,147);stroke-width:4.86px;"
+                            ]
+                            []
+                        ]
+                    , S.g
+                        [ SA.transform "matrix(1,0,0,1,608.203,1127.25)"
+                        ]
+                        [ S.g
+                            [ SA.transform "matrix(100,0,0,100,2326.21,353.575)"
+                            ]
+                            []
+                        , S.node "text"
+                            [ SA.x "2255.71px"
+                            , SA.y "353.575px"
+                            , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:100px;fill:white;"
+                            ]
+                            [ H.text "10" ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+
+
+area11GPRIcon : S.Svg msg
+area11GPRIcon =
+    svg
+        [ SA.width "100%"
+        , SA.height "100%"
+        , SA.viewBox "0 0 115 115"
+        , SA.version "1.1"
+        , SA.xmlSpace "preserve"
+        , SA.style "fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"
+        ]
+        [ S.g
+            [ SA.transform "matrix(1,0,0,1,-2997.42,-1537.09)"
+            ]
+            [ S.g
+                [ SA.transform "matrix(1,0,0,1,-0.333333,0)"
+                ]
+                [ S.g
+                    [ SA.transform "matrix(1,0,0,1,156.04,151.14)"
+                    ]
+                    [ S.g
+                        [ SA.transform "matrix(1.2862,0,0,1.2862,535.214,-1063.33)"
+                        ]
+                        [ S.circle
+                            [ SA.cx "1837.91"
+                            , SA.cy "1948.92"
+                            , SA.r "42.217"
+                            , SA.style "fill:rgb(0,84,147);stroke:rgb(0,84,147);stroke-width:4.86px;"
+                            ]
+                            []
+                        ]
+                    , S.g
+                        [ SA.transform "matrix(1,0,0,1,608.203,1127.25)"
+                        ]
+                        [ S.g
+                            [ SA.transform "matrix(100,0,0,100,2310.96,353.575)"
+                            ]
+                            []
+                        , S.node "text"
+                            [ SA.x "2270.96px"
+                            , SA.y "353.575px"
+                            , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:100px;fill:white;"
+                            ]
+                            [ H.text "11" ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+
+
+area12GPRIcon : S.Svg msg
+area12GPRIcon =
+    svg
+        [ SA.width "100%"
+        , SA.height "100%"
+        , SA.viewBox "0 0 115 115"
+        , SA.version "1.1"
+        , SA.xmlSpace "preserve"
+        , SA.style "fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"
+        ]
+        [ S.g
+            [ SA.transform "matrix(1,0,0,1,-3150.27,-1537.09)"
+            ]
+            [ S.g
+                [ SA.transform "matrix(1,0,0,1,-0.333333,0)"
+                ]
+                [ S.g
+                    [ SA.transform "matrix(1,0,0,1,308.892,151.14)"
+                    ]
+                    [ S.g
+                        [ SA.transform "matrix(1.2862,0,0,1.2862,535.214,-1063.33)"
+                        ]
+                        [ S.circle
+                            [ SA.cx "1837.91"
+                            , SA.cy "1948.92"
+                            , SA.r "42.217"
+                            , SA.style "fill:rgb(0,84,147);stroke:rgb(0,84,147);stroke-width:4.86px;"
+                            ]
+                            []
+                        ]
+                    , S.g
+                        [ SA.transform "matrix(1,0,0,1,608.203,1127.25)"
+                        ]
+                        [ S.g
+                            [ SA.transform "matrix(100,0,0,100,2326.26,353.575)"
+                            ]
+                            []
+                        , S.node "text"
+                            [ SA.x "2255.66px"
+                            , SA.y "353.575px"
+                            , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:100px;fill:white;"
+                            ]
+                            [ H.text "12" ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+
+
+area13GPRIcon : S.Svg msg
+area13GPRIcon =
+    svg
+        [ SA.width "100%"
+        , SA.height "100%"
+        , SA.viewBox "0 0 115 115"
+        , SA.version "1.1"
+        , SA.xmlSpace "preserve"
+        , SA.style "fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"
+        ]
+        [ S.g
+            [ SA.transform "matrix(1,0,0,1,-3298.64,-1537.09)"
+            ]
+            [ S.g
+                [ SA.transform "matrix(1,0,0,1,-0.333333,0)"
+                ]
+                [ S.g
+                    [ SA.transform "matrix(1,0,0,1,457.261,151.14)"
+                    ]
+                    [ S.g
+                        [ SA.transform "matrix(1.2862,0,0,1.2862,535.214,-1063.33)"
+                        ]
+                        [ S.circle
+                            [ SA.cx "1837.91"
+                            , SA.cy "1948.92"
+                            , SA.r "42.217"
+                            , SA.style "fill:rgb(0,84,147);stroke:rgb(0,84,147);stroke-width:4.86px;"
+                            ]
+                            []
+                        ]
+                    , S.g
+                        [ SA.transform "matrix(1,0,0,1,608.203,1127.25)"
+                        ]
+                        [ S.g
+                            [ SA.transform "matrix(100,0,0,100,2326.21,353.575)"
+                            ]
+                            []
+                        , S.node "text"
+                            [ SA.x "2255.71px"
+                            , SA.y "353.575px"
+                            , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:100px;fill:white;"
+                            ]
+                            [ H.text "13" ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+
+
+area14GPRIcon : S.Svg msg
+area14GPRIcon =
+    svg
+        [ SA.width "100%"
+        , SA.height "100%"
+        , SA.viewBox "0 0 115 115"
+        , SA.version "1.1"
+        , SA.xmlSpace "preserve"
+        , SA.style "fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"
+        ]
+        [ S.g
+            [ SA.transform "matrix(1,0,0,1,-3454.34,-1537.09)"
+            ]
+            [ S.g
+                [ SA.transform "matrix(1,0,0,1,-0.333333,0)"
+                ]
+                [ S.g
+                    [ SA.transform "matrix(1,0,0,1,612.959,151.14)"
+                    ]
+                    [ S.g
+                        [ SA.transform "matrix(1.2862,0,0,1.2862,535.214,-1063.33)"
+                        ]
+                        [ S.circle
+                            [ SA.cx "1837.91"
+                            , SA.cy "1948.92"
+                            , SA.r "42.217"
+                            , SA.style "fill:rgb(0,84,147);stroke:rgb(0,84,147);stroke-width:4.86px;"
+                            ]
+                            []
+                        ]
+                    , S.g
+                        [ SA.transform "matrix(1,0,0,1,608.203,1127.25)"
+                        ]
+                        [ S.g
+                            [ SA.transform "matrix(100,0,0,100,2325.96,353.575)"
+                            ]
+                            []
+                        , S.node "text"
+                            [ SA.x "2255.96px"
+                            , SA.y "353.575px"
+                            , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:100px;fill:white;"
+                            ]
+                            [ H.text "14" ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+
+
+area15GPRIcon : S.Svg msg
+area15GPRIcon =
+    svg
+        [ SA.width "100%"
+        , SA.height "100%"
+        , SA.viewBox "0 0 115 115"
+        , SA.version "1.1"
+        , SA.xmlSpace "preserve"
+        , SA.style "fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"
+        ]
+        [ S.g
+            [ SA.transform "matrix(1,0,0,1,-3601.53,-1537.09)"
+            ]
+            [ S.g
+                [ SA.transform "matrix(1,0,0,1,-0.333333,0)"
+                ]
+                [ S.g
+                    [ SA.transform "matrix(1,0,0,1,760.145,151.14)"
+                    ]
+                    [ S.g
+                        [ SA.transform "matrix(1.2862,0,0,1.2862,535.214,-1063.33)"
+                        ]
+                        [ S.circle
+                            [ SA.cx "1837.91"
+                            , SA.cy "1948.92"
+                            , SA.r "42.217"
+                            , SA.style "fill:rgb(0,84,147);stroke:rgb(0,84,147);stroke-width:4.86px;"
+                            ]
+                            []
+                        ]
+                    , S.g
+                        [ SA.transform "matrix(1,0,0,1,608.203,1127.25)"
+                        ]
+                        [ S.g
+                            [ SA.transform "matrix(100,0,0,100,2328.16,353.575)"
+                            ]
+                            []
+                        , S.node "text"
+                            [ SA.x "2253.76px"
+                            , SA.y "353.575px"
+                            , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:100px;fill:white;"
+                            ]
+                            [ H.text "15" ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+
+
+area16GPRIcon : S.Svg msg
+area16GPRIcon =
+    svg
+        [ SA.width "100%"
+        , SA.height "100%"
+        , SA.viewBox "0 0 115 115"
+        , SA.version "1.1"
+        , SA.xmlSpace "preserve"
+        , SA.style "fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"
+        ]
+        [ S.g
+            [ SA.transform "matrix(1,0,0,1,-3751.78,-1537.09)"
+            ]
+            [ S.g
+                [ SA.transform "matrix(1,0,0,1,-0.333333,0)"
+                ]
+                [ S.g
+                    [ SA.transform "matrix(1,0,0,1,910.398,151.14)"
+                    ]
+                    [ S.g
+                        [ SA.transform "matrix(1.2862,0,0,1.2862,535.214,-1063.33)"
+                        ]
+                        [ S.circle
+                            [ SA.cx "1837.91"
+                            , SA.cy "1948.92"
+                            , SA.r "42.217"
+                            , SA.style "fill:rgb(0,84,147);stroke:rgb(0,84,147);stroke-width:4.86px;"
+                            ]
+                            []
+                        ]
+                    , S.g
+                        [ SA.transform "matrix(1,0,0,1,608.203,1127.25)"
+                        ]
+                        [ S.g
+                            [ SA.transform "matrix(100,0,0,100,2331.01,353.575)"
+                            ]
+                            []
+                        , S.node "text"
+                            [ SA.x "2250.91px"
+                            , SA.y "353.575px"
+                            , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:100px;fill:white;"
+                            ]
+                            [ H.text "16" ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+
+
+area17GPRIcon : S.Svg msg
+area17GPRIcon =
+    svg
+        [ SA.width "100%"
+        , SA.height "100%"
+        , SA.viewBox "0 0 115 115"
+        , SA.version "1.1"
+        , SA.xmlSpace "preserve"
+        , SA.style "fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"
+        ]
+        [ S.g
+            [ SA.transform "matrix(1,0,0,1,-3902.69,-1537.09)"
+            ]
+            [ S.g
+                [ SA.transform "matrix(1,0,0,1,-0.333333,0)"
+                ]
+                [ S.g
+                    [ SA.transform "matrix(1,0,0,1,1061.3,151.14)"
+                    ]
+                    [ S.g
+                        [ SA.transform "matrix(1.2862,0,0,1.2862,535.214,-1063.33)"
+                        ]
+                        [ S.circle
+                            [ SA.cx "1837.91"
+                            , SA.cy "1948.92"
+                            , SA.r "42.217"
+                            , SA.style "fill:rgb(0,84,147);stroke:rgb(0,84,147);stroke-width:4.86px;"
+                            ]
+                            []
+                        ]
+                    , S.g
+                        [ SA.transform "matrix(1,0,0,1,608.203,1127.25)"
+                        ]
+                        [ S.g
+                            [ SA.transform "matrix(100,0,0,100,2326.21,353.575)"
+                            ]
+                            []
+                        , S.node "text"
+                            [ SA.x "2255.71px"
+                            , SA.y "353.575px"
+                            , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:100px;fill:white;"
+                            ]
+                            [ H.text "17" ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+
+
+area18GPRIcon : S.Svg msg
+area18GPRIcon =
+    svg
+        [ SA.width "100%"
+        , SA.height "100%"
+        , SA.viewBox "0 0 115 115"
+        , SA.version "1.1"
+        , SA.xmlSpace "preserve"
+        , SA.style "fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"
+        ]
+        [ S.g
+            [ SA.transform "matrix(1,0,0,1,-4056.38,-1537.09)"
+            ]
+            [ S.g
+                [ SA.transform "matrix(1,0,0,1,-0.333333,0)"
+                ]
+                [ S.g
+                    [ SA.transform "matrix(1,0,0,1,1214.99,151.14)"
+                    ]
+                    [ S.g
+                        [ SA.transform "matrix(1.2862,0,0,1.2862,535.214,-1063.33)"
+                        ]
+                        [ S.circle
+                            [ SA.cx "1837.91"
+                            , SA.cy "1948.92"
+                            , SA.r "42.217"
+                            , SA.style "fill:rgb(0,84,147);stroke:rgb(0,84,147);stroke-width:4.86px;"
+                            ]
+                            []
+                        ]
+                    , S.g
+                        [ SA.transform "matrix(1,0,0,1,608.203,1127.25)"
+                        ]
+                        [ S.g
+                            [ SA.transform "matrix(100,0,0,100,2330.96,353.575)"
+                            ]
+                            []
+                        , S.node "text"
+                            [ SA.x "2250.96px"
+                            , SA.y "353.575px"
+                            , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:100px;fill:white;"
+                            ]
+                            [ H.text "18" ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+
+
+area19GPRIcon : S.Svg msg
+area19GPRIcon =
+    svg
+        [ SA.width "100%"
+        , SA.height "100%"
+        , SA.viewBox "0 0 115 115"
+        , SA.version "1.1"
+        , SA.xmlSpace "preserve"
+        , SA.style "fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"
+        ]
+        [ S.g
+            [ SA.transform "matrix(1,0,0,1,-4209.22,-1537.09)"
+            ]
+            [ S.g
+                [ SA.transform "matrix(1,0,0,1,-0.333333,0)"
+                ]
+                [ S.g
+                    [ SA.transform "matrix(1,0,0,1,1367.83,151.14)"
+                    ]
+                    [ S.g
+                        [ SA.transform "matrix(1.2862,0,0,1.2862,535.214,-1063.33)"
+                        ]
+                        [ S.circle
+                            [ SA.cx "1837.91"
+                            , SA.cy "1948.92"
+                            , SA.r "42.217"
+                            , SA.style "fill:rgb(0,84,147);stroke:rgb(0,84,147);stroke-width:4.86px;"
+                            ]
+                            []
+                        ]
+                    , S.g
+                        [ SA.transform "matrix(1,0,0,1,608.203,1127.25)"
+                        ]
+                        [ S.g
+                            [ SA.transform "matrix(100,0,0,100,2331.01,353.575)"
+                            ]
+                            []
+                        , S.node "text"
+                            [ SA.x "2250.91px"
+                            , SA.y "353.575px"
+                            , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:100px;fill:white;"
+                            ]
+                            [ H.text "19" ]
                         ]
                     ]
                 ]

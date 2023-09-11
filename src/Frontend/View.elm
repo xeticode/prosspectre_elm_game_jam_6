@@ -207,3 +207,223 @@ point8GPRIcon =
             ]
         ]
         [ Icons.point8GPRIcon ]
+
+
+area0GPRIcon : H.Html msg
+area0GPRIcon =
+    H.div
+        [ HA.css
+            [ Tw.w_8
+            , Tw.h_8
+            ]
+        ]
+        [ Icons.area0GPRIcon ]
+
+
+area1GPRIcon : H.Html msg
+area1GPRIcon =
+    H.div
+        [ HA.css
+            [ Tw.w_8
+            , Tw.h_8
+            ]
+        ]
+        [ Icons.area1GPRIcon ]
+
+
+area2GPRIcon : H.Html msg
+area2GPRIcon =
+    H.div
+        [ HA.css
+            [ Tw.w_8
+            , Tw.h_8
+            ]
+        ]
+        [ Icons.area2GPRIcon ]
+
+
+area3GPRIcon : H.Html msg
+area3GPRIcon =
+    H.div
+        [ HA.css
+            [ Tw.w_8
+            , Tw.h_8
+            ]
+        ]
+        [ Icons.area3GPRIcon ]
+
+
+area4GPRIcon : H.Html msg
+area4GPRIcon =
+    H.div
+        [ HA.css
+            [ Tw.w_8
+            , Tw.h_8
+            ]
+        ]
+        [ Icons.area4GPRIcon ]
+
+
+area5GPRIcon : H.Html msg
+area5GPRIcon =
+    H.div
+        [ HA.css
+            [ Tw.w_8
+            , Tw.h_8
+            ]
+        ]
+        [ Icons.area5GPRIcon ]
+
+
+area6GPRIcon : H.Html msg
+area6GPRIcon =
+    H.div
+        [ HA.css
+            [ Tw.w_8
+            , Tw.h_8
+            ]
+        ]
+        [ Icons.area6GPRIcon ]
+
+
+area7GPRIcon : H.Html msg
+area7GPRIcon =
+    H.div
+        [ HA.css
+            [ Tw.w_8
+            , Tw.h_8
+            ]
+        ]
+        [ Icons.area7GPRIcon ]
+
+
+area8GPRIcon : H.Html msg
+area8GPRIcon =
+    H.div
+        [ HA.css
+            [ Tw.w_8
+            , Tw.h_8
+            ]
+        ]
+        [ Icons.area8GPRIcon ]
+
+
+area9GPRIcon : H.Html msg
+area9GPRIcon =
+    H.div
+        [ HA.css
+            [ Tw.w_8
+            , Tw.h_8
+            ]
+        ]
+        [ Icons.area9GPRIcon ]
+
+
+area10GPRIcon : H.Html msg
+area10GPRIcon =
+    H.div
+        [ HA.css
+            [ Tw.w_8
+            , Tw.h_8
+            ]
+        ]
+        [ Icons.area10GPRIcon ]
+
+
+area11GPRIcon : H.Html msg
+area11GPRIcon =
+    H.div
+        [ HA.css
+            [ Tw.w_8
+            , Tw.h_8
+            ]
+        ]
+        [ Icons.area11GPRIcon ]
+
+
+area12GPRIcon : H.Html msg
+area12GPRIcon =
+    H.div
+        [ HA.css
+            [ Tw.w_8
+            , Tw.h_8
+            ]
+        ]
+        [ Icons.area12GPRIcon ]
+
+
+area13GPRIcon : H.Html msg
+area13GPRIcon =
+    H.div
+        [ HA.css
+            [ Tw.w_8
+            , Tw.h_8
+            ]
+        ]
+        [ Icons.area13GPRIcon ]
+
+
+area14GPRIcon : H.Html msg
+area14GPRIcon =
+    H.div
+        [ HA.css
+            [ Tw.w_8
+            , Tw.h_8
+            ]
+        ]
+        [ Icons.area14GPRIcon ]
+
+
+area15GPRIcon : H.Html msg
+area15GPRIcon =
+    H.div
+        [ HA.css
+            [ Tw.w_8
+            , Tw.h_8
+            ]
+        ]
+        [ Icons.area15GPRIcon ]
+
+
+area16GPRIcon : H.Html msg
+area16GPRIcon =
+    H.div
+        [ HA.css
+            [ Tw.w_8
+            , Tw.h_8
+            ]
+        ]
+        [ Icons.area16GPRIcon ]
+
+
+area17GPRIcon : H.Html msg
+area17GPRIcon =
+    H.div
+        [ HA.css
+            [ Tw.w_8
+            , Tw.h_8
+            ]
+        ]
+        [ Icons.area17GPRIcon ]
+
+
+area18GPRIcon : H.Html msg
+area18GPRIcon =
+    H.div
+        [ HA.css
+            [ Tw.w_8
+            , Tw.h_8
+            ]
+        ]
+        [ Icons.area18GPRIcon ]
+
+
+area19GPRIcon : H.Html msg
+area19GPRIcon =
+    H.div
+        [ HA.css
+            [ Tw.w_8
+            , Tw.h_8
+            ]
+        ]
+        [ Icons.area19GPRIcon ]

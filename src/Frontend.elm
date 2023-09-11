@@ -132,6 +132,26 @@ pageView _ =
         , V.point6GPRIcon
         , V.point7GPRIcon
         , V.point8GPRIcon
+        , V.area0GPRIcon
+        , V.area1GPRIcon
+        , V.area2GPRIcon
+        , V.area3GPRIcon
+        , V.area4GPRIcon
+        , V.area5GPRIcon
+        , V.area6GPRIcon
+        , V.area7GPRIcon
+        , V.area8GPRIcon
+        , V.area9GPRIcon
+        , V.area10GPRIcon
+        , V.area11GPRIcon
+        , V.area12GPRIcon
+        , V.area13GPRIcon
+        , V.area14GPRIcon
+        , V.area15GPRIcon
+        , V.area16GPRIcon
+        , V.area17GPRIcon
+        , V.area18GPRIcon
+        , V.area19GPRIcon
         ]
 
 
