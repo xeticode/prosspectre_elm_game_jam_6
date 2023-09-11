@@ -109,6 +109,7 @@ pageView _ =
         [ prosspectreHeader
         , asteroidDesignation R.randomAsteroidDesignation
         , sectorMap
+        , Icons.spectriteIcon 64 64
         ]
 
 

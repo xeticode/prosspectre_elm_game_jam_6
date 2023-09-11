@@ -10,7 +10,7 @@ Since there are over 1 million documented asteroids in the asteroid belt between
 
 Thus an asteroid with the designation FM01279 would be the the 1,279th asteroid in the F series, and would be metallic in nature.
 
-Each asteroid is divided up into 1 more more mining sectors which are then purchased by ProsPectres for mining.
+Each asteroid is divided up into 1 or more mining sectors which are leased for 12 hours at a time to ProsPectres for mining.
 
 -}
 
