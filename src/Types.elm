@@ -8,7 +8,6 @@ import Url exposing (Url)
 type alias FrontendModel =
     { key : Key
     , url : Url
-    , message : String
     }
 
 

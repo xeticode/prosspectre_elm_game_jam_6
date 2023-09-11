@@ -3,6 +3,76 @@ module Frontend.Icons exposing (..)
 import Html.Styled as H
 import Svg.Styled as S exposing (path, svg)
 import Svg.Styled.Attributes as SA
+import Tailwind.Color as TwC
+import Tailwind.Theme as Tw
+
+
+type alias ColorStruct =
+    { red : Int
+    , green : Int
+    , blue : Int
+    , alpha : Float
+    }
+
+
+colorStructFromTwColor : TwC.Color -> ColorStruct
+colorStructFromTwColor color =
+    case color of
+        TwC.Color _ r g b opacity ->
+            let
+                o =
+                    case opacity of
+                        TwC.Opacity n ->
+                            n
+
+                        TwC.ViaVariable ->
+                            "1"
+            in
+            { red = String.toInt r |> Maybe.withDefault 0
+            , green = String.toInt g |> Maybe.withDefault 0
+            , blue = String.toInt b |> Maybe.withDefault 0
+            , alpha = opacityFromTwOpacityPct opacity
+            }
+
+        TwC.Keyword _ ->
+            { red = 0
+            , green = 0
+            , blue = 0
+            , alpha = 1.0
+            }
+
+
+opacityFromTwOpacityPct : TwC.Opacity -> Float
+opacityFromTwOpacityPct opacity =
+    case opacity of
+        TwC.Opacity pct ->
+            String.toFloat pct |> Maybe.withDefault 0 |> (\n -> n / 100.0)
+
+        TwC.ViaVariable ->
+            1.0
+
+
+type alias ProsspectreColorPalette =
+    { empty_hole : Tw.Color
+    , hills : Tw.Color
+    , possible_spectrite : Tw.Color
+    , confirmed_spectrite : Tw.Color
+    , spectre_flag : Tw.Color
+    , real_flag : Tw.Color
+    , spectre_icon : Tw.Color
+    }
+
+
+prosspectreColorPalette : ProsspectreColorPalette
+prosspectreColorPalette =
+    { empty_hole = Tw.gray_400
+    , hills = Tw.gray_300
+    , possible_spectrite = Tw.gray_200
+    , confirmed_spectrite = Tw.black
+    , spectre_flag = Tw.indigo_600
+    , real_flag = Tw.black
+    , spectre_icon = Tw.indigo_600
+    }
 
 
 iconPtFromInt : Int -> String
@@ -1398,15 +1468,19 @@ sectorMap =
         ]
 
 
-spectriteIcon : Int -> Int -> S.Svg msg
-spectriteIcon width height =
+spectriteIcon : Int -> Int -> Tw.Color -> S.Svg msg
+spectriteIcon width height color =
+    let
+        color_struct =
+            colorStructFromTwColor color
+    in
     svg
         [ SA.width <| iconPtFromInt width
         , SA.height <| iconPtFromInt height
         , SA.version "1.1"
         , SA.viewBox "0 0 1200 1200"
         ]
-        [ S.g []
+        [ S.g [ SA.fill ("rgb(" ++ String.fromInt color_struct.red ++ "," ++ String.fromInt color_struct.green ++ "," ++ String.fromInt color_struct.blue ++ ")") ]
             [ path
                 [ SA.d "m482.68 432.28c9.4258-5.3828 20.031-8.3633 30.883-8.6719 9.2812-10.016 20.867-17.613 33.75-22.133-0.09375-0.4375-0.16406-0.87891-0.20703-1.3242-1.4766-22.832-1.3594-45.742 0.34766-68.559-15.055-19.977-32.477-55.098-55.367-65.992-26.023-12.348-76.051 8.4375-105.75 21.234 16.098 16.172 22.895 38.652 34.48 58.5 17.879 30.527 41.191 58.078 61.863 86.945z"
                 ]

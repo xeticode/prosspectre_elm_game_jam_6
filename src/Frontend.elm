@@ -35,7 +35,6 @@ init : Url.Url -> Nav.Key -> ( Model, Cmd FrontendMsg )
 init url key =
     ( { key = key
       , url = url
-      , message = "Welcome to TESTING! You're looking at the auto-generated base implementation. Check out src/Frontend.elm to start coding!"
       }
     , Cmd.none
     )
@@ -88,6 +87,10 @@ view model =
 
 pageView : Model -> H.Html FrontendMsg
 pageView _ =
+    let
+        _ =
+            Debug.log "test color struct" (Icons.colorStructFromTwColor Tw.gray_900)
+    in
     H.div
         [ HA.css
             [ Tw.max_w_sm
@@ -102,7 +105,13 @@ pageView _ =
         [ prosspectreHeader
         , asteroidDesignation R.randomAsteroidDesignation
         , sectorMap
-        , Icons.spectriteIcon 64 64
+        , V.emptyHoleIcon
+        , V.hillsIcon
+        , V.possibleSpectireIcon
+        , V.confirmedSpectriteIcon
+        , V.spectreFlagIcon
+        , V.realFlagIcon
+        , V.spectreIcon
         ]
 
 
@@ -110,7 +119,7 @@ prosspectreHeader : H.Html FrontendMsg
 prosspectreHeader =
     H.div
         [ HA.css
-            [ Tw.w_96
+            [ Tw.w_80
             , Tw.flex
             , Tw.flex_col
             , Tw.items_center
@@ -127,6 +136,7 @@ prosspectreHeader =
         , H.div
             [ HA.css
                 [ Tw.italic
+                , Tw.text_sm
                 ]
             ]
             [ H.text "a game by Crazy Cockatoo Games™"
@@ -137,7 +147,10 @@ prosspectreHeader =
 asteroidDesignation : String -> H.Html FrontendMsg
 asteroidDesignation designation =
     H.div
-        []
+        [ HA.css
+            [ Tw.w_64
+            ]
+        ]
         [ Icons.asteroidDesignation designation
         ]
 
