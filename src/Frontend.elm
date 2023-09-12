@@ -58,7 +58,11 @@ update msg model =
         UrlChanged url ->
             ( { model | url = url }, Cmd.none )
 
-        NoOpFrontendMsg _ ->
+        NoOpFrontendMsg message ->
+            let
+                _ =
+                    Debug.log "NoOpFrontendMsg" message
+            in
             ( model, Cmd.none )
 
 
@@ -102,9 +106,9 @@ pageView _ =
             , Tw.gap_8
             ]
         ]
-        [ prosspectreHeader
-        , asteroidDesignation R.randomAsteroidDesignation
-        , sectorMap
+        [ V.prosspectreHeader
+        , V.asteroidDesignation R.randomAsteroidDesignation
+        , V.sectorMap NoOpFrontendMsg
         , V.emptyHoleIcon
         , V.possibleSpectireIcon
         , V.confirmedSpectriteIcon
@@ -152,54 +156,5 @@ pageView _ =
         , V.area17GPRIcon
         , V.area18GPRIcon
         , V.area19GPRIcon
+        , V.hexTest
         ]
-
-
-prosspectreHeader : H.Html FrontendMsg
-prosspectreHeader =
-    H.div
-        [ HA.css
-            [ Tw.w_80
-            , Tw.flex
-            , Tw.flex_col
-            , Tw.items_center
-            , Tw.p_1
-            ]
-        ]
-        [ H.div
-            [ HA.css
-                [ Tw.w_full
-                , Tw.mb_1
-                ]
-            ]
-            [ Icons.prosspectreLogo ]
-        , H.div
-            [ HA.css
-                [ Tw.italic
-                , Tw.text_sm
-                ]
-            ]
-            [ H.text "a game by Crazy Cockatoo Games™"
-            ]
-        ]
-
-
-asteroidDesignation : String -> H.Html FrontendMsg
-asteroidDesignation designation =
-    H.div
-        [ HA.css
-            [ Tw.w_64
-            ]
-        ]
-        [ Icons.asteroidDesignation designation
-        ]
-
-
-sectorMap : H.Html FrontendMsg
-sectorMap =
-    H.div
-        [ HA.css
-            [ Tw.w_full
-            ]
-        ]
-        [ Icons.sectorMap ]

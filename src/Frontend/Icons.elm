@@ -4,8 +4,10 @@ import Css exposing (help, rgb)
 import Html.Styled as H
 import Svg.Styled as S exposing (path, svg)
 import Svg.Styled.Attributes as SA
+import Svg.Styled.Events as SE
 import Tailwind.Color as TwC
 import Tailwind.Theme as Tw
+import Tailwind.Utilities as Tw
 
 
 type alias ColorStruct =
@@ -627,8 +629,8 @@ asteroidDesignation designation =
         ]
 
 
-sectorMap : S.Svg msg
-sectorMap =
+sectorMap : Tw.Color -> (String -> msg) -> S.Svg msg
+sectorMap color fn_message =
     svg
         [ SA.width "100%"
         , SA.height "100%"
@@ -638,9 +640,10 @@ sectorMap =
         , SA.style "fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"
         ]
         [ S.g
-            [ SA.transform "matrix(1,0,0,1,-423.893,-563.37)"
+            [ SA.transform "matrix(1,0,0,1,-423.748,-563.37)"
             ]
-            [ S.g []
+            [ S.g
+                []
                 [ S.g
                     [ SA.transform "matrix(1,0,0,1,0,252.143)"
                     ]
@@ -658,217 +661,337 @@ sectorMap =
                         ]
                         [ S.g
                             [ SA.transform "matrix(0.866025,0.5,-0.5,0.866025,923.753,-387.362)"
+                            , SE.onClick (fn_message "(0, -4)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,1626.25,2852.26)"
+                            , SE.onClick (fn_message "(0, 4)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,0.5,-0.5,0.866025,572.722,-184.431)"
+                            , SE.onClick (fn_message "(-2, -2)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,1977.28,2649.33)"
+                            , SE.onClick (fn_message "(2, 2)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,1626.05,2649.33)"
+                            , SE.onClick (fn_message "(0, 3)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,0.5,0.5,0.866025,1977.28,-184.431)"
+                            , SE.onClick (fn_message "(2, -4)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,0.5,0.5,0.866025,1626.05,-184.431)"
+                            , SE.onClick (fn_message "(0, -3)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,-0.5,-0.5,-0.866025,572.722,2649.33)"
+                            , SE.onClick (fn_message "(-2, 4)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,0.5,-0.5,0.866025,221.968,18.4994)"
+                            , SE.onClick (fn_message "(-4, 0)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,2328.03,2446.4)"
+                            , SE.onClick (fn_message "(4, 0)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,1977.28,2446.4)"
+                            , SE.onClick (fn_message "(2, 1)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,-0.5,-0.5,-0.866025,572.999,2446.4)"
+                            , SE.onClick (fn_message "(-2, 3)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,1626.05,2446.4)"
+                            , SE.onClick (fn_message "(0, 2)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,2152.83,2344.93)"
+                            , SE.onClick (fn_message "(3, 0)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,-0.5,-0.5,-0.866025,397.445,2344.93)"
+                            , SE.onClick (fn_message "(-3, 3)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,1801.8,2344.93)"
+                            , SE.onClick (fn_message "(1, 1)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,-0.5,-0.5,-0.866025,748.476,2344.93)"
+                            , SE.onClick (fn_message "(-1, 2)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,0.5,0.5,0.866025,2328.03,18.4994)"
+                            , SE.onClick (fn_message "(4, -4)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,0.5,0.5,0.866025,1977.28,18.4994)"
+                            , SE.onClick (fn_message "(2, -3)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,0.5,-0.5,0.866025,572.999,18.4994)"
+                            , SE.onClick (fn_message "(-2, -1)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,0.5,0.5,0.866025,1626.05,18.4994)"
+                            , SE.onClick (fn_message "(0, -2)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,0.5,-0.5,0.866025,748.199,-285.896)"
+                            , SE.onClick (fn_message "(-1, -3)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,1801.8,2750.79)"
+                            , SE.onClick (fn_message "(1, 3)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,0.5,0.5,0.866025,1801.8,-285.896)"
+                            , SE.onClick (fn_message "(1, -4)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
@@ -894,334 +1017,519 @@ sectorMap =
                             []
                         , S.g
                             [ SA.transform "matrix(0.866025,-0.5,-0.5,-0.866025,748.199,2750.79)"
+                            , SE.onClick (fn_message "(-1, 4)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,0.5,-0.5,0.866025,397.168,-82.9659)"
+                            , SE.onClick (fn_message "(-3, -1)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,2152.83,2547.86)"
+                            , SE.onClick (fn_message "(3, 2)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,1801.8,2547.86)"
+                            , SE.onClick (fn_message "(1, 3)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,-0.5,-0.5,-0.866025,748.476,2547.86)"
+                            , SE.onClick (fn_message "(-1, 3)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,0.5,0.5,0.866025,2152.83,-82.9659)"
+                            , SE.onClick (fn_message "(3, -4)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,0.5,0.5,0.866025,1801.8,-82.9659)"
+                            , SE.onClick (fn_message "(1, -3)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,0.5,-0.5,0.866025,748.476,-82.9659)"
+                            , SE.onClick (fn_message "(-1, -2)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,-0.5,-0.5,-0.866025,397.168,2547.86)"
+                            , SE.onClick (fn_message "(-3, 4)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,0.5,-0.5,0.866025,221.968,221.43)"
+                            , SE.onClick (fn_message "(-4, 1)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,2328.03,2243.47)"
+                            , SE.onClick (fn_message "(4, -1)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,1977.28,2243.47)"
+                            , SE.onClick (fn_message "(2, 0)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,-0.5,-0.5,-0.866025,572.999,2243.47)"
+                            , SE.onClick (fn_message "(-2, 2)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,1626.05,2243.47)"
+                            , SE.onClick (fn_message "(0, 1)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,2152.83,2142)"
+                            , SE.onClick (fn_message "(3, -1)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,-0.5,-0.5,-0.866025,397.445,2142)"
+                            , SE.onClick (fn_message "(-3, 2)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,1801.8,2142)"
+                            , SE.onClick (fn_message "(1, 0)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,-0.5,-0.5,-0.866025,748.476,2142)"
+                            , SE.onClick (fn_message "(-1, 1)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,0.5,-0.5,0.866025,221.968,627.291)"
+                            , SE.onClick (fn_message "(-4, 3)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,2328.03,1837.61)"
+                            , SE.onClick (fn_message "(4, -3)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,1977.28,1837.61)"
+                            , SE.onClick (fn_message "(2, -2)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,-0.5,-0.5,-0.866025,572.999,1837.61)"
+                            , SE.onClick (fn_message "(-2, 0)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,1626.05,1837.61)"
+                            , SE.onClick (fn_message "(0, -1)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,2152.83,1736.14)"
+                            , SE.onClick (fn_message "(3, -3)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,-0.5,-0.5,-0.866025,397.445,1736.14)"
+                            , SE.onClick (fn_message "(-3, 0)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,1801.8,1736.14)"
+                            , SE.onClick (fn_message "(1, -2)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,-0.5,-0.5,-0.866025,748.476,1736.14)"
+                            , SE.onClick (fn_message "(-1, -1)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,0.5,-0.5,0.866025,221.968,424.36)"
+                            , SE.onClick (fn_message "(-4, 2)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,2328.03,2040.54)"
+                            , SE.onClick (fn_message "(4, -2)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,1977.28,2040.54)"
+                            , SE.onClick (fn_message "(2, -1)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,-0.5,-0.5,-0.866025,572.999,2040.54)"
+                            , SE.onClick (fn_message "-2, 1")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,1626.05,2040.54)"
+                            , SE.onClick (fn_message "(0, 0)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,2152.83,1939.07)"
+                            , SE.onClick (fn_message "(3, -2)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,-0.5,-0.5,-0.866025,397.445,1939.07)"
+                            , SE.onClick (fn_message "(-3, 1)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,1801.8,1939.07)"
+                            , SE.onClick (fn_message "(1, -1)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,-0.5,-0.5,-0.866025,748.476,1939.07)"
+                            , SE.onClick (fn_message "(-1, 0)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,0.5,-0.5,0.866025,221.968,830.221)"
+                            , SE.onClick (fn_message "(-4, 4)")
+                            , SA.css
+                                [ Tw.cursor_pointer
+                                ]
                             ]
                             [ path
                                 [ SA.d "M708.267,407.021L809.732,465.602L809.732,582.764L708.267,641.345L606.801,582.764L606.801,465.602L708.267,407.021Z"
-                                , SA.style "fill:none;stroke:black;stroke-width:1px;"
+                                , SA.style "stroke:black;stroke-width:1px;"
+                                , SA.fill (rgbFromColorStruct <| colorStructFromTwColor color)
                                 ]
                                 []
                             ]
@@ -1229,6 +1537,10 @@ sectorMap =
                     ]
                 , S.g
                     [ SA.transform "matrix(1,0,0,1,-927.739,244.17)"
+                    , SE.onClick (fn_message "address?")
+                    , SA.css
+                        [ Tw.cursor_pointer
+                        ]
                     ]
                     [ S.g
                         [ SA.transform "matrix(45.8333,0,0,45.8333,2212.78,353.575)"
@@ -1239,7 +1551,7 @@ sectorMap =
                         , SA.y "353.575px"
                         , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:45.833px;"
                         ]
-                        [ H.text "E" ]
+                        [ H.text "0" ]
                     ]
                 , S.g
                     [ SA.transform "matrix(0.5,-0.866025,0.866025,0.5,-948.507,2789.2)"
@@ -1259,20 +1571,6 @@ sectorMap =
                     [ SA.transform "matrix(0.5,-0.866025,0.866025,0.5,-771.272,2692.98)"
                     ]
                     [ S.g
-                        [ SA.transform "matrix(45.8333,0,0,45.8333,2205.79,353.575)"
-                        ]
-                        []
-                    , S.node "text"
-                        [ SA.x "2196.63px"
-                        , SA.y "353.575px"
-                        , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:45.833px;"
-                        ]
-                        [ H.text "1" ]
-                    ]
-                , S.g
-                    [ SA.transform "matrix(0.5,-0.866025,0.866025,0.5,-944.884,2993.68)"
-                    ]
-                    [ S.g
                         [ SA.transform "matrix(45.8333,0,0,45.8333,2213.81,353.575)"
                         ]
                         []
@@ -1284,21 +1582,21 @@ sectorMap =
                         [ H.text "-1" ]
                     ]
                 , S.g
-                    [ SA.transform "matrix(0.5,-0.866025,0.866025,0.5,-597.565,2593.05)"
+                    [ SA.transform "matrix(0.5,-0.866025,0.866025,0.5,-944.884,2993.68)"
                     ]
                     [ S.g
-                        [ SA.transform "matrix(45.8333,0,0,45.8333,2212.81,353.575)"
+                        [ SA.transform "matrix(45.8333,0,0,45.8333,2205.79,353.575)"
                         ]
                         []
                     , S.node "text"
-                        [ SA.x "2189.61px"
+                        [ SA.x "2196.63px"
                         , SA.y "353.575px"
                         , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:45.833px;"
                         ]
-                        [ H.text "2" ]
+                        [ H.text "1" ]
                     ]
                 , S.g
-                    [ SA.transform "matrix(0.5,-0.866025,0.866025,0.5,-948.551,3193.24)"
+                    [ SA.transform "matrix(0.5,-0.866025,0.866025,0.5,-597.565,2593.05)"
                     ]
                     [ S.g
                         [ SA.transform "matrix(45.8333,0,0,45.8333,2220.83,353.575)"
@@ -1312,35 +1610,21 @@ sectorMap =
                         [ H.text "-2" ]
                     ]
                 , S.g
+                    [ SA.transform "matrix(0.5,-0.866025,0.866025,0.5,-948.551,3193.24)"
+                    ]
+                    [ S.g
+                        [ SA.transform "matrix(45.8333,0,0,45.8333,2212.81,353.575)"
+                        ]
+                        []
+                    , S.node "text"
+                        [ SA.x "2189.61px"
+                        , SA.y "353.575px"
+                        , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:45.833px;"
+                        ]
+                        [ H.text "2" ]
+                    ]
+                , S.g
                     [ SA.transform "matrix(0.5,-0.866025,0.866025,0.5,-946.567,3399.21)"
-                    ]
-                    [ S.g
-                        [ SA.transform "matrix(45.8333,0,0,45.8333,2220.8,353.575)"
-                        ]
-                        []
-                    , S.node "text"
-                        [ SA.x "2181.62px"
-                        , SA.y "353.575px"
-                        , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:45.833px;"
-                        ]
-                        [ H.text "-3" ]
-                    ]
-                , S.g
-                    [ SA.transform "matrix(0.5,-0.866025,0.866025,0.5,-948.709,3603.67)"
-                    ]
-                    [ S.g
-                        [ SA.transform "matrix(45.8333,0,0,45.8333,2220.69,353.575)"
-                        ]
-                        []
-                    , S.node "text"
-                        [ SA.x "2181.73px"
-                        , SA.y "353.575px"
-                        , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:45.833px;"
-                        ]
-                        [ H.text "-4" ]
-                    ]
-                , S.g
-                    [ SA.transform "matrix(0.5,-0.866025,0.866025,0.5,-421.965,2486.56)"
                     ]
                     [ S.g
                         [ SA.transform "matrix(45.8333,0,0,45.8333,2212.78,353.575)"
@@ -1354,7 +1638,7 @@ sectorMap =
                         [ H.text "3" ]
                     ]
                 , S.g
-                    [ SA.transform "matrix(0.5,-0.866025,0.866025,0.5,-243.586,2389)"
+                    [ SA.transform "matrix(0.5,-0.866025,0.866025,0.5,-948.709,3603.67)"
                     ]
                     [ S.g
                         [ SA.transform "matrix(45.8333,0,0,45.8333,2212.67,353.575)"
@@ -1368,105 +1652,105 @@ sectorMap =
                         [ H.text "4" ]
                     ]
                 , S.g
-                    [ SA.transform "matrix(1,0,0,1,-1100.15,347.413)"
+                    [ SA.transform "matrix(0.5,-0.866025,0.866025,0.5,-421.965,2486.56)"
                     ]
                     [ S.g
-                        [ SA.transform "matrix(45.8333,0,0,45.8333,2217.25,353.575)"
+                        [ SA.transform "matrix(45.8333,0,0,45.8333,2220.8,353.575)"
                         ]
                         []
                     , S.node "text"
-                        [ SA.x "2185.17px"
+                        [ SA.x "2181.62px"
                         , SA.y "353.575px"
                         , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:45.833px;"
                         ]
-                        [ H.text "D" ]
+                        [ H.text "-3" ]
+                    ]
+                , S.g
+                    [ SA.transform "matrix(0.5,-0.866025,0.866025,0.5,-243.586,2389)"
+                    ]
+                    [ S.g
+                        [ SA.transform "matrix(45.8333,0,0,45.8333,2220.69,353.575)"
+                        ]
+                        []
+                    , S.node "text"
+                        [ SA.x "2181.73px"
+                        , SA.y "353.575px"
+                        , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:45.833px;"
+                        ]
+                        [ H.text "-4" ]
+                    ]
+                , S.g
+                    [ SA.transform "matrix(1,0,0,1,-1100.15,347.413)"
+                    ]
+                    [ S.g
+                        [ SA.transform "matrix(45.8333,0,0,45.8333,2213.81,353.575)"
+                        ]
+                        []
+                    , S.node "text"
+                        [ SA.x "2188.61px"
+                        , SA.y "353.575px"
+                        , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:45.833px;"
+                        ]
+                        [ H.text "-1" ]
                     ]
                 , S.g
                     [ SA.transform "matrix(1,0,0,1,-1278.05,445.889)"
                     ]
                     [ S.g
-                        [ SA.transform "matrix(45.8333,0,0,45.8333,2218.19,353.575)"
+                        [ SA.transform "matrix(45.8333,0,0,45.8333,2220.83,353.575)"
                         ]
                         []
                     , S.node "text"
-                        [ SA.x "2184.23px"
+                        [ SA.x "2181.59px"
                         , SA.y "353.575px"
                         , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:45.833px;"
                         ]
-                        [ H.text "C" ]
+                        [ H.text "-2" ]
                     ]
                 , S.g
                     [ SA.transform "matrix(1,0,0,1,-1449.64,545.633)"
                     ]
                     [ S.g
-                        [ SA.transform "matrix(45.8333,0,0,45.8333,2214.96,353.575)"
+                        [ SA.transform "matrix(45.8333,0,0,45.8333,2220.8,353.575)"
                         ]
                         []
                     , S.node "text"
-                        [ SA.x "2187.46px"
+                        [ SA.x "2181.62px"
                         , SA.y "353.575px"
                         , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:45.833px;"
                         ]
-                        [ H.text "B" ]
+                        [ H.text "-3" ]
                     ]
                 , S.g
                     [ SA.transform "matrix(1,0,0,1,-1627.64,644.547)"
                     ]
                     [ S.g
-                        [ SA.transform "matrix(45.8333,0,0,45.8333,2221.01,353.575)"
+                        [ SA.transform "matrix(45.8333,0,0,45.8333,2220.69,353.575)"
                         ]
                         []
                     , S.node "text"
-                        [ SA.x "2181.41px"
+                        [ SA.x "2181.73px"
                         , SA.y "353.575px"
                         , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:45.833px;"
                         ]
-                        [ H.text "A" ]
+                        [ H.text "-4" ]
                     ]
                 , S.g
                     [ SA.transform "matrix(1,0,0,1,-226.522,644.547)"
                     ]
                     [ S.g
-                        [ SA.transform "matrix(45.8333,0,0,45.8333,2204.88,353.575)"
+                        [ SA.transform "matrix(45.8333,0,0,45.8333,2212.67,353.575)"
                         ]
                         []
                     , S.node "text"
-                        [ SA.x "2197.54px"
+                        [ SA.x "2189.75px"
                         , SA.y "353.575px"
                         , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:45.833px;"
                         ]
-                        [ H.text "I" ]
+                        [ H.text "4" ]
                     ]
                 , S.g
                     [ SA.transform "matrix(1,0,0,1,-399.554,545.633)"
-                    ]
-                    [ S.g
-                        [ SA.transform "matrix(45.8333,0,0,45.8333,2214.96,353.575)"
-                        ]
-                        []
-                    , S.node "text"
-                        [ SA.x "2187.46px"
-                        , SA.y "353.575px"
-                        , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:45.833px;"
-                        ]
-                        [ H.text "H" ]
-                    ]
-                , S.g
-                    [ SA.transform "matrix(1,0,0,1,-574.931,445.889)"
-                    ]
-                    [ S.g
-                        [ SA.transform "matrix(45.8333,0,0,45.8333,2218.19,353.575)"
-                        ]
-                        []
-                    , S.node "text"
-                        [ SA.x "2184.23px"
-                        , SA.y "353.575px"
-                        , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:45.833px;"
-                        ]
-                        [ H.text "G" ]
-                    ]
-                , S.g
-                    [ SA.transform "matrix(1,0,0,1,-753.786,347.413)"
                     ]
                     [ S.g
                         [ SA.transform "matrix(45.8333,0,0,45.8333,2212.78,353.575)"
@@ -1477,7 +1761,35 @@ sectorMap =
                         , SA.y "353.575px"
                         , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:45.833px;"
                         ]
-                        [ H.text "F" ]
+                        [ H.text "3" ]
+                    ]
+                , S.g
+                    [ SA.transform "matrix(1,0,0,1,-574.931,445.889)"
+                    ]
+                    [ S.g
+                        [ SA.transform "matrix(45.8333,0,0,45.8333,2212.81,353.575)"
+                        ]
+                        []
+                    , S.node "text"
+                        [ SA.x "2189.61px"
+                        , SA.y "353.575px"
+                        , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:45.833px;"
+                        ]
+                        [ H.text "2" ]
+                    ]
+                , S.g
+                    [ SA.transform "matrix(1,0,0,1,-753.786,347.413)"
+                    ]
+                    [ S.g
+                        [ SA.transform "matrix(45.8333,0,0,45.8333,2205.79,353.575)"
+                        ]
+                        []
+                    , S.node "text"
+                        [ SA.x "2196.63px"
+                        , SA.y "353.575px"
+                        , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:45.833px;"
+                        ]
+                        [ H.text "1" ]
                     ]
                 ]
             ]

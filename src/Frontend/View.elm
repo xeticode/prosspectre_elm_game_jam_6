@@ -2,6 +2,8 @@ module Frontend.View exposing (..)
 
 import Css
 import Frontend.Icons as Icons
+import Hex
+import Hex.Layout as HexL
 import Html.Styled as H
 import Html.Styled.Attributes as HA
 import Tailwind.Theme as Tw
@@ -16,6 +18,56 @@ explainTw =
     , Tw.outline_color Tw.red_500
     , Tw.outline
     ]
+
+
+prosspectreHeader : H.Html msg
+prosspectreHeader =
+    H.div
+        [ HA.css
+            [ Tw.w_80
+            , Tw.flex
+            , Tw.flex_col
+            , Tw.items_center
+            , Tw.p_1
+            ]
+        ]
+        [ H.div
+            [ HA.css
+                [ Tw.w_full
+                , Tw.mb_1
+                ]
+            ]
+            [ Icons.prosspectreLogo ]
+        , H.div
+            [ HA.css
+                [ Tw.italic
+                , Tw.text_sm
+                ]
+            ]
+            [ H.text "a game by Crazy Cockatoo Games™"
+            ]
+        ]
+
+
+asteroidDesignation : String -> H.Html msg
+asteroidDesignation designation =
+    H.div
+        [ HA.css
+            [ Tw.w_64
+            ]
+        ]
+        [ Icons.asteroidDesignation designation
+        ]
+
+
+sectorMap : (String -> msg) -> H.Html msg
+sectorMap fn_message =
+    H.div
+        [ HA.css
+            [ Tw.w_full
+            ]
+        ]
+        [ Icons.sectorMap Tw.neutral_300 fn_message ]
 
 
 emptyHoleIcon : H.Html msg
@@ -427,3 +479,12 @@ area19GPRIcon =
             ]
         ]
         [ Icons.area19GPRIcon ]
+
+
+hexTest : H.Html msg
+hexTest =
+    let
+        hex_list =
+            Debug.log "hex_list" (HexL.createHexList 9 9)
+    in
+    H.text "hex test"
