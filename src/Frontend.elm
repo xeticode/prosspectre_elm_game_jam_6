@@ -5,6 +5,7 @@ import Browser.Navigation as Nav
 import Css.Global
 import Frontend.Icons as Icons
 import Frontend.View as V
+import Hex.Layout as HexL
 import Html.Styled as H
 import Html.Styled.Attributes as HA
 import Lamdera
@@ -33,8 +34,19 @@ type alias Model =
 
 init : Url.Url -> Nav.Key -> ( Model, Cmd FrontendMsg )
 init url key =
+    let
+        -- TODO - we should make sure var is accurate
+        var : Float
+        var =
+            49.1066
+    in
     ( { key = key
       , url = url
+      , layout =
+            { orientation = HexL.unitFlatTopOrientation
+            , size = ( var, var )
+            , origin = ( 0, 0 )
+            }
       }
     , Cmd.none
     )
@@ -65,6 +77,18 @@ update msg model =
             let
                 hex =
                     Debug.log "hex" (R.axialHexWithColAndRow col row)
+
+                _ =
+                    Debug.log "hexToPoint" (HexL.hexToPoint model.layout hex)
+
+                nlfh =
+                    Debug.log "nlfh" (R.neighborListFromHexInclusive hex)
+
+                nlfhr2 =
+                    Debug.log "nlfhr2" (R.neighborListFromHexInclusiveRadius2 hex)
+
+                _ =
+                    Debug.log "nlfhr2 length" (List.length nlfhr2)
             in
             ( model, Cmd.none )
 

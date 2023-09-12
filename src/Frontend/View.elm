@@ -62,7 +62,7 @@ sectorMap : (Int -> Int -> msg) -> H.Html msg
 sectorMap fn_message =
     H.div
         [ HA.css
-            [ Tw.w_full
+            [ Tw.w_96
             ]
         ]
         [ Icons.sectorMap Tw.neutral_300 fn_message ]
