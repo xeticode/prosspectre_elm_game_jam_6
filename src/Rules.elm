@@ -1,5 +1,6 @@
 module Rules exposing (..)
 
+import Dict
 import Hex
 import List as L
 import List.Extra as LE
@@ -117,9 +118,32 @@ neighborListFromHexInclusive hex =
 
 neighborListFromHexInclusiveRadius2 : Hex.Hex -> List Hex.Hex
 neighborListFromHexInclusiveRadius2 hex =
-    neighborListFromHexInclusive hex
-        |> L.concatMap neighborListFromHexInclusive
-        |> LE.unique
+    -- neighborListFromHexInclusive hex
+    --     |> L.concatMap neighborListFromHexInclusive
+    --     |> LE.unique
+    neighborListFromHexInclusiveWithRadius 2 hex
+
+
+neighborListFromHexInclusiveWithRadius : Int -> Hex.Hex -> List Hex.Hex
+neighborListFromHexInclusiveWithRadius radius hex =
+    case max 0 radius of
+        0 ->
+            [ hex ]
+
+        _ ->
+            neighborListFromHexInclusive hex
+                |> neighborListFromHexInclusiveWithRadiusHelper (radius - 1)
+                |> LE.unique
+
+
+neighborListFromHexInclusiveWithRadiusHelper : Int -> List Hex.Hex -> List Hex.Hex
+neighborListFromHexInclusiveWithRadiusHelper radius hexes =
+    case max 0 radius of
+        0 ->
+            hexes
+
+        _ ->
+            neighborListFromHexInclusiveWithRadiusHelper (radius - 1) (L.concatMap neighborListFromHexInclusive hexes)
 
 
 
@@ -140,12 +164,10 @@ actionFromToolAtMaybeLocation tool m_location =
 
         Just location ->
             let
-                ( loc_flag, loc_gpr ) =
-                    case location.state of
-                        LocationState location_flag location_gpr _ ->
-                            ( location_flag, location_gpr )
+                ( loc_flag, loc_gpr, _ ) =
+                    location.state
             in
-            if location.dig_status == Digged then
+            if location.dig_status == Dug then
                 ActionDoNothing
 
             else if tool == DigTool then
@@ -170,7 +192,7 @@ actionFromToolAtMaybeLocation tool m_location =
 
             else if tool == AreaGPRTool then
                 case ( tool, loc_gpr ) of
-                    ( AreaGPRTool, AreaGPR ) ->
+                    ( AreaGPRTool, AreaGPR _ ) ->
                         ActionDoNothing
 
                     _ ->
@@ -178,7 +200,7 @@ actionFromToolAtMaybeLocation tool m_location =
 
             else if tool == PointGPRTool then
                 case ( tool, loc_gpr ) of
-                    ( PointGPRTool, PointGPR ) ->
+                    ( PointGPRTool, PointGPR _ ) ->
                         ActionDoNothing
 
                     _ ->
@@ -186,6 +208,21 @@ actionFromToolAtMaybeLocation tool m_location =
 
             else
                 ActionDoNothing
+
+
+hexHasMaterials : Hex.Hex -> AxialHexLocations -> Bool
+hexHasMaterials hex locations =
+    case Dict.get (axialHexIndexFromHex hex) locations of
+        Nothing ->
+            False
+
+        Just location ->
+            case location.materials of
+                NoMaterials ->
+                    False
+
+                SpectriteMaterials ->
+                    True
 
 
 

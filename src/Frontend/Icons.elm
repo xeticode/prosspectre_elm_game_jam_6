@@ -73,9 +73,9 @@ type alias ProsspectreColorPalette =
 
 prosspectreColorPalette : ProsspectreColorPalette
 prosspectreColorPalette =
-    { empty_hole = Tw.gray_400
+    { empty_hole = Tw.gray_600
     , hills = Tw.gray_300
-    , possible_spectrite = Tw.gray_200
+    , possible_spectrite = Tw.indigo_600
     , confirmed_spectrite = Tw.black
     , spectre = Tw.indigo_600
     , real_flag = Tw.black
@@ -2107,6 +2107,62 @@ realFlagIcon width height color =
                 [ SA.d "m1071.9 8.832h-752.47c-15.543 0-28.125 12.582-28.125 28.125v516.34c0 15.543 12.582 28.125 28.125 28.125h752.48c15.523 0 28.125-12.582 28.125-28.125l-0.003906-516.34c0-15.543-12.598-28.125-28.125-28.125zm-28.125 56.25v460.09h-696.22v-460.09z"
                 ]
                 []
+            ]
+        ]
+
+
+flagIcon : Int -> Int -> Tw.Color -> S.Svg msg
+flagIcon width height color =
+    svg
+        [ SA.width <| iconPtFromInt width
+        , SA.height <| iconPtFromInt height
+        , SA.viewBox "0 0 120 120"
+        , SA.version "1.1"
+        , SA.xmlSpace "preserve"
+        , SA.style "fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"
+        ]
+        [ S.g
+            [ SA.transform "matrix(1,0,0,1,-4575.1,-1437.68)"
+            , SA.css
+                [ Tw.fill_color color
+                ]
+            ]
+            [ S.g
+                [ SA.transform "matrix(1,0,0,1,-0.333333,0)"
+                ]
+                [ S.g
+                    [ SA.id "noun-flag-1244658.svg"
+                    , SA.transform "matrix(0.1,0,0,0.1,4635.43,1497.68)"
+                    ]
+                    [ S.g
+                        [ SA.transform "matrix(1,0,0,1,-600,-600)"
+                        ]
+                        [ S.g []
+                            [ S.g
+                                [ SA.transform "matrix(1.32347e-16,2.16139,-2.16139,1.32347e-16,1489.13,-696.834)"
+                                ]
+                                [ path
+                                    [ SA.d "M859.31,258.37L340.69,258.37L340.69,315.37L441.19,315.37L441.19,507.37L340.69,507.37L340.69,564.37L859.31,564.37L708.94,411.37L859.31,258.37Z"
+                                    , SA.style "fill-rule:nonzero;"
+                                    ]
+                                    []
+                                ]
+                            , S.g
+                                [ SA.transform "matrix(1.32347e-16,2.16139,-2.16139,1.32347e-16,1489.13,-696.834)"
+                                ]
+                                [ S.rect
+                                    [ SA.x "360.19"
+                                    , SA.y "331.87"
+                                    , SA.width "54"
+                                    , SA.height "160.5"
+                                    , SA.style "fill-rule:nonzero;"
+                                    ]
+                                    []
+                                ]
+                            ]
+                        ]
+                    ]
+                ]
             ]
         ]
 

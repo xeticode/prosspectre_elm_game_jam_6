@@ -52,7 +52,7 @@ prosspectreHeader =
                 , Tw.text_sm
                 ]
             ]
-            [ H.text "Elm Game Jam 6 Edition"
+            [ H.text "Elm Game Jam 6 Edition. Engineering by Dirk Johnson, Copyright Crazy Cockatoo Games™"
             ]
         ]
 
@@ -68,7 +68,7 @@ asteroidDesignation designation =
         ]
 
 
-sectorMap : AxialHexLocation -> (Int -> Int -> msg) -> H.Html msg
+sectorMap : AxialHexLocations -> (Int -> Int -> msg) -> H.Html msg
 sectorMap location_dict fn_message =
     H.div
         [ HA.css
@@ -119,9 +119,185 @@ sectorMapLocationOverlay ({ sector_position } as location) =
 
 
 locationDetailsFromLocation : Location -> List (H.Html msg)
-locationDetailsFromLocation location =
-    [ realFlagIcon
-    ]
+locationDetailsFromLocation { state, dig_status, materials } =
+    -- 1. Add Digged status icon if digged (adjust contents if necessary)
+    -- 1. Gather icons for flag gpr and echo into a list
+    -- 3. Based on list size generate the element (0 - 3)
+    let
+        ( flag_state, gpr_state, echo_state ) =
+            state
+
+        starting_icon_elements =
+            addIconElementForGPR gpr_state []
+
+        icon_elements =
+            case dig_status of
+                Undug ->
+                    addIconElementForFlag flag_state starting_icon_elements
+                        |> addIconElementForEcho echo_state
+
+                Dug ->
+                    case materials of
+                        SpectriteMaterials ->
+                            confirmedSpectriteIcon :: starting_icon_elements
+
+                        _ ->
+                            emptyHoleIcon :: starting_icon_elements
+    in
+    case List.length icon_elements of
+        1 ->
+            icon_elements
+
+        2 ->
+            icon_elements
+
+        3 ->
+            icon_elements
+
+        _ ->
+            []
+
+
+
+-- addDiggedDetailsFromDigStatusAndMaterials : DigStatus -> Materials -> List (H.Html msg) -> List (H.Html msg)
+-- addDiggedDetailsFromDigStatusAndMaterials dig_status materials icon_elements =
+--     [ H.text "" ]
+-- stateDetailsFromLocationState : LocationState -> List (H.Html msg)
+-- stateDetailsFromLocationState ( flag_state, gpr_state, echo_state ) =
+--     addIconElementForFlag flag_state []
+--         |> addIconElementForGPR gpr_state
+--         |> addIconElementForEcho echo_state
+
+
+addIconElementForFlag : LocationFlag -> List (H.Html msg) -> List (H.Html msg)
+addIconElementForFlag flag icon_elements =
+    case flag of
+        RealFlag ->
+            realFlagIcon :: icon_elements
+
+        SpectreFlag ->
+            spectreFlagIcon :: icon_elements
+
+        _ ->
+            icon_elements
+
+
+addIconElementForGPR : LocationGPR -> List (H.Html msg) -> List (H.Html msg)
+addIconElementForGPR gpr icon_elements =
+    case gpr of
+        AreaGPR reading ->
+            areaGPRIconForReading reading :: icon_elements
+
+        PointGPR reading ->
+            pointGPRIconForReading reading :: icon_elements
+
+        _ ->
+            icon_elements
+
+
+areaGPRIconForReading : AreaGPRReading -> H.Html msg
+areaGPRIconForReading reading =
+    case reading of
+        AreaGPRReading00 ->
+            area0GPRIcon
+
+        AreaGPRReading01 ->
+            area1GPRIcon
+
+        AreaGPRReading02 ->
+            area2GPRIcon
+
+        AreaGPRReading03 ->
+            area3GPRIcon
+
+        AreaGPRReading04 ->
+            area4GPRIcon
+
+        AreaGPRReading05 ->
+            area5GPRIcon
+
+        AreaGPRReading06 ->
+            area6GPRIcon
+
+        AreaGPRReading07 ->
+            area7GPRIcon
+
+        AreaGPRReading08 ->
+            area8GPRIcon
+
+        AreaGPRReading09 ->
+            area9GPRIcon
+
+        AreaGPRReading10 ->
+            area10GPRIcon
+
+        AreaGPRReading11 ->
+            area11GPRIcon
+
+        AreaGPRReading12 ->
+            area12GPRIcon
+
+        AreaGPRReading13 ->
+            area13GPRIcon
+
+        AreaGPRReading14 ->
+            area14GPRIcon
+
+        AreaGPRReading15 ->
+            area15GPRIcon
+
+        AreaGPRReading16 ->
+            area16GPRIcon
+
+        AreaGPRReading17 ->
+            area17GPRIcon
+
+        AreaGPRReading18 ->
+            area18GPRIcon
+
+        AreaGPRReading19 ->
+            area19GPRIcon
+
+
+pointGPRIconForReading : PointGPRReading -> H.Html msg
+pointGPRIconForReading reading =
+    case reading of
+        PointGPRReading00 ->
+            point0GPRIcon
+
+        PointGPRReading01 ->
+            point1GPRIcon
+
+        PointGPRReading02 ->
+            point2GPRIcon
+
+        PointGPRReading03 ->
+            point3GPRIcon
+
+        PointGPRReading04 ->
+            point4GPRIcon
+
+        PointGPRReading05 ->
+            point5GPRIcon
+
+        PointGPRReading06 ->
+            point6GPRIcon
+
+        PointGPRReading07 ->
+            point7GPRIcon
+
+        PointGPRReading08 ->
+            point8GPRIcon
+
+
+addIconElementForEcho : LocationEcho -> List (H.Html msg) -> List (H.Html msg)
+addIconElementForEcho echo icon_elements =
+    case echo of
+        SpectriteEcho ->
+            possibleSpectireIcon :: icon_elements
+
+        NoEcho ->
+            icon_elements
 
 
 emptyHoleIcon : H.Html msg
@@ -141,12 +317,12 @@ confirmedSpectriteIcon =
 
 spectreFlagIcon : H.Html msg
 spectreFlagIcon =
-    Icons.spectreFlagIcon 24 24 Icons.prosspectreColorPalette.spectre
+    Icons.flagIcon 24 24 Icons.prosspectreColorPalette.spectre
 
 
 realFlagIcon : H.Html msg
 realFlagIcon =
-    Icons.realFlagIcon 24 24 Icons.prosspectreColorPalette.real_flag
+    Icons.flagIcon 24 24 Icons.prosspectreColorPalette.real_flag
 
 
 spectreIcon : H.Html msg

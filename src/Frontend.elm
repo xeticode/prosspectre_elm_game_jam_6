@@ -42,15 +42,7 @@ init url key =
             49.1066
 
         layout_contents =
-            Dict.fromList
-                [ ( ( 0, -1 )
-                  , { sector_position = ( 156.5, 175.0 )
-                    , state = LocationState NoFlag NoGPR NoEcho
-                    , dig_status = NotDigged
-                    , materials = NoMaterials
-                    }
-                  )
-                ]
+            initLayoutContents
     in
     ( { key = key
       , url = url
@@ -64,6 +56,122 @@ init url key =
       }
     , Cmd.none
     )
+
+
+initLayoutContents : AxialHexLocations
+initLayoutContents =
+    let
+        zero_zero_top =
+            203.0
+
+        zero_zero_left =
+            175.0
+
+        vt =
+            46.6
+
+        hz =
+            40.25
+    in
+    Dict.fromList <|
+        List.map
+            (\( index, point, materials ) ->
+                ( index
+                , { sector_position = point
+                  , state = ( NoFlag, NoGPR, NoEcho )
+                  , dig_status = Undug
+                  , materials = materials
+                  }
+                )
+            )
+            [ -- Col -4
+              locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -4, 0 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -4, 1 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -4, 2 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -4, 3 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -4, 4 )
+
+            -- Col -3
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -3, -1 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -3, 0 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -3, 1 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -3, 2 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -3, 3 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -3, 4 )
+
+            -- Col -2
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -2, -2 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -2, -1 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -2, 0 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -2, 1 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -2, 2 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -2, 3 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -2, 4 )
+
+            -- Col -1
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -1, -3 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -1, -2 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -1, -1 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -1, 0 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -1, 1 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -1, 2 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -1, 3 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -1, 4 )
+
+            -- Col 0
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 0, -4 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 0, -3 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 0, -2 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 0, -1 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 0, 0 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 0, 1 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 0, 2 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 0, 3 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 0, 4 )
+
+            -- Col 1
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 1, -4 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 1, -3 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 1, -2 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 1, -1 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 1, 0 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 1, 1 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 1, 2 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 1, 3 )
+
+            -- Col 2
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 2, -4 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 2, -3 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 2, -2 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 2, -1 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 2, 0 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 2, 1 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 2, 2 )
+
+            -- Col 3
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 3, -4 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 3, -3 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 3, -2 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 3, -1 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 3, 0 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 3, 1 )
+
+            -- Col 4
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 4, -4 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 4, -3 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 4, -2 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 4, -1 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 4, 0 )
+            ]
+
+
+locationDataFromIndex : Float -> Float -> Float -> Float -> AxialHexIndex -> ( AxialHexIndex, HexL.Point, Materials )
+locationDataFromIndex zz_top zz_left vert horiz ( col, row ) =
+    let
+        half_vert =
+            vert / 2.0
+    in
+    ( ( col, row ), ( zz_top + (vert * toFloat row) + (half_vert * toFloat col), zz_left + (horiz * toFloat col) ), NoMaterials )
 
 
 update : FrontendMsg -> Model -> ( Model, Cmd FrontendMsg )
@@ -108,8 +216,8 @@ update msg model =
                     Debug.log "location_nothing"
                         (Just
                             { sector_position = ( 0.0, 0.0 )
-                            , state = LocationState NoFlag NoGPR NoEcho
-                            , dig_status = NotDigged
+                            , state = ( NoFlag, NoGPR, NoEcho )
+                            , dig_status = Undug
                             , materials = NoMaterials
                             }
                         )
@@ -118,8 +226,8 @@ update msg model =
                     Debug.log "location_nothing"
                         (Just
                             { sector_position = ( 0.0, 0.0 )
-                            , state = LocationState NoFlag NoGPR NoEcho
-                            , dig_status = Digged
+                            , state = ( NoFlag, NoGPR, NoEcho )
+                            , dig_status = Dug
                             , materials = NoMaterials
                             }
                         )
@@ -128,8 +236,8 @@ update msg model =
                     Debug.log "location_nothing"
                         (Just
                             { sector_position = ( 0.0, 0.0 )
-                            , state = LocationState SpectreFlag NoGPR NoEcho
-                            , dig_status = NotDigged
+                            , state = ( SpectreFlag, NoGPR, NoEcho )
+                            , dig_status = Undug
                             , materials = NoMaterials
                             }
                         )
@@ -138,8 +246,8 @@ update msg model =
                     Debug.log "location_nothing"
                         (Just
                             { sector_position = ( 0.0, 0.0 )
-                            , state = LocationState RealFlag AreaGPR NoEcho
-                            , dig_status = NotDigged
+                            , state = ( RealFlag, AreaGPR AreaGPRReading07, NoEcho )
+                            , dig_status = Undug
                             , materials = NoMaterials
                             }
                         )
