@@ -57,7 +57,8 @@ type Materials
 
 
 type alias Location =
-    { state : LocationState
+    { sector_position : HexL.Point
+    , state : LocationState
     , dig_status : DigStatus
     , materials : Materials
     }

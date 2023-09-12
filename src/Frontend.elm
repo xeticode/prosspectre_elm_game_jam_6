@@ -40,6 +40,17 @@ init url key =
         var : Float
         var =
             49.1066
+
+        layout_contents =
+            Dict.fromList
+                [ ( ( 0, -1 )
+                  , { sector_position = ( 156.5, 175.0 )
+                    , state = LocationState NoFlag NoGPR NoEcho
+                    , dig_status = NotDigged
+                    , materials = NoMaterials
+                    }
+                  )
+                ]
     in
     ( { key = key
       , url = url
@@ -48,7 +59,7 @@ init url key =
             , size = ( var, var )
             , origin = ( 0, 0 )
             }
-      , layout_contents = Dict.empty
+      , layout_contents = layout_contents
       , selected_tool = NoTool
       }
     , Cmd.none
@@ -96,7 +107,8 @@ update msg model =
                 m_location_nothing =
                     Debug.log "location_nothing"
                         (Just
-                            { state = LocationState NoFlag NoGPR NoEcho
+                            { sector_position = ( 0.0, 0.0 )
+                            , state = LocationState NoFlag NoGPR NoEcho
                             , dig_status = NotDigged
                             , materials = NoMaterials
                             }
@@ -105,7 +117,8 @@ update msg model =
                 m_location_digged =
                     Debug.log "location_nothing"
                         (Just
-                            { state = LocationState NoFlag NoGPR NoEcho
+                            { sector_position = ( 0.0, 0.0 )
+                            , state = LocationState NoFlag NoGPR NoEcho
                             , dig_status = Digged
                             , materials = NoMaterials
                             }
@@ -114,7 +127,8 @@ update msg model =
                 m_location_spectreflag =
                     Debug.log "location_nothing"
                         (Just
-                            { state = LocationState SpectreFlag NoGPR NoEcho
+                            { sector_position = ( 0.0, 0.0 )
+                            , state = LocationState SpectreFlag NoGPR NoEcho
                             , dig_status = NotDigged
                             , materials = NoMaterials
                             }
@@ -123,7 +137,8 @@ update msg model =
                 m_location_realflag_areagpr =
                     Debug.log "location_nothing"
                         (Just
-                            { state = LocationState RealFlag AreaGPR NoEcho
+                            { sector_position = ( 0.0, 0.0 )
+                            , state = LocationState RealFlag AreaGPR NoEcho
                             , dig_status = NotDigged
                             , materials = NoMaterials
                             }
@@ -191,21 +206,23 @@ view model =
 
 
 pageView : Model -> H.Html FrontendMsg
-pageView _ =
+pageView model =
     H.div
         [ HA.css
-            [ Tw.max_w_sm
-            , Tw.mx_auto
-            , Tw.flex
-            , Tw.flex_col
-            , Tw.items_center
-            , Tw.pt_5
-            , Tw.gap_8
-            ]
+            ([ Tw.max_w_sm
+             , Tw.mx_auto
+             , Tw.flex
+             , Tw.flex_col
+             , Tw.items_center
+             , Tw.pt_5
+             , Tw.gap_8
+             ]
+                ++ V.explainTw
+            )
         ]
         [ V.prosspectreHeader
         , V.asteroidDesignation R.randomAsteroidDesignation
-        , V.sectorMap MapClick
+        , V.sectorMap model.layout_contents MapClick
         , V.emptyHoleIcon
         , V.possibleSpectireIcon
         , V.confirmedSpectriteIcon

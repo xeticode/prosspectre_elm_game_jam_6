@@ -1,11 +1,13 @@
 module Frontend.View exposing (..)
 
 import Css
+import Dict
 import Frontend.Icons as Icons
 import Html.Styled as H
 import Html.Styled.Attributes as HA
 import Tailwind.Theme as Tw
 import Tailwind.Utilities as Tw
+import Types exposing (..)
 
 
 {-| Utility function to help visualize the layout of the page
@@ -14,6 +16,14 @@ explainTw : List Css.Style
 explainTw =
     [ Tw.outline_2
     , Tw.outline_color Tw.red_500
+    , Tw.outline
+    ]
+
+
+explainTwWithBorderColor : Tw.Color -> List Css.Style
+explainTwWithBorderColor color =
+    [ Tw.outline_2
+    , Tw.outline_color color
     , Tw.outline
     ]
 
@@ -42,7 +52,7 @@ prosspectreHeader =
                 , Tw.text_sm
                 ]
             ]
-            [ H.text "a game by Crazy Cockatoo Games™"
+            [ H.text "Elm Game Jam 6 Edition"
             ]
         ]
 
@@ -58,14 +68,60 @@ asteroidDesignation designation =
         ]
 
 
-sectorMap : (Int -> Int -> msg) -> H.Html msg
-sectorMap fn_message =
+sectorMap : AxialHexLocation -> (Int -> Int -> msg) -> H.Html msg
+sectorMap location_dict fn_message =
     H.div
         [ HA.css
-            [ Tw.w_96
+            [ Tw.relative
+            , Css.width <| Css.px 384.0
             ]
         ]
-        [ Icons.sectorMap Tw.neutral_300 fn_message ]
+        [ H.div
+            [ HA.css
+                [ Tw.z_0
+                , Tw.w_full
+                ]
+            ]
+            [ Icons.sectorMap Tw.neutral_300 fn_message ]
+        , H.div
+            [ HA.css
+                ([ Tw.z_10
+                 , Tw.absolute
+                 , Tw.w_full
+                 , Tw.h_full
+                 , Css.top <| Css.px 0.0
+                 , Tw.pointer_events_none
+                 ]
+                    ++ explainTwWithBorderColor Tw.green_500
+                )
+            ]
+            (List.map sectorMapLocationOverlay (Dict.values location_dict))
+        ]
+
+
+sectorMapLocationOverlay : Location -> H.Html msg
+sectorMapLocationOverlay ({ sector_position } as location) =
+    H.div
+        [ HA.css
+            [ Tw.absolute
+            , Tw.w_10
+            , Tw.h_10
+            , Tw.flex
+            , Tw.flex_row
+            , Tw.justify_center
+            , Tw.items_center
+            , Tw.bg_color Tw.green_500
+            , Css.top <| Css.px (Tuple.first sector_position) -- top 156.5 w_10 h_10
+            , Css.left <| Css.px (Tuple.second sector_position) -- top 175.0 w_10 h_10
+            ]
+        ]
+        (locationDetailsFromLocation location)
+
+
+locationDetailsFromLocation : Location -> List (H.Html msg)
+locationDetailsFromLocation location =
+    [ realFlagIcon
+    ]
 
 
 emptyHoleIcon : H.Html msg
