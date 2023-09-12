@@ -59,9 +59,12 @@ update msg model =
             ( { model | url = url }, Cmd.none )
 
         NoOpFrontendMsg message ->
+            ( model, Cmd.none )
+
+        MapClick col row ->
             let
-                _ =
-                    Debug.log "NoOpFrontendMsg" message
+                hex =
+                    Debug.log "hex" (R.axialHexWithColAndRow col row)
             in
             ( model, Cmd.none )
 
@@ -91,10 +94,6 @@ view model =
 
 pageView : Model -> H.Html FrontendMsg
 pageView _ =
-    let
-        _ =
-            Debug.log "test color struct" (Icons.colorStructFromTwColor Tw.gray_900)
-    in
     H.div
         [ HA.css
             [ Tw.max_w_sm
@@ -108,7 +107,7 @@ pageView _ =
         ]
         [ V.prosspectreHeader
         , V.asteroidDesignation R.randomAsteroidDesignation
-        , V.sectorMap NoOpFrontendMsg
+        , V.sectorMap MapClick
         , V.emptyHoleIcon
         , V.possibleSpectireIcon
         , V.confirmedSpectriteIcon
@@ -156,5 +155,4 @@ pageView _ =
         , V.area17GPRIcon
         , V.area18GPRIcon
         , V.area19GPRIcon
-        , V.hexTest
         ]

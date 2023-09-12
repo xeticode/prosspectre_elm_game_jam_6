@@ -2,8 +2,6 @@ module Frontend.View exposing (..)
 
 import Css
 import Frontend.Icons as Icons
-import Hex
-import Hex.Layout as HexL
 import Html.Styled as H
 import Html.Styled.Attributes as HA
 import Tailwind.Theme as Tw
@@ -60,7 +58,7 @@ asteroidDesignation designation =
         ]
 
 
-sectorMap : (String -> msg) -> H.Html msg
+sectorMap : (Int -> Int -> msg) -> H.Html msg
 sectorMap fn_message =
     H.div
         [ HA.css
@@ -479,12 +477,3 @@ area19GPRIcon =
             ]
         ]
         [ Icons.area19GPRIcon ]
-
-
-hexTest : H.Html msg
-hexTest =
-    let
-        hex_list =
-            Debug.log "hex_list" (HexL.createHexList 9 9)
-    in
-    H.text "hex test"

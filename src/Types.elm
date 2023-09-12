@@ -20,6 +20,7 @@ type FrontendMsg
     = UrlClicked UrlRequest
     | UrlChanged Url
     | NoOpFrontendMsg String
+    | MapClick Int Int -- col row
 
 
 type ToBackend

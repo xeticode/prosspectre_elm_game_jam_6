@@ -629,7 +629,7 @@ asteroidDesignation designation =
         ]
 
 
-sectorMap : Tw.Color -> (String -> msg) -> S.Svg msg
+sectorMap : Tw.Color -> (Int -> Int -> msg) -> S.Svg msg
 sectorMap color fn_message =
     svg
         [ SA.width "100%"
@@ -661,7 +661,7 @@ sectorMap color fn_message =
                         ]
                         [ S.g
                             [ SA.transform "matrix(0.866025,0.5,-0.5,0.866025,923.753,-387.362)"
-                            , SE.onClick (fn_message "(0, -4)")
+                            , SE.onClick (fn_message 0 -4)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -675,7 +675,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,1626.25,2852.26)"
-                            , SE.onClick (fn_message "(0, 4)")
+                            , SE.onClick (fn_message 0 4)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -689,7 +689,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,0.5,-0.5,0.866025,572.722,-184.431)"
-                            , SE.onClick (fn_message "(-2, -2)")
+                            , SE.onClick (fn_message -2 -2)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -703,7 +703,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,1977.28,2649.33)"
-                            , SE.onClick (fn_message "(2, 2)")
+                            , SE.onClick (fn_message 2 2)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -717,7 +717,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,1626.05,2649.33)"
-                            , SE.onClick (fn_message "(0, 3)")
+                            , SE.onClick (fn_message 0 3)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -731,7 +731,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,0.5,0.5,0.866025,1977.28,-184.431)"
-                            , SE.onClick (fn_message "(2, -4)")
+                            , SE.onClick (fn_message 2 -4)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -745,7 +745,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,0.5,0.5,0.866025,1626.05,-184.431)"
-                            , SE.onClick (fn_message "(0, -3)")
+                            , SE.onClick (fn_message 0 -3)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -759,7 +759,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,-0.5,-0.5,-0.866025,572.722,2649.33)"
-                            , SE.onClick (fn_message "(-2, 4)")
+                            , SE.onClick (fn_message -2 4)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -773,7 +773,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,0.5,-0.5,0.866025,221.968,18.4994)"
-                            , SE.onClick (fn_message "(-4, 0)")
+                            , SE.onClick (fn_message -4 0)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -787,7 +787,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,2328.03,2446.4)"
-                            , SE.onClick (fn_message "(4, 0)")
+                            , SE.onClick (fn_message 4 0)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -801,7 +801,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,1977.28,2446.4)"
-                            , SE.onClick (fn_message "(2, 1)")
+                            , SE.onClick (fn_message 2 1)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -815,7 +815,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,-0.5,-0.5,-0.866025,572.999,2446.4)"
-                            , SE.onClick (fn_message "(-2, 3)")
+                            , SE.onClick (fn_message -2 3)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -829,7 +829,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,1626.05,2446.4)"
-                            , SE.onClick (fn_message "(0, 2)")
+                            , SE.onClick (fn_message 0 2)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -843,7 +843,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,2152.83,2344.93)"
-                            , SE.onClick (fn_message "(3, 0)")
+                            , SE.onClick (fn_message 3 0)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -857,7 +857,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,-0.5,-0.5,-0.866025,397.445,2344.93)"
-                            , SE.onClick (fn_message "(-3, 3)")
+                            , SE.onClick (fn_message -3 3)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -871,7 +871,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,1801.8,2344.93)"
-                            , SE.onClick (fn_message "(1, 1)")
+                            , SE.onClick (fn_message 1 1)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -885,7 +885,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,-0.5,-0.5,-0.866025,748.476,2344.93)"
-                            , SE.onClick (fn_message "(-1, 2)")
+                            , SE.onClick (fn_message -1 2)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -899,7 +899,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,0.5,0.5,0.866025,2328.03,18.4994)"
-                            , SE.onClick (fn_message "(4, -4)")
+                            , SE.onClick (fn_message 4 -4)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -913,7 +913,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,0.5,0.5,0.866025,1977.28,18.4994)"
-                            , SE.onClick (fn_message "(2, -3)")
+                            , SE.onClick (fn_message 2 -3)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -927,7 +927,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,0.5,-0.5,0.866025,572.999,18.4994)"
-                            , SE.onClick (fn_message "(-2, -1)")
+                            , SE.onClick (fn_message -2 -1)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -941,7 +941,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,0.5,0.5,0.866025,1626.05,18.4994)"
-                            , SE.onClick (fn_message "(0, -2)")
+                            , SE.onClick (fn_message 0 -2)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -955,7 +955,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,0.5,-0.5,0.866025,748.199,-285.896)"
-                            , SE.onClick (fn_message "(-1, -3)")
+                            , SE.onClick (fn_message -1 -3)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -969,7 +969,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,1801.8,2750.79)"
-                            , SE.onClick (fn_message "(1, 3)")
+                            , SE.onClick (fn_message 1 3)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -983,7 +983,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,0.5,0.5,0.866025,1801.8,-285.896)"
-                            , SE.onClick (fn_message "(1, -4)")
+                            , SE.onClick (fn_message 1 -4)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -1017,7 +1017,7 @@ sectorMap color fn_message =
                             []
                         , S.g
                             [ SA.transform "matrix(0.866025,-0.5,-0.5,-0.866025,748.199,2750.79)"
-                            , SE.onClick (fn_message "(-1, 4)")
+                            , SE.onClick (fn_message -1 4)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -1031,7 +1031,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,0.5,-0.5,0.866025,397.168,-82.9659)"
-                            , SE.onClick (fn_message "(-3, -1)")
+                            , SE.onClick (fn_message -3 -1)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -1045,7 +1045,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,2152.83,2547.86)"
-                            , SE.onClick (fn_message "(3, 2)")
+                            , SE.onClick (fn_message 3 1)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -1059,7 +1059,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,1801.8,2547.86)"
-                            , SE.onClick (fn_message "(1, 3)")
+                            , SE.onClick (fn_message 1 2)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -1073,7 +1073,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,-0.5,-0.5,-0.866025,748.476,2547.86)"
-                            , SE.onClick (fn_message "(-1, 3)")
+                            , SE.onClick (fn_message -1 3)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -1087,7 +1087,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,0.5,0.5,0.866025,2152.83,-82.9659)"
-                            , SE.onClick (fn_message "(3, -4)")
+                            , SE.onClick (fn_message 3 -4)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -1101,7 +1101,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,0.5,0.5,0.866025,1801.8,-82.9659)"
-                            , SE.onClick (fn_message "(1, -3)")
+                            , SE.onClick (fn_message 1 -3)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -1115,7 +1115,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,0.5,-0.5,0.866025,748.476,-82.9659)"
-                            , SE.onClick (fn_message "(-1, -2)")
+                            , SE.onClick (fn_message -1 -2)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -1129,7 +1129,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,-0.5,-0.5,-0.866025,397.168,2547.86)"
-                            , SE.onClick (fn_message "(-3, 4)")
+                            , SE.onClick (fn_message -3 4)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -1143,7 +1143,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,0.5,-0.5,0.866025,221.968,221.43)"
-                            , SE.onClick (fn_message "(-4, 1)")
+                            , SE.onClick (fn_message -4 1)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -1157,7 +1157,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,2328.03,2243.47)"
-                            , SE.onClick (fn_message "(4, -1)")
+                            , SE.onClick (fn_message 4 -1)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -1171,7 +1171,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,1977.28,2243.47)"
-                            , SE.onClick (fn_message "(2, 0)")
+                            , SE.onClick (fn_message 2 0)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -1185,7 +1185,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,-0.5,-0.5,-0.866025,572.999,2243.47)"
-                            , SE.onClick (fn_message "(-2, 2)")
+                            , SE.onClick (fn_message -2 2)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -1199,7 +1199,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,1626.05,2243.47)"
-                            , SE.onClick (fn_message "(0, 1)")
+                            , SE.onClick (fn_message 0 1)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -1213,7 +1213,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,2152.83,2142)"
-                            , SE.onClick (fn_message "(3, -1)")
+                            , SE.onClick (fn_message 3 -1)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -1227,7 +1227,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,-0.5,-0.5,-0.866025,397.445,2142)"
-                            , SE.onClick (fn_message "(-3, 2)")
+                            , SE.onClick (fn_message -3 2)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -1241,7 +1241,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,1801.8,2142)"
-                            , SE.onClick (fn_message "(1, 0)")
+                            , SE.onClick (fn_message 1 0)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -1255,7 +1255,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,-0.5,-0.5,-0.866025,748.476,2142)"
-                            , SE.onClick (fn_message "(-1, 1)")
+                            , SE.onClick (fn_message -1 1)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -1269,7 +1269,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,0.5,-0.5,0.866025,221.968,627.291)"
-                            , SE.onClick (fn_message "(-4, 3)")
+                            , SE.onClick (fn_message -4 3)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -1283,7 +1283,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,2328.03,1837.61)"
-                            , SE.onClick (fn_message "(4, -3)")
+                            , SE.onClick (fn_message 4 -3)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -1297,7 +1297,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,1977.28,1837.61)"
-                            , SE.onClick (fn_message "(2, -2)")
+                            , SE.onClick (fn_message 2 -2)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -1311,7 +1311,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,-0.5,-0.5,-0.866025,572.999,1837.61)"
-                            , SE.onClick (fn_message "(-2, 0)")
+                            , SE.onClick (fn_message -2 0)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -1325,7 +1325,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,1626.05,1837.61)"
-                            , SE.onClick (fn_message "(0, -1)")
+                            , SE.onClick (fn_message 0 -1)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -1339,7 +1339,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,2152.83,1736.14)"
-                            , SE.onClick (fn_message "(3, -3)")
+                            , SE.onClick (fn_message 3 -3)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -1353,7 +1353,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,-0.5,-0.5,-0.866025,397.445,1736.14)"
-                            , SE.onClick (fn_message "(-3, 0)")
+                            , SE.onClick (fn_message -3 0)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -1367,7 +1367,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,1801.8,1736.14)"
-                            , SE.onClick (fn_message "(1, -2)")
+                            , SE.onClick (fn_message 1 -2)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -1381,7 +1381,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,-0.5,-0.5,-0.866025,748.476,1736.14)"
-                            , SE.onClick (fn_message "(-1, -1)")
+                            , SE.onClick (fn_message -1 -1)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -1395,7 +1395,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,0.5,-0.5,0.866025,221.968,424.36)"
-                            , SE.onClick (fn_message "(-4, 2)")
+                            , SE.onClick (fn_message -4 2)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -1409,7 +1409,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,2328.03,2040.54)"
-                            , SE.onClick (fn_message "(4, -2)")
+                            , SE.onClick (fn_message 4 -2)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -1423,7 +1423,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,1977.28,2040.54)"
-                            , SE.onClick (fn_message "(2, -1)")
+                            , SE.onClick (fn_message 2 -1)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -1437,7 +1437,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,-0.5,-0.5,-0.866025,572.999,2040.54)"
-                            , SE.onClick (fn_message "-2, 1")
+                            , SE.onClick (fn_message -2 1)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -1451,7 +1451,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,1626.05,2040.54)"
-                            , SE.onClick (fn_message "(0, 0)")
+                            , SE.onClick (fn_message 0 0)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -1465,7 +1465,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,2152.83,1939.07)"
-                            , SE.onClick (fn_message "(3, -2)")
+                            , SE.onClick (fn_message 3 -2)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -1479,7 +1479,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,-0.5,-0.5,-0.866025,397.445,1939.07)"
-                            , SE.onClick (fn_message "(-3, 1)")
+                            , SE.onClick (fn_message -3 1)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -1493,7 +1493,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(-0.866025,-0.5,0.5,-0.866025,1801.8,1939.07)"
-                            , SE.onClick (fn_message "(1, -1)")
+                            , SE.onClick (fn_message 1 -1)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -1507,7 +1507,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,-0.5,-0.5,-0.866025,748.476,1939.07)"
-                            , SE.onClick (fn_message "(-1, 0)")
+                            , SE.onClick (fn_message -1 0)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -1521,7 +1521,7 @@ sectorMap color fn_message =
                             ]
                         , S.g
                             [ SA.transform "matrix(0.866025,0.5,-0.5,0.866025,221.968,830.221)"
-                            , SE.onClick (fn_message "(-4, 4)")
+                            , SE.onClick (fn_message -4 4)
                             , SA.css
                                 [ Tw.cursor_pointer
                                 ]
@@ -1537,10 +1537,6 @@ sectorMap color fn_message =
                     ]
                 , S.g
                     [ SA.transform "matrix(1,0,0,1,-927.739,244.17)"
-                    , SE.onClick (fn_message "address?")
-                    , SA.css
-                        [ Tw.cursor_pointer
-                        ]
                     ]
                     [ S.g
                         [ SA.transform "matrix(45.8333,0,0,45.8333,2212.78,353.575)"
