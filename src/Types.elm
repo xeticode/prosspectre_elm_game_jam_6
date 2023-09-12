@@ -2,6 +2,7 @@ module Types exposing (..)
 
 import Browser exposing (UrlRequest)
 import Browser.Navigation exposing (Key)
+import Dict
 import Hex.Layout as HexL
 import Url exposing (Url)
 
@@ -10,6 +11,7 @@ type alias FrontendModel =
     { key : Key
     , url : Url
     , layout : HexL.Layout
+    , layout_contents : AxialHexLocation
     , selected_tool : Tool
     }
 
@@ -71,9 +73,12 @@ type Action
     | PointGPRAction
 
 
-type alias BackendModel =
-    { message : String
-    }
+type alias AxialHexIndex =
+    ( Int, Int )
+
+
+type alias AxialHexLocation =
+    Dict.Dict AxialHexIndex Location
 
 
 type FrontendMsg
@@ -82,6 +87,11 @@ type FrontendMsg
     | NoOpFrontendMsg String
     | MapClick Int Int -- col row
     | SelectTool Tool
+
+
+type alias BackendModel =
+    { message : String
+    }
 
 
 type ToBackend

@@ -3,6 +3,7 @@ module Frontend exposing (app)
 import Browser
 import Browser.Navigation as Nav
 import Css.Global
+import Dict
 import Frontend.Icons as Icons
 import Frontend.View as V
 import Hex.Layout as HexL
@@ -47,6 +48,7 @@ init url key =
             , size = ( var, var )
             , origin = ( 0, 0 )
             }
+      , layout_contents = Dict.empty
       , selected_tool = NoTool
       }
     , Cmd.none
@@ -91,57 +93,65 @@ update msg model =
                 _ =
                     Debug.log "nlfhr2 length" (List.length nlfhr2)
 
-                location_nothing =
+                m_location_nothing =
                     Debug.log "location_nothing"
-                        { state = LocationState NoFlag NoGPR NoEcho
-                        , dig_status = NotDigged
-                        , materials = NoMaterials
-                        }
+                        (Just
+                            { state = LocationState NoFlag NoGPR NoEcho
+                            , dig_status = NotDigged
+                            , materials = NoMaterials
+                            }
+                        )
 
-                location_digged =
+                m_location_digged =
                     Debug.log "location_nothing"
-                        { state = LocationState NoFlag NoGPR NoEcho
-                        , dig_status = Digged
-                        , materials = NoMaterials
-                        }
+                        (Just
+                            { state = LocationState NoFlag NoGPR NoEcho
+                            , dig_status = Digged
+                            , materials = NoMaterials
+                            }
+                        )
 
-                location_spectreflag =
+                m_location_spectreflag =
                     Debug.log "location_nothing"
-                        { state = LocationState SpectreFlag NoGPR NoEcho
-                        , dig_status = NotDigged
-                        , materials = NoMaterials
-                        }
+                        (Just
+                            { state = LocationState SpectreFlag NoGPR NoEcho
+                            , dig_status = NotDigged
+                            , materials = NoMaterials
+                            }
+                        )
 
-                location_realflag_areagpr =
+                m_location_realflag_areagpr =
                     Debug.log "location_nothing"
-                        { state = LocationState RealFlag AreaGPR NoEcho
-                        , dig_status = NotDigged
-                        , materials = NoMaterials
-                        }
+                        (Just
+                            { state = LocationState RealFlag AreaGPR NoEcho
+                            , dig_status = NotDigged
+                            , materials = NoMaterials
+                            }
+                        )
 
                 _ =
-                    Debug.log "action for Dig Tool at location_nothing" <| R.actionFromToolAtLocation DigTool location_nothing
+                    Debug.log "action for Dig Tool at location_nothing" <| R.actionFromToolAtMaybeLocation DigTool m_location_nothing
 
                 _ =
-                    Debug.log "action for Dig Tool at location_digged" <| R.actionFromToolAtLocation DigTool location_digged
+                    Debug.log "action for Dig Tool at location_digged" <| R.actionFromToolAtMaybeLocation DigTool m_location_digged
 
                 _ =
-                    Debug.log "action for Point GPR Tool at location_digged" <| R.actionFromToolAtLocation PointGPRTool location_digged
+                    Debug.log "action for Point GPR Tool at location_digged" <| R.actionFromToolAtMaybeLocation PointGPRTool m_location_digged
 
                 _ =
-                    Debug.log "action for Spectre Flag Tool at location_spectreflag" <| R.actionFromToolAtLocation SpectreFlagTool location_spectreflag
+                    Debug.log "action for Spectre Flag Tool at location_spectreflag" <| R.actionFromToolAtMaybeLocation SpectreFlagTool m_location_spectreflag
 
                 _ =
-                    Debug.log "action for Real Flag Tool at location_spectreflag" <| R.actionFromToolAtLocation RealFlagTool location_spectreflag
+                    Debug.log "action for Real Flag Tool at location_spectreflag" <| R.actionFromToolAtMaybeLocation RealFlagTool m_location_spectreflag
 
                 _ =
-                    Debug.log "action for Area GPR Tool at location_realflag_areagpr" <| R.actionFromToolAtLocation AreaGPRTool location_realflag_areagpr
+                    Debug.log "action for Area GPR Tool at location_realflag_areagpr" <| R.actionFromToolAtMaybeLocation AreaGPRTool m_location_realflag_areagpr
 
                 _ =
-                    Debug.log "action for Point GPR Tool at location_realflag_areagpr" <| R.actionFromToolAtLocation PointGPRTool location_realflag_areagpr
+                    Debug.log "action for Point GPR Tool at location_realflag_areagpr" <| R.actionFromToolAtMaybeLocation PointGPRTool m_location_realflag_areagpr
 
                 _ =
-                    Debug.log "action for model selected tool at location_nothing" <| R.actionFromToolAtLocation model.selected_tool location_nothing
+                    Debug.log "action for model selected tool at location_nothing" <| R.actionFromToolAtMaybeLocation model.selected_tool (Dict.get ( col, row ) model.layout_contents)
             in
             ( model, Cmd.none )
 

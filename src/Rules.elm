@@ -127,60 +127,65 @@ neighborListFromHexInclusiveRadius2 hex =
 -- SECTION Locations
 
 
-actionFromToolAtLocation : Tool -> Location -> Action
-actionFromToolAtLocation tool location =
+actionFromToolAtMaybeLocation : Tool -> Maybe Location -> Action
+actionFromToolAtMaybeLocation tool m_location =
     -- If the dig_status is Digged then return ActionDoNothing
     -- else If the tool is the DigTool then return ActionDig
     -- else If the tool is one of the flag tools then (If the location flag is the same as the tool then return ActionClearFlag else if the flag tool is the SpectreFlag then return ActionSetSpectreFlag else ActionSetRealFlag)
     -- else If the tool is the AreaGPRTool then if location gpr is not the same as the tool then return AreaGPRAction else return ActionDoNothing
     -- else If the tool is the PointGPRTool then if location gpr is not the same as the tool then return PointGPRAction else return ActionDoNothing
-    let
-        ( loc_flag, loc_gpr ) =
-            case location.state of
-                LocationState location_flag location_gpr _ ->
-                    ( location_flag, location_gpr )
-    in
-    if location.dig_status == Digged then
-        ActionDoNothing
+    case m_location of
+        Nothing ->
+            ActionDoNothing
 
-    else if tool == DigTool then
-        ActionDig
-
-    else if List.member tool [ SpectreFlagTool, RealFlagTool ] then
-        case ( tool, loc_flag ) of
-            ( SpectreFlagTool, SpectreFlag ) ->
-                ActionClearFlag
-
-            ( RealFlagTool, RealFlag ) ->
-                ActionClearFlag
-
-            ( SpectreFlagTool, _ ) ->
-                ActionSetSpectreFlag
-
-            ( RealFlagTool, _ ) ->
-                ActionSetRealFlag
-
-            _ ->
+        Just location ->
+            let
+                ( loc_flag, loc_gpr ) =
+                    case location.state of
+                        LocationState location_flag location_gpr _ ->
+                            ( location_flag, location_gpr )
+            in
+            if location.dig_status == Digged then
                 ActionDoNothing
 
-    else if tool == AreaGPRTool then
-        case ( tool, loc_gpr ) of
-            ( AreaGPRTool, AreaGPR ) ->
+            else if tool == DigTool then
+                ActionDig
+
+            else if List.member tool [ SpectreFlagTool, RealFlagTool ] then
+                case ( tool, loc_flag ) of
+                    ( SpectreFlagTool, SpectreFlag ) ->
+                        ActionClearFlag
+
+                    ( RealFlagTool, RealFlag ) ->
+                        ActionClearFlag
+
+                    ( SpectreFlagTool, _ ) ->
+                        ActionSetSpectreFlag
+
+                    ( RealFlagTool, _ ) ->
+                        ActionSetRealFlag
+
+                    _ ->
+                        ActionDoNothing
+
+            else if tool == AreaGPRTool then
+                case ( tool, loc_gpr ) of
+                    ( AreaGPRTool, AreaGPR ) ->
+                        ActionDoNothing
+
+                    _ ->
+                        AreaGPRAction
+
+            else if tool == PointGPRTool then
+                case ( tool, loc_gpr ) of
+                    ( PointGPRTool, PointGPR ) ->
+                        ActionDoNothing
+
+                    _ ->
+                        PointGPRAction
+
+            else
                 ActionDoNothing
-
-            _ ->
-                AreaGPRAction
-
-    else if tool == PointGPRTool then
-        case ( tool, loc_gpr ) of
-            ( PointGPRTool, PointGPR ) ->
-                ActionDoNothing
-
-            _ ->
-                PointGPRAction
-
-    else
-        ActionDoNothing
 
 
 
