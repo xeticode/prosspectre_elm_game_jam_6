@@ -10,7 +10,65 @@ type alias FrontendModel =
     { key : Key
     , url : Url
     , layout : HexL.Layout
+    , selected_tool : Tool
     }
+
+
+type Tool
+    = NoTool
+    | SpectreFlagTool
+    | RealFlagTool
+    | AreaGPRTool
+    | PointGPRTool
+    | DigTool
+
+
+type LocationFlag
+    = NoFlag
+    | SpectreFlag
+    | RealFlag
+
+
+type LocationGPR
+    = NoGPR
+    | AreaGPR
+    | PointGPR
+
+
+type LocationEcho
+    = NoEcho
+    | SpectriteEcho
+
+
+type LocationState
+    = LocationState LocationFlag LocationGPR LocationEcho
+
+
+type DigStatus
+    = NotDigged
+    | Digged
+
+
+type Materials
+    = NoMaterials
+    | SpectriteMaterials
+
+
+type alias Location =
+    { state : LocationState
+    , dig_status : DigStatus
+    , materials : Materials
+    }
+
+
+type Action
+    = ActionDoNothing
+    | ActionDig
+    | ActionClearFlag
+    | ActionSetSpectreFlag
+    | ActionSetRealFlag
+    | AreaGPRAction
+    | PointGPRAction
 
 
 type alias BackendModel =
@@ -23,6 +81,7 @@ type FrontendMsg
     | UrlChanged Url
     | NoOpFrontendMsg String
     | MapClick Int Int -- col row
+    | SelectTool Tool
 
 
 type ToBackend

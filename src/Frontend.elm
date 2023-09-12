@@ -47,6 +47,7 @@ init url key =
             , size = ( var, var )
             , origin = ( 0, 0 )
             }
+      , selected_tool = NoTool
       }
     , Cmd.none
     )
@@ -89,8 +90,71 @@ update msg model =
 
                 _ =
                     Debug.log "nlfhr2 length" (List.length nlfhr2)
+
+                location_nothing =
+                    Debug.log "location_nothing"
+                        { state = LocationState NoFlag NoGPR NoEcho
+                        , dig_status = NotDigged
+                        , materials = NoMaterials
+                        }
+
+                location_digged =
+                    Debug.log "location_nothing"
+                        { state = LocationState NoFlag NoGPR NoEcho
+                        , dig_status = Digged
+                        , materials = NoMaterials
+                        }
+
+                location_spectreflag =
+                    Debug.log "location_nothing"
+                        { state = LocationState SpectreFlag NoGPR NoEcho
+                        , dig_status = NotDigged
+                        , materials = NoMaterials
+                        }
+
+                location_realflag_areagpr =
+                    Debug.log "location_nothing"
+                        { state = LocationState RealFlag AreaGPR NoEcho
+                        , dig_status = NotDigged
+                        , materials = NoMaterials
+                        }
+
+                _ =
+                    Debug.log "action for Dig Tool at location_nothing" <| R.actionFromToolAtLocation DigTool location_nothing
+
+                _ =
+                    Debug.log "action for Dig Tool at location_digged" <| R.actionFromToolAtLocation DigTool location_digged
+
+                _ =
+                    Debug.log "action for Point GPR Tool at location_digged" <| R.actionFromToolAtLocation PointGPRTool location_digged
+
+                _ =
+                    Debug.log "action for Spectre Flag Tool at location_spectreflag" <| R.actionFromToolAtLocation SpectreFlagTool location_spectreflag
+
+                _ =
+                    Debug.log "action for Real Flag Tool at location_spectreflag" <| R.actionFromToolAtLocation RealFlagTool location_spectreflag
+
+                _ =
+                    Debug.log "action for Area GPR Tool at location_realflag_areagpr" <| R.actionFromToolAtLocation AreaGPRTool location_realflag_areagpr
+
+                _ =
+                    Debug.log "action for Point GPR Tool at location_realflag_areagpr" <| R.actionFromToolAtLocation PointGPRTool location_realflag_areagpr
+
+                _ =
+                    Debug.log "action for model selected tool at location_nothing" <| R.actionFromToolAtLocation model.selected_tool location_nothing
             in
             ( model, Cmd.none )
+
+        SelectTool tool ->
+            let
+                tool_ =
+                    if tool == model.selected_tool then
+                        NoTool
+
+                    else
+                        tool
+            in
+            ( { model | selected_tool = tool_ }, Cmd.none )
 
 
 updateFromBackend : ToFrontend -> Model -> ( Model, Cmd FrontendMsg )
