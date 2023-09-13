@@ -14,11 +14,14 @@ type alias FrontendModel =
     , layout : HexL.Layout
     , layout_contents : AxialHexLocations
     , selected_tool : Tool
+    , showing_help : Bool
     }
 
 
 type Tool
     = NoTool
+    | HelpTool
+    | NewGameTool
     | SpectreFlagTool
     | RealFlagTool
     | AreaGPRTool
@@ -92,11 +95,36 @@ type Materials
     | SpectriteMaterials
 
 
+type Terrain
+    = NoTerrain
+    | PointedPeaks
+    | RoundedHills
+    | MountainPassages
+    | SweepingMountains
+    | ImposingPeak
+    | AgelessMountains
+    | CraggyMountains
+
+
+terrainList : List Terrain
+terrainList =
+    [ NoTerrain
+    , PointedPeaks
+    , RoundedHills
+    , MountainPassages
+    , SweepingMountains
+    , ImposingPeak
+    , AgelessMountains
+    , CraggyMountains
+    ]
+
+
 type alias Location =
     { sector_position : HexL.Point
     , state : LocationState
     , dig_status : DigStatus
     , materials : Materials
+    , terrain : Terrain
     }
 
 
@@ -133,7 +161,8 @@ type FrontendMsg
     | UrlChanged Url
     | NoOpFrontendMsg String
     | MapClick Int Int -- col row
-    | SelectTool Tool
+    | ToolClick Tool
+    | HelpClose
 
 
 type alias BackendModel =

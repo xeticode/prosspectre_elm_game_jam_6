@@ -68,23 +68,22 @@ type alias ProsspectreColorPalette =
     -- , area_gpr : Tw.Color
     -- , point_gpr : Tw.Color
     , dig : Tw.Color
+    , tool_selected : Tw.Color
     }
 
 
 prosspectreColorPalette : ProsspectreColorPalette
 prosspectreColorPalette =
     { empty_hole = Tw.gray_600
-    , hills = Tw.gray_300
+    , hills = Tw.neutral_100
     , possible_spectrite = Tw.indigo_600
     , confirmed_spectrite = Tw.black
     , spectre = Tw.indigo_600
     , real_flag = Tw.black
     , help = Tw.fuchsia_600
     , new_game = Tw.cyan_900
-
-    -- , area_gpr = Tw.sky_700
-    -- , point_gpr = Tw.sky_700
     , dig = Tw.amber_800
+    , tool_selected = Tw.indigo_600
     }
 
 
@@ -108,7 +107,9 @@ spectreIcon width height =
         ]
         [ path
             [ SA.d "m567.6 130.8c-200.4 4.8008-357.6 152.4-357.6 326.4v597.6c0 7.1992 8.3984 10.801 15.602 7.1992 16.801-8.3984 44.398-14.398 76.801-14.398 38.398 0 70.801 8.3984 85.199 19.199 3.6016 3.6016 9.6016 3.6016 14.398 0 13.199-12 46.801-19.199 85.199-19.199 38.398 0 70.801 8.3984 85.199 19.199 3.6016 3.6016 9.6016 3.6016 14.398 0 13.199-12 46.801-19.199 85.199-19.199 38.398 0 70.801 8.3984 85.199 19.199 3.6016 3.6016 9.6016 3.6016 14.398 0 13.199-12 46.801-19.199 85.199-19.199 32.398 0 60 6 76.801 14.398 7.1992 3.6016 15.602-1.1992 15.602-7.1992l0.003907-604.8c-3.5977-178.8-174-324-381.6-319.2zm-164.4 404.4c-32.398-22.801-40.801-68.398-18-100.8l118.8 84c-22.801 31.203-67.199 39.602-100.8 16.801zm349.2 0c-32.398 22.801-78 15.602-100.8-18l118.8-84c22.801 33.602 14.402 79.199-18 102z"
-            , SA.fill (rgbFromColorStruct <| colorStructFromTwColor prosspectreColorPalette.spectre)
+            , SA.css
+                [ Tw.fill_color prosspectreColorPalette.spectre
+                ]
             ]
             []
         ]
@@ -2167,8 +2168,8 @@ flagIcon width height color =
         ]
 
 
-hill1Icon : Int -> Int -> Tw.Color -> S.Svg msg
-hill1Icon width height color =
+pointedPeaksIcon : Int -> Int -> Tw.Color -> S.Svg msg
+pointedPeaksIcon width height color =
     svg
         [ SA.width <| iconPtFromInt width
         , SA.height <| iconPtFromInt height
@@ -2185,8 +2186,8 @@ hill1Icon width height color =
         ]
 
 
-hill2Icon : Int -> Int -> Tw.Color -> S.Svg msg
-hill2Icon width height color =
+roundedHillsIcon : Int -> Int -> Tw.Color -> S.Svg msg
+roundedHillsIcon width height color =
     svg
         [ SA.width <| iconPtFromInt width
         , SA.height <| iconPtFromInt height
@@ -2210,8 +2211,8 @@ hill2Icon width height color =
         ]
 
 
-hill3Icon : Int -> Int -> Tw.Color -> S.Svg msg
-hill3Icon width height color =
+mountainPassagesIcon : Int -> Int -> Tw.Color -> S.Svg msg
+mountainPassagesIcon width height color =
     svg
         [ SA.width <| iconPtFromInt width
         , SA.height <| iconPtFromInt height
@@ -2228,8 +2229,8 @@ hill3Icon width height color =
         ]
 
 
-hill4Icon : Int -> Int -> Tw.Color -> S.Svg msg
-hill4Icon width height color =
+sweepingMountainsIcon : Int -> Int -> Tw.Color -> S.Svg msg
+sweepingMountainsIcon width height color =
     svg
         [ SA.width <| iconPtFromInt width
         , SA.height <| iconPtFromInt height
@@ -2253,8 +2254,8 @@ hill4Icon width height color =
         ]
 
 
-hill5Icon : Int -> Int -> Tw.Color -> S.Svg msg
-hill5Icon width height color =
+imposingPeakIcon : Int -> Int -> Tw.Color -> S.Svg msg
+imposingPeakIcon width height color =
     svg
         [ SA.width <| iconPtFromInt width
         , SA.height <| iconPtFromInt height
@@ -2271,8 +2272,8 @@ hill5Icon width height color =
         ]
 
 
-hill6Icon : Int -> Int -> Tw.Color -> S.Svg msg
-hill6Icon width height color =
+agelessMountainsIcon : Int -> Int -> Tw.Color -> S.Svg msg
+agelessMountainsIcon width height color =
     svg
         [ SA.width <| iconPtFromInt width
         , SA.height <| iconPtFromInt height
@@ -2296,8 +2297,8 @@ hill6Icon width height color =
         ]
 
 
-hill7Icon : Int -> Int -> Tw.Color -> S.Svg msg
-hill7Icon width height color =
+craggyMountainsIcon : Int -> Int -> Tw.Color -> S.Svg msg
+craggyMountainsIcon width height color =
     svg
         [ SA.width <| iconPtFromInt width
         , SA.height <| iconPtFromInt height

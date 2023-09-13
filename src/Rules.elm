@@ -225,5 +225,10 @@ hexHasMaterials hex locations =
                     True
 
 
+newGame : FrontendModel -> FrontendModel
+newGame model =
+    model
+
+
 
 -- !SECTION

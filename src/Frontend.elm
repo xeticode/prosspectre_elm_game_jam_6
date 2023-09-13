@@ -4,11 +4,11 @@ import Browser
 import Browser.Navigation as Nav
 import Css.Global
 import Dict
-import Frontend.Icons as Icons
 import Frontend.View as V
 import Hex.Layout as HexL
 import Html.Styled as H
 import Html.Styled.Attributes as HA
+import Html.Styled.Events as HE
 import Lamdera
 import Rules as R
 import Tailwind.Theme as Tw
@@ -53,6 +53,7 @@ init url key =
             }
       , layout_contents = layout_contents
       , selected_tool = NoTool
+      , showing_help = False
       }
     , Cmd.none
     )
@@ -81,6 +82,7 @@ initLayoutContents =
                   , state = ( NoFlag, NoGPR, NoEcho )
                   , dig_status = Undug
                   , materials = materials
+                  , terrain = MountainPassages
                   }
                 )
             )
@@ -219,6 +221,7 @@ update msg model =
                             , state = ( NoFlag, NoGPR, NoEcho )
                             , dig_status = Undug
                             , materials = NoMaterials
+                            , terrain = NoTerrain
                             }
                         )
 
@@ -229,6 +232,7 @@ update msg model =
                             , state = ( NoFlag, NoGPR, NoEcho )
                             , dig_status = Dug
                             , materials = NoMaterials
+                            , terrain = NoTerrain
                             }
                         )
 
@@ -239,6 +243,7 @@ update msg model =
                             , state = ( SpectreFlag, NoGPR, NoEcho )
                             , dig_status = Undug
                             , materials = NoMaterials
+                            , terrain = NoTerrain
                             }
                         )
 
@@ -249,6 +254,7 @@ update msg model =
                             , state = ( RealFlag, AreaGPR AreaGPRReading07, NoEcho )
                             , dig_status = Undug
                             , materials = NoMaterials
+                            , terrain = NoTerrain
                             }
                         )
 
@@ -278,16 +284,23 @@ update msg model =
             in
             ( model, Cmd.none )
 
-        SelectTool tool ->
+        ToolClick tool ->
             let
-                tool_ =
-                    if tool == model.selected_tool then
-                        NoTool
+                model_ =
+                    case tool of
+                        HelpTool ->
+                            { model | showing_help = True }
 
-                    else
-                        tool
+                        NewGameTool ->
+                            R.newGame model
+
+                        _ ->
+                            { model | selected_tool = tool }
             in
-            ( { model | selected_tool = tool_ }, Cmd.none )
+            ( model_, Cmd.none )
+
+        HelpClose ->
+            ( { model | showing_help = False }, Cmd.none )
 
 
 updateFromBackend : ToFrontend -> Model -> ( Model, Cmd FrontendMsg )
@@ -315,67 +328,43 @@ view model =
 
 pageView : Model -> H.Html FrontendMsg
 pageView model =
-    H.div
-        [ HA.css
-            ([ Tw.max_w_sm
-             , Tw.mx_auto
-             , Tw.flex
-             , Tw.flex_col
-             , Tw.items_center
-             , Tw.pt_5
-             , Tw.gap_8
-             ]
-                ++ V.explainTw
-            )
-        ]
-        [ V.prosspectreHeader
-        , V.asteroidDesignation R.randomAsteroidDesignation
-        , V.sectorMap model.layout_contents MapClick
-        , V.emptyHoleIcon
-        , V.possibleSpectireIcon
-        , V.confirmedSpectriteIcon
-        , V.spectreFlagIcon
-        , V.realFlagIcon
-        , V.spectreIcon
-        , V.numberedHillIcon 1
-        , V.numberedHillIcon 2
-        , V.numberedHillIcon 3
-        , V.numberedHillIcon 4
-        , V.numberedHillIcon 5
-        , V.numberedHillIcon 6
-        , V.numberedHillIcon 7
-        , V.helpIcon
-        , V.newGameIcon
-        , V.areaGPRIcon
-        , V.pointGPRIcon
-        , V.digIcon
-        , V.point0GPRIcon
-        , V.point1GPRIcon
-        , V.point2GPRIcon
-        , V.point3GPRIcon
-        , V.point4GPRIcon
-        , V.point5GPRIcon
-        , V.point6GPRIcon
-        , V.point7GPRIcon
-        , V.point8GPRIcon
-        , V.area0GPRIcon
-        , V.area1GPRIcon
-        , V.area2GPRIcon
-        , V.area3GPRIcon
-        , V.area4GPRIcon
-        , V.area5GPRIcon
-        , V.area6GPRIcon
-        , V.area7GPRIcon
-        , V.area8GPRIcon
-        , V.area9GPRIcon
-        , V.area10GPRIcon
-        , V.area11GPRIcon
-        , V.area12GPRIcon
-        , V.area13GPRIcon
-        , V.area14GPRIcon
-        , V.area15GPRIcon
-        , V.area16GPRIcon
-        , V.area17GPRIcon
-        , V.area18GPRIcon
-        , V.area19GPRIcon
-        ]
+    if model.showing_help then
+        H.div
+            [ HE.onClick HelpClose
+            ]
+            [ H.text "Welcome to help. Link to source code." ]
+
+    else
+        H.div
+            [ HA.css
+                ([ Tw.max_w_sm
+                 , Tw.mx_auto
+                 , Tw.flex
+                 , Tw.flex_col
+                 , Tw.items_center
+                 , Tw.pt_5
+                 , Tw.gap_8
+                 ]
+                    ++ V.explainTw
+                )
+            ]
+            [ V.prosspectreHeader
+            , V.asteroidDesignation R.randomAsteroidDesignation
+            , V.sectorMap model.layout_contents MapClick
+            , V.toolBar model.selected_tool ToolClick
+            , V.terrainIconForTerrain PointedPeaks
+            , V.terrainIconForTerrain RoundedHills
+            , V.terrainIconForTerrain MountainPassages
+            , V.terrainIconForTerrain SweepingMountains
+            , V.terrainIconForTerrain ImposingPeak
+            , V.terrainIconForTerrain AgelessMountains
+            , V.terrainIconForTerrain CraggyMountains
+            , V.spectreIcon
+            ]
+
+
+
+-- TODO - have a V.spectreIcon flit across the screen at random intervals
+-- Random start loc and random end loc and random duration and use css animation to do it
+-- non-clickable
+-- PERHAPSE have it start at the spectre in the logo

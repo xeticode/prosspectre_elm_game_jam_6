@@ -5,6 +5,7 @@ import Dict
 import Frontend.Icons as Icons
 import Html.Styled as H
 import Html.Styled.Attributes as HA
+import Html.Styled.Events as HE
 import Tailwind.Theme as Tw
 import Tailwind.Utilities as Tw
 import Types exposing (..)
@@ -50,9 +51,14 @@ prosspectreHeader =
             [ HA.css
                 [ Tw.italic
                 , Tw.text_sm
+                , Tw.flex
+                , Tw.flex_col
+                , Tw.items_center
                 ]
             ]
-            [ H.text "Elm Game Jam 6 Edition. Engineering by Dirk Johnson, Copyright Crazy Cockatoo Games™"
+            [ H.div [] [ H.text "Elm Game Jam 6 Edition" ]
+            , H.div [] [ H.text "Design and engineering by Dirk Johnson" ]
+            , H.div [] [ H.text "Copyright Crazy Cockatoo Games™" ]
             ]
         ]
 
@@ -110,7 +116,8 @@ sectorMapLocationOverlay ({ sector_position } as location) =
             , Tw.flex_row
             , Tw.justify_center
             , Tw.items_center
-            , Tw.bg_color Tw.green_500
+
+            -- , Tw.bg_color Tw.green_500
             , Css.top <| Css.px (Tuple.first sector_position) -- top 156.5 w_10 h_10
             , Css.left <| Css.px (Tuple.second sector_position) -- top 175.0 w_10 h_10
             ]
@@ -119,7 +126,7 @@ sectorMapLocationOverlay ({ sector_position } as location) =
 
 
 locationDetailsFromLocation : Location -> List (H.Html msg)
-locationDetailsFromLocation { state, dig_status, materials } =
+locationDetailsFromLocation { state, dig_status, materials, terrain } =
     -- 1. Add Digged status icon if digged (adjust contents if necessary)
     -- 1. Gather icons for flag gpr and echo into a list
     -- 3. Based on list size generate the element (0 - 3)
@@ -155,18 +162,7 @@ locationDetailsFromLocation { state, dig_status, materials } =
             icon_elements
 
         _ ->
-            []
-
-
-
--- addDiggedDetailsFromDigStatusAndMaterials : DigStatus -> Materials -> List (H.Html msg) -> List (H.Html msg)
--- addDiggedDetailsFromDigStatusAndMaterials dig_status materials icon_elements =
---     [ H.text "" ]
--- stateDetailsFromLocationState : LocationState -> List (H.Html msg)
--- stateDetailsFromLocationState ( flag_state, gpr_state, echo_state ) =
---     addIconElementForFlag flag_state []
---         |> addIconElementForGPR gpr_state
---         |> addIconElementForEcho echo_state
+            [ terrainIconForTerrain terrain ]
 
 
 addIconElementForFlag : LocationFlag -> List (H.Html msg) -> List (H.Html msg)
@@ -300,6 +296,95 @@ addIconElementForEcho echo icon_elements =
             icon_elements
 
 
+terrainIconForTerrain : Terrain -> H.Html msg
+terrainIconForTerrain terrain =
+    case terrain of
+        NoTerrain ->
+            H.text ""
+
+        PointedPeaks ->
+            Icons.pointedPeaksIcon 24 24 Icons.prosspectreColorPalette.hills
+
+        RoundedHills ->
+            Icons.roundedHillsIcon 24 24 Icons.prosspectreColorPalette.hills
+
+        MountainPassages ->
+            Icons.mountainPassagesIcon 24 24 Icons.prosspectreColorPalette.hills
+
+        SweepingMountains ->
+            Icons.sweepingMountainsIcon 24 24 Icons.prosspectreColorPalette.hills
+
+        ImposingPeak ->
+            Icons.imposingPeakIcon 24 24 Icons.prosspectreColorPalette.hills
+
+        AgelessMountains ->
+            Icons.agelessMountainsIcon 24 24 Icons.prosspectreColorPalette.hills
+
+        CraggyMountains ->
+            Icons.craggyMountainsIcon 24 24 Icons.prosspectreColorPalette.hills
+
+
+toolBar : Tool -> (Tool -> msg) -> H.Html msg
+toolBar selected_tool fn_message =
+    H.div
+        [ HA.css
+            [ Tw.flex
+            , Tw.flex_row
+            , Tw.items_center
+            , Tw.gap_2
+            ]
+        ]
+        [ toolBarItem selected_tool fn_message HelpTool helpIcon
+        , toolBarItem selected_tool fn_message NewGameTool newGameIcon
+        , H.hr
+            [ HA.css
+                [ Tw.w_7
+                , Tw.rotate_90
+                , Tw.border_color Tw.black
+                , Tw.border
+                , Tw.rounded_b_full
+                ]
+            ]
+            []
+        , toolBarItem selected_tool fn_message SpectreFlagTool spectreFlagIcon
+        , toolBarItem selected_tool fn_message RealFlagTool realFlagIcon
+        , H.hr
+            [ HA.css
+                [ Tw.w_7
+                , Tw.neg_rotate_90
+                , Tw.border_color Tw.black
+                , Tw.border
+                , Tw.rounded_b_full
+                ]
+            ]
+            []
+        , toolBarItem selected_tool fn_message AreaGPRTool areaGPRIcon
+        , toolBarItem selected_tool fn_message PointGPRTool pointGPRIcon
+        , toolBarItem selected_tool fn_message DigTool digIcon
+        ]
+
+
+toolBarItem : Tool -> (Tool -> msg) -> Tool -> H.Html msg -> H.Html msg
+toolBarItem selected_tool fn_message tool icon =
+    H.div
+        [ HA.css
+            [ Tw.cursor_pointer
+            , Tw.py_1
+            , Tw.border_y_4
+            , Tw.rounded_b_md
+            , Tw.rounded_t_md
+            , Tw.border_color <|
+                if selected_tool == tool then
+                    Icons.prosspectreColorPalette.tool_selected
+
+                else
+                    Tw.white
+            ]
+        , HE.onClick (fn_message tool)
+        ]
+        [ icon ]
+
+
 emptyHoleIcon : H.Html msg
 emptyHoleIcon =
     Icons.emptyHoleIcon 24 24 Icons.prosspectreColorPalette.empty_hole
@@ -328,31 +413,6 @@ realFlagIcon =
 spectreIcon : H.Html msg
 spectreIcon =
     Icons.spectreIcon 24 24
-
-
-numberedHillIcon : Int -> H.Html msg
-numberedHillIcon hill_number =
-    case hill_number of
-        1 ->
-            Icons.hill1Icon 24 24 Icons.prosspectreColorPalette.hills
-
-        2 ->
-            Icons.hill2Icon 24 24 Icons.prosspectreColorPalette.hills
-
-        3 ->
-            Icons.hill3Icon 24 24 Icons.prosspectreColorPalette.hills
-
-        4 ->
-            Icons.hill4Icon 24 24 Icons.prosspectreColorPalette.hills
-
-        5 ->
-            Icons.hill5Icon 24 24 Icons.prosspectreColorPalette.hills
-
-        6 ->
-            Icons.hill6Icon 24 24 Icons.prosspectreColorPalette.hills
-
-        _ ->
-            Icons.hill7Icon 24 24 Icons.prosspectreColorPalette.hills
 
 
 helpIcon : H.Html msg
