@@ -562,6 +562,27 @@ payForPointGPR model =
     updated_model
 
 
+reputationGivenCreds : Int -> ProsSpectreReputation
+reputationGivenCreds creds =
+    if creds < 1 then
+        Bankrupt
+
+    else if creds <= 5 then
+        Novice
+
+    else if creds <= 10 then
+        Experienced
+
+    else if creds <= 15 then
+        Expert
+
+    else if creds <= 20 then
+        Master
+
+    else
+        Legendary
+
+
 locationHasMaterials : Location -> Bool
 locationHasMaterials location =
     case location.materials of

@@ -446,13 +446,41 @@ scoreboardView hours creds selected_tool =
                 [ HA.css
                     [ Tw.text_2xl
                     , Tw.text_color Icons.prosspectreColorPalette.final_score
+                    , Tw.text_center
                     ]
                 ]
-                [ H.text "Final Score" ]
+                [ H.text <| scorePhraseForProsSpectreReputation (R.reputationGivenCreds creds) ]
 
           else
             H.div [] []
         ]
+
+
+scorePhraseForProsSpectreReputation : ProsSpectreReputation -> String
+scorePhraseForProsSpectreReputation reputation =
+    "Your reputation is " ++ descriptorForProsSpectreReputation reputation ++ "."
+
+
+descriptorForProsSpectreReputation : ProsSpectreReputation -> String
+descriptorForProsSpectreReputation reputation =
+    case reputation of
+        Bankrupt ->
+            "Bankrupt"
+
+        Novice ->
+            "Novice"
+
+        Experienced ->
+            "Experienced"
+
+        Expert ->
+            "Expert"
+
+        Master ->
+            "Master"
+
+        Legendary ->
+            "Legendary"
 
 
 emptyHoleIcon : H.Html msg

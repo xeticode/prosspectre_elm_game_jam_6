@@ -258,6 +258,15 @@ type alias AxialHexLocations =
     Dict.Dict AxialHexIndex Location
 
 
+type ProsSpectreReputation
+    = Bankrupt
+    | Novice
+    | Experienced
+    | Expert
+    | Master
+    | Legendary
+
+
 type FrontendMsg
     = UrlClicked UrlRequest
     | UrlChanged Url
