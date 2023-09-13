@@ -137,7 +137,7 @@ locationDataFromIndex zz_top zz_left vert horiz ( col, row ) =
         half_vert =
             vert / 2.0
     in
-    ( ( col, row ), ( zz_top + (vert * toFloat row) + (half_vert * toFloat col), zz_left + (horiz * toFloat col) ), SpectriteMaterials )
+    ( ( col, row ), ( zz_top + (vert * toFloat row) + (half_vert * toFloat col), zz_left + (horiz * toFloat col) ), NoMaterials )
 
 
 {-| Asteroids are usually classified by 3 types:

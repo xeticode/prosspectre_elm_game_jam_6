@@ -59,7 +59,7 @@ prosspectreHeader =
             ]
             [ H.div [] [ H.text "Elm Game Jam 6 Edition" ]
             , H.div [] [ H.text "Design and engineering by Dirk Johnson" ]
-            , H.div [] [ H.text "Copyright Crazy Cockatoo Games™" ]
+            , H.div [] [ H.text "Copyright 2023 Crazy Cockatoo Games™" ]
             ]
         ]
 
