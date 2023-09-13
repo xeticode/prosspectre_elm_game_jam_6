@@ -6,6 +6,7 @@ import Frontend.Icons as Icons
 import Html.Styled as H
 import Html.Styled.Attributes as HA
 import Html.Styled.Events as HE
+import Rules as R
 import Tailwind.Theme as Tw
 import Tailwind.Utilities as Tw
 import Types exposing (..)
@@ -769,3 +770,28 @@ area19GPRIcon =
             ]
         ]
         [ Icons.area19GPRIcon ]
+
+
+helpView : msg -> List (H.Html msg)
+helpView fn_message =
+    [ H.div
+        [ HE.onClick fn_message
+        ]
+        [ H.text "Welcome to help. Link to source code." ]
+    ]
+
+
+gameView : AxialHexLocations -> (Int -> Int -> msg) -> Tool -> (Tool -> msg) -> List (H.Html msg)
+gameView layout_contents fn_message_int_int selected_tool fn_message_tool =
+    [ asteroidDesignation R.randomAsteroidDesignation
+    , sectorMap layout_contents fn_message_int_int
+    , toolBar selected_tool fn_message_tool
+    , terrainIconForTerrain PointedPeaks
+    , terrainIconForTerrain RoundedHills
+    , terrainIconForTerrain MountainPassages
+    , terrainIconForTerrain SweepingMountains
+    , terrainIconForTerrain ImposingPeak
+    , terrainIconForTerrain AgelessMountains
+    , terrainIconForTerrain CraggyMountains
+    , spectreIcon
+    ]

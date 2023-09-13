@@ -328,39 +328,27 @@ view model =
 
 pageView : Model -> H.Html FrontendMsg
 pageView model =
-    if model.showing_help then
-        H.div
-            [ HE.onClick HelpClose
-            ]
-            [ H.text "Welcome to help. Link to source code." ]
+    H.div
+        [ HA.css
+            ([ Tw.max_w_sm
+             , Tw.mx_auto
+             , Tw.flex
+             , Tw.flex_col
+             , Tw.items_center
+             , Tw.pt_5
+             , Tw.gap_8
+             ]
+                ++ V.explainTw
+            )
+        ]
+        (V.prosspectreHeader
+            :: (if model.showing_help then
+                    V.helpView HelpClose
 
-    else
-        H.div
-            [ HA.css
-                ([ Tw.max_w_sm
-                 , Tw.mx_auto
-                 , Tw.flex
-                 , Tw.flex_col
-                 , Tw.items_center
-                 , Tw.pt_5
-                 , Tw.gap_8
-                 ]
-                    ++ V.explainTw
-                )
-            ]
-            [ V.prosspectreHeader
-            , V.asteroidDesignation R.randomAsteroidDesignation
-            , V.sectorMap model.layout_contents MapClick
-            , V.toolBar model.selected_tool ToolClick
-            , V.terrainIconForTerrain PointedPeaks
-            , V.terrainIconForTerrain RoundedHills
-            , V.terrainIconForTerrain MountainPassages
-            , V.terrainIconForTerrain SweepingMountains
-            , V.terrainIconForTerrain ImposingPeak
-            , V.terrainIconForTerrain AgelessMountains
-            , V.terrainIconForTerrain CraggyMountains
-            , V.spectreIcon
-            ]
+                else
+                    V.gameView model.layout_contents MapClick model.selected_tool ToolClick
+               )
+        )
 
 
 
