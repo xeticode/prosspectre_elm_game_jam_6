@@ -387,6 +387,13 @@ toolBarItem selected_tool fn_message tool icon =
         [ icon ]
 
 
+scoreBoardView : H.Html msg
+scoreBoardView =
+    H.div []
+        [ H.text "Welcome to the score board."
+        ]
+
+
 emptyHoleIcon : H.Html msg
 emptyHoleIcon =
     Icons.emptyHoleIcon 24 24 Icons.prosspectreColorPalette.empty_hole
@@ -799,12 +806,6 @@ gameView layout_contents fn_message_int_int selected_tool fn_message_tool =
     [ asteroidDesignation R.randomAsteroidDesignation
     , sectorMap layout_contents fn_message_int_int
     , toolBar selected_tool fn_message_tool
-    , terrainIconForTerrain PointedPeaks
-    , terrainIconForTerrain RoundedHills
-    , terrainIconForTerrain MountainPassages
-    , terrainIconForTerrain SweepingMountains
-    , terrainIconForTerrain ImposingPeak
-    , terrainIconForTerrain AgelessMountains
-    , terrainIconForTerrain CraggyMountains
+    , scoreBoardView
     , spectreIcon
     ]

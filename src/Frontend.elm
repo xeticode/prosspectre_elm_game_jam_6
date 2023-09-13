@@ -2,6 +2,7 @@ module Frontend exposing (app)
 
 import Browser
 import Browser.Navigation as Nav
+import Css
 import Css.Global
 import Dict
 import Frontend.View as V
@@ -212,69 +213,6 @@ update msg model =
 
                         Just location ->
                             R.actionFromToolAtLocation model.selected_tool location
-
-                -- nlfh =
-                --     Debug.log "nlfh" (R.neighborListFromHexInclusive hex)
-                -- nlfhr2 =
-                --     Debug.log "nlfhr2" (R.neighborListFromHexInclusiveRadius2 hex)
-                -- _ =
-                --     Debug.log "nlfhr2 length" (List.length nlfhr2)
-                -- m_location_nothing =
-                --     Debug.log "location_nothing"
-                --         (Just
-                --             { sector_position = ( 0.0, 0.0 )
-                --             , state = ( NoFlag, NoGPR, NoEcho )
-                --             , dig_status = Undug
-                --             , materials = NoMaterials
-                --             , terrain = NoTerrain
-                --             }
-                --         )
-                -- m_location_digged =
-                --     Debug.log "location_nothing"
-                --         (Just
-                --             { sector_position = ( 0.0, 0.0 )
-                --             , state = ( NoFlag, NoGPR, NoEcho )
-                --             , dig_status = Dug
-                --             , materials = NoMaterials
-                --             , terrain = NoTerrain
-                --             }
-                --         )
-                -- m_location_spectreflag =
-                --     Debug.log "location_nothing"
-                --         (Just
-                --             { sector_position = ( 0.0, 0.0 )
-                --             , state = ( SpectreFlag, NoGPR, NoEcho )
-                --             , dig_status = Undug
-                --             , materials = NoMaterials
-                --             , terrain = NoTerrain
-                --             }
-                --         )
-                -- m_location_realflag_areagpr =
-                --     Debug.log "location_nothing"
-                --         (Just
-                --             { sector_position = ( 0.0, 0.0 )
-                --             , state = ( RealFlag, AreaGPR AreaGPRReading07, NoEcho )
-                --             , dig_status = Undug
-                --             , materials = NoMaterials
-                --             , terrain = NoTerrain
-                --             }
-                --         )
-                -- _ =
-                --     Debug.log "action for Dig Tool at location_nothing" <| R.actionFromToolAtMaybeLocation DigTool m_location_nothing
-                -- _ =
-                --     Debug.log "action for Dig Tool at location_digged" <| R.actionFromToolAtMaybeLocation DigTool m_location_digged
-                -- _ =
-                --     Debug.log "action for Point GPR Tool at location_digged" <| R.actionFromToolAtMaybeLocation PointGPRTool m_location_digged
-                -- _ =
-                --     Debug.log "action for Spectre Flag Tool at location_spectreflag" <| R.actionFromToolAtMaybeLocation SpectreFlagTool m_location_spectreflag
-                -- _ =
-                --     Debug.log "action for Real Flag Tool at location_spectreflag" <| R.actionFromToolAtMaybeLocation RealFlagTool m_location_spectreflag
-                -- _ =
-                --     Debug.log "action for Area GPR Tool at location_realflag_areagpr" <| R.actionFromToolAtMaybeLocation AreaGPRTool m_location_realflag_areagpr
-                -- _ =
-                --     Debug.log "action for Point GPR Tool at location_realflag_areagpr" <| R.actionFromToolAtMaybeLocation PointGPRTool m_location_realflag_areagpr
-                -- _ =
-                --     Debug.log "action for model selected tool at location_nothing" <| R.actionFromToolAtMaybeLocation model.selected_tool (Dict.get ( col, row ) model.layout_contents)
             in
             ( R.performActionOnModel action model
             , Cmd.none
@@ -316,7 +254,46 @@ view model =
     { title = "ProsSpectre"
     , body =
         List.map H.toUnstyled
-            [ Css.Global.global Tw.globalStyles
+            [ Css.Global.global
+                (Tw.globalStyles
+                    ++ [ Css.Global.typeSelector "@font-face"
+                            [ Css.property "font-faimly" "aspergit"
+                            , Css.fontWeight Css.normal
+                            , Css.fontStyle Css.normal
+                            , Css.property "src" "url(\"assets/css/Aspergit.otf\") format(\"opentype\")"
+                            ]
+                       , Css.Global.typeSelector "@font-face"
+                            [ Css.property "font-faimly" "aspergit"
+                            , Css.fontWeight Css.lighter
+                            , Css.fontStyle Css.normal
+                            , Css.property "src" "url(\"assets/css/Aspergit Light.otf\") format(\"opentype\")"
+                            ]
+                       , Css.Global.typeSelector "@font-face"
+                            [ Css.property "font-faimly" "aspergit"
+                            , Css.fontWeight Css.lighter
+                            , Css.fontStyle Css.italic
+                            , Css.property "src" "url(\"assets/css/Aspergit Light Italic.otf\") format(\"opentype\")"
+                            ]
+                       , Css.Global.typeSelector "@font-face"
+                            [ Css.property "font-faimly" "aspergit"
+                            , Css.fontWeight Css.normal
+                            , Css.fontStyle Css.italic
+                            , Css.property "src" "url(\"assets/css/Aspergit Italic.otf\") format(\"opentype\")"
+                            ]
+                       , Css.Global.typeSelector "@font-face"
+                            [ Css.property "font-faimly" "aspergit"
+                            , Css.fontWeight Css.bold
+                            , Css.fontStyle Css.normal
+                            , Css.property "src" "url(\"assets/css/Aspergit Bold.otf\") format(\"opentype\")"
+                            ]
+                       , Css.Global.typeSelector "@font-face"
+                            [ Css.property "font-faimly" "aspergit"
+                            , Css.fontWeight Css.bold
+                            , Css.fontStyle Css.italic
+                            , Css.property "src" "url(\"assets/css/Aspergit Bold Italic.otf\") format(\"opentype\")"
+                            ]
+                       ]
+                )
             , pageView model
             ]
     }
@@ -333,6 +310,7 @@ pageView model =
              , Tw.items_center
              , Tw.pt_5
              , Tw.gap_8
+             , Css.fontFamilies [ "aspergit" ]
              ]
                 ++ V.explainTw
             )
