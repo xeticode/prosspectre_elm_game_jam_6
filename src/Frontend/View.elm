@@ -338,32 +338,42 @@ toolBar selected_tool fn_message =
         ]
         [ toolBarItem selected_tool fn_message HelpTool helpIcon
         , toolBarItem selected_tool fn_message NewGameTool newGameIcon
-        , H.hr
-            [ HA.css
-                [ Tw.w_7
-                , Tw.rotate_90
-                , Tw.border_color Tw.black
-                , Tw.border
-                , Tw.rounded_b_full
-                ]
-            ]
-            []
+        , verticalRulerLeft
         , toolBarItem selected_tool fn_message SpectreFlagTool spectreFlagIcon
         , toolBarItem selected_tool fn_message RealFlagTool realFlagIcon
-        , H.hr
-            [ HA.css
-                [ Tw.w_7
-                , Tw.neg_rotate_90
-                , Tw.border_color Tw.black
-                , Tw.border
-                , Tw.rounded_b_full
-                ]
-            ]
-            []
+        , verticalRulerRight
         , toolBarItem selected_tool fn_message AreaGPRTool areaGPRIcon
         , toolBarItem selected_tool fn_message PointGPRTool pointGPRIcon
         , toolBarItem selected_tool fn_message DigTool digIcon
         ]
+
+
+verticalRulerLeft : H.Html msg
+verticalRulerLeft =
+    H.hr
+        [ HA.css
+            [ Tw.w_7
+            , Tw.rotate_90
+            , Tw.border_color Tw.black
+            , Tw.border
+            , Tw.rounded_b_full
+            ]
+        ]
+        []
+
+
+verticalRulerRight : H.Html msg
+verticalRulerRight =
+    H.hr
+        [ HA.css
+            [ Tw.w_7
+            , Tw.neg_rotate_90
+            , Tw.border_color Tw.black
+            , Tw.border
+            , Tw.rounded_b_full
+            ]
+        ]
+        []
 
 
 toolBarItem : Tool -> (Tool -> msg) -> Tool -> H.Html msg -> H.Html msg
@@ -387,10 +397,61 @@ toolBarItem selected_tool fn_message tool icon =
         [ icon ]
 
 
-scoreBoardView : H.Html msg
-scoreBoardView =
-    H.div []
-        [ H.text "Welcome to the score board."
+scoreboardView : Int -> Int -> Tool -> H.Html msg
+scoreboardView hours creds selected_tool =
+    H.div
+        [ HA.css
+            ([ Tw.flex
+             , Tw.flex_col
+             , Tw.items_center
+             , Tw.gap_2
+             ]
+                ++ (if selected_tool == NoTool then
+                        [ Tw.border_2
+                        , Tw.rounded_md
+                        , Tw.border_color Icons.prosspectreColorPalette.final_score
+                        , Tw.p_4
+                        ]
+
+                    else
+                        []
+                   )
+            )
+        ]
+        [ H.div
+            [ HA.css
+                [ Tw.flex
+                , Tw.flex_row
+                , Tw.gap_2
+                , Tw.items_center
+                , Tw.text_3xl
+                ]
+            ]
+            [ H.div
+                [ HA.css
+                    [ Tw.text_color Icons.prosspectreColorPalette.hours
+                    ]
+                ]
+                [ H.text <| String.fromInt hours ++ " hours" ]
+            , verticalRulerLeft
+            , H.div
+                [ HA.css
+                    [ Tw.text_color Icons.prosspectreColorPalette.score
+                    ]
+                ]
+                [ H.text <| String.fromInt creds ++ " ¢reds" ]
+            ]
+        , if selected_tool == NoTool then
+            H.div
+                [ HA.css
+                    [ Tw.text_2xl
+                    , Tw.text_color Icons.prosspectreColorPalette.final_score
+                    ]
+                ]
+                [ H.text "Final Score" ]
+
+          else
+            H.div [] []
         ]
 
 
@@ -801,11 +862,11 @@ helpView fn_message =
     ]
 
 
-gameView : AxialHexLocations -> (Int -> Int -> msg) -> Tool -> (Tool -> msg) -> List (H.Html msg)
-gameView layout_contents fn_message_int_int selected_tool fn_message_tool =
+gameView : Int -> Int -> AxialHexLocations -> (Int -> Int -> msg) -> Tool -> (Tool -> msg) -> List (H.Html msg)
+gameView hours creds layout_contents fn_message_int_int selected_tool fn_message_tool =
     [ asteroidDesignation R.randomAsteroidDesignation
     , sectorMap layout_contents fn_message_int_int
     , toolBar selected_tool fn_message_tool
-    , scoreBoardView
+    , scoreboardView hours creds selected_tool
     , spectreIcon
     ]

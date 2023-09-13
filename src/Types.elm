@@ -11,7 +11,6 @@ import Url exposing (Url)
 type alias FrontendModel =
     { key : Key
     , url : Url
-    , layout : HexL.Layout
     , locations : AxialHexLocations
     , selected_tool : Tool
     , showing_help : Bool

@@ -1,10 +1,143 @@
 module Rules exposing (..)
 
+import Browser.Navigation as Nav
 import Dict
 import Hex
+import Hex.Layout as HexL
 import List as L
 import List.Extra as LE
 import Types exposing (..)
+import Url
+
+
+newModel : Url.Url -> Nav.Key -> FrontendModel
+newModel url key =
+    { key = key
+    , url = url
+    , locations = initLayoutContents
+    , selected_tool = SpectreFlagTool
+    , showing_help = True
+    , creds = 5
+    , hours = 12
+    }
+
+
+initLayoutContents : AxialHexLocations
+initLayoutContents =
+    let
+        zero_zero_top =
+            203.0
+
+        zero_zero_left =
+            175.0
+
+        vt =
+            46.6
+
+        hz =
+            40.25
+    in
+    Dict.fromList <|
+        List.map
+            (\( index, point, materials ) ->
+                ( index
+                , { axial_hex_index = index
+                  , sector_position = point
+                  , state = ( NoFlag, NoGPR, NoEcho )
+                  , dig_status = Undug
+                  , materials = materials
+                  , terrain = MountainPassages
+                  }
+                )
+            )
+            [ -- Col -4
+              locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -4, 0 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -4, 1 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -4, 2 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -4, 3 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -4, 4 )
+
+            -- Col -3
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -3, -1 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -3, 0 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -3, 1 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -3, 2 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -3, 3 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -3, 4 )
+
+            -- Col -2
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -2, -2 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -2, -1 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -2, 0 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -2, 1 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -2, 2 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -2, 3 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -2, 4 )
+
+            -- Col -1
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -1, -3 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -1, -2 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -1, -1 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -1, 0 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -1, 1 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -1, 2 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -1, 3 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( -1, 4 )
+
+            -- Col 0
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 0, -4 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 0, -3 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 0, -2 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 0, -1 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 0, 0 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 0, 1 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 0, 2 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 0, 3 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 0, 4 )
+
+            -- Col 1
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 1, -4 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 1, -3 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 1, -2 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 1, -1 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 1, 0 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 1, 1 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 1, 2 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 1, 3 )
+
+            -- Col 2
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 2, -4 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 2, -3 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 2, -2 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 2, -1 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 2, 0 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 2, 1 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 2, 2 )
+
+            -- Col 3
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 3, -4 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 3, -3 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 3, -2 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 3, -1 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 3, 0 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 3, 1 )
+
+            -- Col 4
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 4, -4 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 4, -3 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 4, -2 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 4, -1 )
+            , locationDataFromIndex zero_zero_top zero_zero_left vt hz ( 4, 0 )
+            ]
+
+
+locationDataFromIndex : Float -> Float -> Float -> Float -> AxialHexIndex -> ( AxialHexIndex, HexL.Point, Materials )
+locationDataFromIndex zz_top zz_left vert horiz ( col, row ) =
+    let
+        half_vert =
+            vert / 2.0
+    in
+    ( ( col, row ), ( zz_top + (vert * toFloat row) + (half_vert * toFloat col), zz_left + (horiz * toFloat col) ), SpectriteMaterials )
 
 
 {-| Asteroids are usually classified by 3 types:
@@ -392,14 +525,14 @@ payForDigging location model =
     let
         updated_model =
             { model
-                | creds = model.creds - 1
-                , hours =
+                | hours = model.hours - 1
+                , creds =
                     if locationHasMaterials location then
-                        model.hours + 5
+                        model.creds + 5
                         -- 6 for finding spectrite, -1 for digging
 
                     else
-                        model.hours - 1
+                        model.creds - 1
             }
     in
     updated_model
@@ -439,9 +572,19 @@ locationHasMaterials location =
             True
 
 
-newGame : FrontendModel -> FrontendModel
-newGame model =
-    model
+newGameModel : FrontendModel -> FrontendModel
+newGameModel model =
+    newModel model.url model.key
+        |> (\m -> { m | showing_help = False })
+
+
+updateForEndOfGame : FrontendModel -> FrontendModel
+updateForEndOfGame model =
+    if model.hours <= 0 then
+        { model | selected_tool = NoTool }
+
+    else
+        model
 
 
 

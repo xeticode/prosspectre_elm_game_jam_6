@@ -64,11 +64,11 @@ type alias ProsspectreColorPalette =
     , real_flag : Tw.Color
     , help : Tw.Color
     , new_game : Tw.Color
-
-    -- , area_gpr : Tw.Color
-    -- , point_gpr : Tw.Color
     , dig : Tw.Color
     , tool_selected : Tw.Color
+    , hours : Tw.Color
+    , score : Tw.Color
+    , final_score : Tw.Color
     }
 
 
@@ -84,6 +84,9 @@ prosspectreColorPalette =
     , new_game = Tw.cyan_900
     , dig = Tw.amber_800
     , tool_selected = Tw.indigo_600
+    , hours = Tw.lime_600
+    , score = Tw.indigo_600
+    , final_score = Tw.red_700
     }
 
 
