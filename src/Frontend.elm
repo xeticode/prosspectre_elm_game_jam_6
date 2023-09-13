@@ -41,7 +41,7 @@ init url key =
         var =
             49.1066
 
-        layout_contents =
+        locations =
             initLayoutContents
     in
     ( { key = key
@@ -51,9 +51,11 @@ init url key =
             , size = ( var, var )
             , origin = ( 0, 0 )
             }
-      , layout_contents = layout_contents
+      , locations = locations
       , selected_tool = NoTool
       , showing_help = False
+      , creds = 5
+      , hours = 12
       }
     , Cmd.none
     )
@@ -78,7 +80,8 @@ initLayoutContents =
         List.map
             (\( index, point, materials ) ->
                 ( index
-                , { sector_position = point
+                , { axial_hex_index = index
+                  , sector_position = point
                   , state = ( NoFlag, NoGPR, NoEcho )
                   , dig_status = Undug
                   , materials = materials
@@ -199,90 +202,83 @@ update msg model =
 
         MapClick col row ->
             let
-                hex =
-                    Debug.log "hex" (R.axialHexWithColAndRow col row)
+                m_location =
+                    Dict.get ( col, row ) model.locations
 
-                _ =
-                    Debug.log "hexToPoint" (HexL.hexToPoint model.layout hex)
+                action =
+                    case m_location of
+                        Nothing ->
+                            ActionDoNothing
 
-                nlfh =
-                    Debug.log "nlfh" (R.neighborListFromHexInclusive hex)
+                        Just location ->
+                            R.actionFromToolAtLocation model.selected_tool location
 
-                nlfhr2 =
-                    Debug.log "nlfhr2" (R.neighborListFromHexInclusiveRadius2 hex)
-
-                _ =
-                    Debug.log "nlfhr2 length" (List.length nlfhr2)
-
-                m_location_nothing =
-                    Debug.log "location_nothing"
-                        (Just
-                            { sector_position = ( 0.0, 0.0 )
-                            , state = ( NoFlag, NoGPR, NoEcho )
-                            , dig_status = Undug
-                            , materials = NoMaterials
-                            , terrain = NoTerrain
-                            }
-                        )
-
-                m_location_digged =
-                    Debug.log "location_nothing"
-                        (Just
-                            { sector_position = ( 0.0, 0.0 )
-                            , state = ( NoFlag, NoGPR, NoEcho )
-                            , dig_status = Dug
-                            , materials = NoMaterials
-                            , terrain = NoTerrain
-                            }
-                        )
-
-                m_location_spectreflag =
-                    Debug.log "location_nothing"
-                        (Just
-                            { sector_position = ( 0.0, 0.0 )
-                            , state = ( SpectreFlag, NoGPR, NoEcho )
-                            , dig_status = Undug
-                            , materials = NoMaterials
-                            , terrain = NoTerrain
-                            }
-                        )
-
-                m_location_realflag_areagpr =
-                    Debug.log "location_nothing"
-                        (Just
-                            { sector_position = ( 0.0, 0.0 )
-                            , state = ( RealFlag, AreaGPR AreaGPRReading07, NoEcho )
-                            , dig_status = Undug
-                            , materials = NoMaterials
-                            , terrain = NoTerrain
-                            }
-                        )
-
-                _ =
-                    Debug.log "action for Dig Tool at location_nothing" <| R.actionFromToolAtMaybeLocation DigTool m_location_nothing
-
-                _ =
-                    Debug.log "action for Dig Tool at location_digged" <| R.actionFromToolAtMaybeLocation DigTool m_location_digged
-
-                _ =
-                    Debug.log "action for Point GPR Tool at location_digged" <| R.actionFromToolAtMaybeLocation PointGPRTool m_location_digged
-
-                _ =
-                    Debug.log "action for Spectre Flag Tool at location_spectreflag" <| R.actionFromToolAtMaybeLocation SpectreFlagTool m_location_spectreflag
-
-                _ =
-                    Debug.log "action for Real Flag Tool at location_spectreflag" <| R.actionFromToolAtMaybeLocation RealFlagTool m_location_spectreflag
-
-                _ =
-                    Debug.log "action for Area GPR Tool at location_realflag_areagpr" <| R.actionFromToolAtMaybeLocation AreaGPRTool m_location_realflag_areagpr
-
-                _ =
-                    Debug.log "action for Point GPR Tool at location_realflag_areagpr" <| R.actionFromToolAtMaybeLocation PointGPRTool m_location_realflag_areagpr
-
-                _ =
-                    Debug.log "action for model selected tool at location_nothing" <| R.actionFromToolAtMaybeLocation model.selected_tool (Dict.get ( col, row ) model.layout_contents)
+                -- nlfh =
+                --     Debug.log "nlfh" (R.neighborListFromHexInclusive hex)
+                -- nlfhr2 =
+                --     Debug.log "nlfhr2" (R.neighborListFromHexInclusiveRadius2 hex)
+                -- _ =
+                --     Debug.log "nlfhr2 length" (List.length nlfhr2)
+                -- m_location_nothing =
+                --     Debug.log "location_nothing"
+                --         (Just
+                --             { sector_position = ( 0.0, 0.0 )
+                --             , state = ( NoFlag, NoGPR, NoEcho )
+                --             , dig_status = Undug
+                --             , materials = NoMaterials
+                --             , terrain = NoTerrain
+                --             }
+                --         )
+                -- m_location_digged =
+                --     Debug.log "location_nothing"
+                --         (Just
+                --             { sector_position = ( 0.0, 0.0 )
+                --             , state = ( NoFlag, NoGPR, NoEcho )
+                --             , dig_status = Dug
+                --             , materials = NoMaterials
+                --             , terrain = NoTerrain
+                --             }
+                --         )
+                -- m_location_spectreflag =
+                --     Debug.log "location_nothing"
+                --         (Just
+                --             { sector_position = ( 0.0, 0.0 )
+                --             , state = ( SpectreFlag, NoGPR, NoEcho )
+                --             , dig_status = Undug
+                --             , materials = NoMaterials
+                --             , terrain = NoTerrain
+                --             }
+                --         )
+                -- m_location_realflag_areagpr =
+                --     Debug.log "location_nothing"
+                --         (Just
+                --             { sector_position = ( 0.0, 0.0 )
+                --             , state = ( RealFlag, AreaGPR AreaGPRReading07, NoEcho )
+                --             , dig_status = Undug
+                --             , materials = NoMaterials
+                --             , terrain = NoTerrain
+                --             }
+                --         )
+                -- _ =
+                --     Debug.log "action for Dig Tool at location_nothing" <| R.actionFromToolAtMaybeLocation DigTool m_location_nothing
+                -- _ =
+                --     Debug.log "action for Dig Tool at location_digged" <| R.actionFromToolAtMaybeLocation DigTool m_location_digged
+                -- _ =
+                --     Debug.log "action for Point GPR Tool at location_digged" <| R.actionFromToolAtMaybeLocation PointGPRTool m_location_digged
+                -- _ =
+                --     Debug.log "action for Spectre Flag Tool at location_spectreflag" <| R.actionFromToolAtMaybeLocation SpectreFlagTool m_location_spectreflag
+                -- _ =
+                --     Debug.log "action for Real Flag Tool at location_spectreflag" <| R.actionFromToolAtMaybeLocation RealFlagTool m_location_spectreflag
+                -- _ =
+                --     Debug.log "action for Area GPR Tool at location_realflag_areagpr" <| R.actionFromToolAtMaybeLocation AreaGPRTool m_location_realflag_areagpr
+                -- _ =
+                --     Debug.log "action for Point GPR Tool at location_realflag_areagpr" <| R.actionFromToolAtMaybeLocation PointGPRTool m_location_realflag_areagpr
+                -- _ =
+                --     Debug.log "action for model selected tool at location_nothing" <| R.actionFromToolAtMaybeLocation model.selected_tool (Dict.get ( col, row ) model.layout_contents)
             in
-            ( model, Cmd.none )
+            ( R.performActionOnModel action model
+            , Cmd.none
+            )
 
         ToolClick tool ->
             let
@@ -346,7 +342,7 @@ pageView model =
                     V.helpView HelpClose
 
                 else
-                    V.gameView model.layout_contents MapClick model.selected_tool ToolClick
+                    V.gameView model.locations MapClick model.selected_tool ToolClick
                )
         )
 

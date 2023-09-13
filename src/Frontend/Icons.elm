@@ -2622,6 +2622,100 @@ digIcon width height color =
         ]
 
 
+pointXGPRIcon : S.Svg msg
+pointXGPRIcon =
+    svg
+        [ SA.width "100%"
+        , SA.height "100%"
+        , SA.viewBox "0 0 109 105"
+        , SA.version "1.1"
+        , SA.xmlSpace "preserve"
+        , SA.style "fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"
+        ]
+        [ S.g
+            [ SA.transform "matrix(1,0,0,1,-2844.39,-1220.85)"
+            ]
+            [ S.g
+                [ SA.transform "matrix(1,0,0,1,-0.333333,0)"
+                ]
+                [ S.g
+                    [ SA.transform "matrix(1,0,0,1,0.842257,-10.3865)"
+                    ]
+                    [ S.g
+                        [ SA.transform "matrix(1,0,0,1,1060.34,-667.082)"
+                        ]
+                        [ S.circle
+                            [ SA.cx "1837.91"
+                            , SA.cy "1948.92"
+                            , SA.r "42.217"
+                            , SA.style "fill:rgb(0,84,147);stroke:rgb(0,84,147);stroke-width:6.25px;"
+                            ]
+                            []
+                        ]
+                    , S.g
+                        [ SA.transform "matrix(0.65311,0,0,0.65311,1596.82,44.7848)"
+                        ]
+                        [ S.circle
+                            [ SA.cx "2063.08"
+                            , SA.cy "1829.46"
+                            , SA.r "12.843"
+                            , SA.style "fill:rgb(0,84,147);"
+                            ]
+                            []
+                        ]
+                    , S.g
+                        [ SA.transform "matrix(0.65311,0,0,0.65311,1504.84,44.7848)"
+                        ]
+                        [ S.circle
+                            [ SA.cx "2063.08"
+                            , SA.cy "1829.46"
+                            , SA.r "12.843"
+                            , SA.style "fill:rgb(0,84,147);"
+                            ]
+                            []
+                        ]
+                    , S.g
+                        [ SA.transform "matrix(0.65311,0,0,0.65311,1504.84,132.987)"
+                        ]
+                        [ S.circle
+                            [ SA.cx "2063.08"
+                            , SA.cy "1829.46"
+                            , SA.r "12.843"
+                            , SA.style "fill:rgb(0,84,147);"
+                            ]
+                            []
+                        ]
+                    , S.g
+                        [ SA.transform "matrix(0.65311,0,0,0.65311,1596.82,132.987)"
+                        ]
+                        [ S.circle
+                            [ SA.cx "2063.08"
+                            , SA.cy "1829.46"
+                            , SA.r "12.843"
+                            , SA.style "fill:rgb(0,84,147);"
+                            ]
+                            []
+                        ]
+                    , S.g
+                        [ SA.transform "matrix(1,0,0,1,607.289,961.402)"
+                        ]
+                        [ S.g
+                            [ SA.transform "matrix(83.3333,0,0,83.3333,2318.84,353.575)"
+                            ]
+                            []
+                        , S.node "text"
+                            [ SA.x "2263.09px"
+                            , SA.y "353.575px"
+                            , SA.style "font-family:'AspergitBold', 'Aspergit';font-weight:700;font-size:83.333px;fill:white;"
+                            ]
+                            [ H.text "X" ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+
+
 point0GPRIcon : S.Svg msg
 point0GPRIcon =
     svg

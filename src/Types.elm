@@ -12,9 +12,11 @@ type alias FrontendModel =
     { key : Key
     , url : Url
     , layout : HexL.Layout
-    , layout_contents : AxialHexLocations
+    , locations : AxialHexLocations
     , selected_tool : Tool
     , showing_help : Bool
+    , creds : Int
+    , hours : Int
     }
 
 
@@ -64,8 +66,73 @@ type AreaGPRReading
     | AreaGPRReading19
 
 
+areaGPRReadingFromInt : Int -> AreaGPRReading
+areaGPRReadingFromInt count =
+    case count of
+        1 ->
+            AreaGPRReading01
+
+        2 ->
+            AreaGPRReading02
+
+        3 ->
+            AreaGPRReading03
+
+        4 ->
+            AreaGPRReading04
+
+        5 ->
+            AreaGPRReading05
+
+        6 ->
+            AreaGPRReading06
+
+        7 ->
+            AreaGPRReading07
+
+        8 ->
+            AreaGPRReading08
+
+        9 ->
+            AreaGPRReading09
+
+        10 ->
+            AreaGPRReading10
+
+        11 ->
+            AreaGPRReading11
+
+        12 ->
+            AreaGPRReading12
+
+        13 ->
+            AreaGPRReading13
+
+        14 ->
+            AreaGPRReading14
+
+        15 ->
+            AreaGPRReading15
+
+        16 ->
+            AreaGPRReading16
+
+        17 ->
+            AreaGPRReading17
+
+        18 ->
+            AreaGPRReading18
+
+        19 ->
+            AreaGPRReading19
+
+        _ ->
+            AreaGPRReading00
+
+
 type PointGPRReading
-    = PointGPRReading00
+    = PointGPRReadingX
+    | PointGPRReading00
     | PointGPRReading01
     | PointGPRReading02
     | PointGPRReading03
@@ -74,6 +141,40 @@ type PointGPRReading
     | PointGPRReading06
     | PointGPRReading07
     | PointGPRReading08
+
+
+pointGPRReadingFromInt : Int -> PointGPRReading
+pointGPRReadingFromInt count =
+    case count of
+        0 ->
+            PointGPRReading00
+
+        1 ->
+            PointGPRReading01
+
+        2 ->
+            PointGPRReading02
+
+        3 ->
+            PointGPRReading03
+
+        4 ->
+            PointGPRReading04
+
+        5 ->
+            PointGPRReading05
+
+        6 ->
+            PointGPRReading06
+
+        7 ->
+            PointGPRReading07
+
+        8 ->
+            PointGPRReading08
+
+        _ ->
+            PointGPRReadingX
 
 
 type LocationEcho
@@ -120,7 +221,8 @@ terrainList =
 
 
 type alias Location =
-    { sector_position : HexL.Point
+    { axial_hex_index : AxialHexIndex
+    , sector_position : HexL.Point
     , state : LocationState
     , dig_status : DigStatus
     , materials : Materials
@@ -130,15 +232,16 @@ type alias Location =
 
 type Action
     = ActionDoNothing
-    | ActionDig
-    | ActionClearFlag
-    | ActionSetSpectreFlag
-    | ActionSetRealFlag
-    | AreaGPRAction
-    | PointGPRAction
+    | ActionDig Location
+    | ActionClearFlag Location
+    | ActionSetSpectreFlag Location
+    | ActionSetRealFlag Location
+    | AreaGPRAction Location
+    | PointGPRAction Location
 
 
 type alias AxialHexIndex =
+    -- col (q) row (r)
     ( Int, Int )
 
 

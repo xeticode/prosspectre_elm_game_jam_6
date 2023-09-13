@@ -92,15 +92,13 @@ sectorMap location_dict fn_message =
             [ Icons.sectorMap Tw.neutral_300 fn_message ]
         , H.div
             [ HA.css
-                ([ Tw.z_10
-                 , Tw.absolute
-                 , Tw.w_full
-                 , Tw.h_full
-                 , Css.top <| Css.px 0.0
-                 , Tw.pointer_events_none
-                 ]
-                    ++ explainTwWithBorderColor Tw.green_500
-                )
+                [ Tw.z_10
+                , Tw.absolute
+                , Tw.w_full
+                , Tw.h_full
+                , Css.top <| Css.px 0.0
+                , Tw.pointer_events_none
+                ]
             ]
             (List.map sectorMapLocationOverlay (Dict.values location_dict))
         ]
@@ -259,6 +257,9 @@ areaGPRIconForReading reading =
 pointGPRIconForReading : PointGPRReading -> H.Html msg
 pointGPRIconForReading reading =
     case reading of
+        PointGPRReadingX ->
+            pointXGPRIcon
+
         PointGPRReading00 ->
             point0GPRIcon
 
@@ -451,6 +452,17 @@ pointGPRIcon =
 digIcon : H.Html msg
 digIcon =
     Icons.digIcon 24 24 Icons.prosspectreColorPalette.dig
+
+
+pointXGPRIcon : H.Html msg
+pointXGPRIcon =
+    H.div
+        [ HA.css
+            [ Tw.w_8
+            , Tw.h_8
+            ]
+        ]
+        [ Icons.pointXGPRIcon ]
 
 
 point0GPRIcon : H.Html msg
@@ -778,6 +790,7 @@ helpView fn_message =
         [ HE.onClick fn_message
         ]
         [ H.text "Welcome to help. Link to source code." ]
+    , spectreIcon
     ]
 
 
