@@ -399,6 +399,43 @@ toolBarItem selected_tool fn_message tool icon =
 
 scoreboardView : Int -> Int -> Tool -> H.Html msg
 scoreboardView hours creds selected_tool =
+    let
+        ( message, outline_attributes ) =
+            if hours > 0 && selected_tool == NoTool then
+                ( H.div
+                    [ HA.css
+                        [ Tw.text_2xl
+                        , Tw.text_color Icons.prosspectreColorPalette.game_paused
+                        , Tw.text_center
+                        ]
+                    ]
+                    [ H.text "Game Paused" ]
+                , [ Tw.border_2
+                  , Tw.rounded_md
+                  , Tw.border_color Icons.prosspectreColorPalette.game_paused
+                  , Tw.p_4
+                  ]
+                )
+
+            else if selected_tool == NoTool then
+                ( H.div
+                    [ HA.css
+                        [ Tw.text_2xl
+                        , Tw.text_color Icons.prosspectreColorPalette.final_score
+                        , Tw.text_center
+                        ]
+                    ]
+                    [ H.text <| scorePhraseForProsSpectreReputation (R.reputationGivenCreds creds) ]
+                , [ Tw.border_2
+                  , Tw.rounded_md
+                  , Tw.border_color Icons.prosspectreColorPalette.final_score
+                  , Tw.p_4
+                  ]
+                )
+
+            else
+                ( H.div [] [], [] )
+    in
     H.div
         [ HA.css
             ([ Tw.flex
@@ -406,16 +443,7 @@ scoreboardView hours creds selected_tool =
              , Tw.items_center
              , Tw.gap_2
              ]
-                ++ (if selected_tool == NoTool then
-                        [ Tw.border_2
-                        , Tw.rounded_md
-                        , Tw.border_color Icons.prosspectreColorPalette.final_score
-                        , Tw.p_4
-                        ]
-
-                    else
-                        []
-                   )
+                ++ outline_attributes
             )
         ]
         [ H.div
@@ -441,18 +469,7 @@ scoreboardView hours creds selected_tool =
                 ]
                 [ H.text <| String.fromInt creds ++ " ¢reds" ]
             ]
-        , if selected_tool == NoTool then
-            H.div
-                [ HA.css
-                    [ Tw.text_2xl
-                    , Tw.text_color Icons.prosspectreColorPalette.final_score
-                    , Tw.text_center
-                    ]
-                ]
-                [ H.text <| scorePhraseForProsSpectreReputation (R.reputationGivenCreds creds) ]
-
-          else
-            H.div [] []
+        , message
         ]
 
 
@@ -890,9 +907,9 @@ helpView fn_message =
     ]
 
 
-gameView : Int -> Int -> AxialHexLocations -> (Int -> Int -> msg) -> Tool -> (Tool -> msg) -> List (H.Html msg)
-gameView hours creds layout_contents fn_message_int_int selected_tool fn_message_tool =
-    [ asteroidDesignation R.randomAsteroidDesignation
+gameView : String -> Int -> Int -> AxialHexLocations -> (Int -> Int -> msg) -> Tool -> (Tool -> msg) -> List (H.Html msg)
+gameView designation hours creds layout_contents fn_message_int_int selected_tool fn_message_tool =
+    [ asteroidDesignation <| designation
     , sectorMap layout_contents fn_message_int_int
     , toolBar selected_tool fn_message_tool
     , scoreboardView hours creds selected_tool

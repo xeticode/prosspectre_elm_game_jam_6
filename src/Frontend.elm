@@ -11,6 +11,7 @@ import Html.Styled as H
 import Html.Styled.Attributes as HA
 import Html.Styled.Events as HE
 import Lamdera
+import Random
 import Rules as R
 import Tailwind.Theme as Tw
 import Tailwind.Utilities as Tw
@@ -37,7 +38,7 @@ type alias Model =
 init : Url.Url -> Nav.Key -> ( Model, Cmd FrontendMsg )
 init url key =
     ( R.newModel url key
-    , Cmd.none
+    , Random.generate StartGame Random.independentSeed
     )
 
 
@@ -104,6 +105,13 @@ update msg model =
 
         HelpClose ->
             ( { model | showing_help = False }, Cmd.none )
+
+        StartGame seed ->
+            let
+                model_ =
+                    R.newGameModel { model | seed = seed }
+            in
+            ( { model_ | showing_help = True }, Cmd.none )
 
 
 updateFromBackend : ToFrontend -> Model -> ( Model, Cmd FrontendMsg )
@@ -187,7 +195,7 @@ pageView model =
                     V.helpView HelpClose
 
                 else
-                    V.gameView model.hours model.creds model.locations MapClick model.selected_tool ToolClick
+                    V.gameView model.designation model.hours model.creds model.locations MapClick model.selected_tool ToolClick
                )
         )
 

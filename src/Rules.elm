@@ -6,6 +6,9 @@ import Hex
 import Hex.Layout as HexL
 import List as L
 import List.Extra as LE
+import Random
+import Random.Extra
+import Random.List
 import Types exposing (..)
 import Url
 
@@ -14,8 +17,10 @@ newModel : Url.Url -> Nav.Key -> FrontendModel
 newModel url key =
     { key = key
     , url = url
+    , seed = Random.initialSeed 42 -- won't be used, will be replaced by StartGame message
+    , designation = "ZC00000 : Sector 0"
     , locations = initLayoutContents
-    , selected_tool = SpectreFlagTool
+    , selected_tool = NoTool
     , showing_help = True
     , creds = 5
     , hours = 12
@@ -131,6 +136,73 @@ initLayoutContents =
             ]
 
 
+randomLayoutContents : Random.Seed -> AxialHexLocations -> ( AxialHexLocations, Random.Seed )
+randomLayoutContents seed locations =
+    let
+        ( ( mat_locs, non_mat_locs ), nseed ) =
+            Random.int 2 10
+                |> Random.andThen (\count -> Random.List.choices count (Dict.values locations))
+                |> (\gen -> Random.step gen seed)
+
+        len_mat_locs =
+            List.length mat_locs
+
+        len_non_mat_locs =
+            List.length non_mat_locs
+
+        ( t1, ts ) =
+            Types.terrainList
+
+        ( mat_locs_terrain, nseed_ ) =
+            Random.uniform t1 ts
+                |> Random.Extra.rangeLengthList len_mat_locs len_mat_locs
+                |> (\gen -> Random.step gen nseed)
+
+        ( non_mat_locs_terrain, nseed__ ) =
+            Random.uniform t1 ts
+                |> Random.Extra.rangeLengthList len_non_mat_locs len_non_mat_locs
+                |> (\gen -> Random.step gen nseed_)
+
+        nlocations =
+            List.map2
+                (\loc terr ->
+                    { loc
+                        | materials = SpectriteMaterials
+                        , terrain = terr
+                    }
+                )
+                mat_locs
+                mat_locs_terrain
+                |> (\updated_locs ->
+                        List.foldl
+                            (\loc locs ->
+                                Dict.insert loc.axial_hex_index loc locs
+                            )
+                            locations
+                            updated_locs
+                   )
+
+        nlocations_ =
+            List.map2
+                (\loc terr ->
+                    { loc
+                        | terrain = terr
+                    }
+                )
+                non_mat_locs
+                non_mat_locs_terrain
+                |> (\updated_locs ->
+                        List.foldl
+                            (\loc locs ->
+                                Dict.insert loc.axial_hex_index loc locs
+                            )
+                            nlocations
+                            updated_locs
+                   )
+    in
+    ( nlocations_, nseed__ )
+
+
 locationDataFromIndex : Float -> Float -> Float -> Float -> AxialHexIndex -> ( AxialHexIndex, HexL.Point, Materials )
 locationDataFromIndex zz_top zz_left vert horiz ( col, row ) =
     let
@@ -153,9 +225,9 @@ Thus an asteroid with the designation FM01279 would be the the 1,279th asteroid 
 Each asteroid is divided up into 1 or more mining sectors which are leased for 12 hours at a time to ProsPectres for mining.
 
 -}
-randomAsteroidDesignation : String
-randomAsteroidDesignation =
-    "FM01279 : Sector 1"
+randomAsteroidDesignation : Random.Seed -> ( String, Random.Seed )
+randomAsteroidDesignation seed =
+    ( "FM01279 : Sector 1", seed )
 
 
 
@@ -595,8 +667,25 @@ locationHasMaterials location =
 
 newGameModel : FrontendModel -> FrontendModel
 newGameModel model =
+    let
+        ( designation, seed_ ) =
+            randomAsteroidDesignation model.seed
+
+        ( locations, seed__ ) =
+            randomLayoutContents seed_ model.locations
+
+        --    , locations = initLayoutContents
+    in
     newModel model.url model.key
-        |> (\m -> { m | showing_help = False })
+        |> (\m ->
+                { m
+                    | seed = seed__
+                    , designation = designation
+                    , locations = locations
+                    , showing_help = False
+                    , selected_tool = SpectreFlagTool
+                }
+           )
 
 
 updateForEndOfGame : FrontendModel -> FrontendModel

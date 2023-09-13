@@ -5,12 +5,15 @@ import Browser.Navigation exposing (Key)
 import Dict
 import Hex
 import Hex.Layout as HexL
+import Random
 import Url exposing (Url)
 
 
 type alias FrontendModel =
     { key : Key
     , url : Url
+    , seed : Random.Seed
+    , designation : String
     , locations : AxialHexLocations
     , selected_tool : Tool
     , showing_help : Bool
@@ -206,17 +209,18 @@ type Terrain
     | CraggyMountains
 
 
-terrainList : List Terrain
+terrainList : ( Terrain, List Terrain )
 terrainList =
-    [ NoTerrain
-    , PointedPeaks
-    , RoundedHills
-    , MountainPassages
-    , SweepingMountains
-    , ImposingPeak
-    , AgelessMountains
-    , CraggyMountains
-    ]
+    ( NoTerrain
+    , [ PointedPeaks
+      , RoundedHills
+      , MountainPassages
+      , SweepingMountains
+      , ImposingPeak
+      , AgelessMountains
+      , CraggyMountains
+      ]
+    )
 
 
 type alias Location =
@@ -274,6 +278,7 @@ type FrontendMsg
     | MapClick Int Int -- col row
     | ToolClick Tool
     | HelpClose
+    | StartGame Random.Seed
 
 
 type alias BackendModel =

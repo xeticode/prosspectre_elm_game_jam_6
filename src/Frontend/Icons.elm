@@ -69,6 +69,7 @@ type alias ProsspectreColorPalette =
     , hours : Tw.Color
     , score : Tw.Color
     , final_score : Tw.Color
+    , game_paused : Tw.Color
     }
 
 
@@ -87,6 +88,7 @@ prosspectreColorPalette =
     , hours = Tw.lime_600
     , score = Tw.indigo_600
     , final_score = Tw.red_700
+    , game_paused = Tw.fuchsia_700
     }
 
 
