@@ -1,6 +1,6 @@
 module Frontend.View exposing (..)
 
-import Css
+import Css exposing (baseline, help)
 import Dict
 import Frontend.Icons as Icons
 import Html.Styled as H
@@ -464,7 +464,7 @@ scoreboardView hours creds selected_tool =
             , verticalRulerLeft
             , H.div
                 [ HA.css
-                    [ Tw.text_color Icons.prosspectreColorPalette.score
+                    [ Tw.text_color Icons.prosspectreColorPalette.creds
                     ]
                 ]
                 [ H.text <| String.fromInt creds ++ " ¢reds" ]
@@ -515,6 +515,21 @@ confirmedSpectriteIcon =
     Icons.spectriteIcon 24 24 Icons.prosspectreColorPalette.confirmed_spectrite
 
 
+spectriteSmallIcon : H.Html msg
+spectriteSmallIcon =
+    Icons.spectriteIcon 10 10 Icons.prosspectreColorPalette.confirmed_spectrite
+
+
+spectralPositiveSmallIcon : H.Html msg
+spectralPositiveSmallIcon =
+    Icons.spectriteIcon 10 10 Icons.prosspectreColorPalette.possible_spectrite
+
+
+spectreSmallIcon : H.Html msg
+spectreSmallIcon =
+    Icons.spectreIcon 12 12
+
+
 spectreFlagIcon : H.Html msg
 spectreFlagIcon =
     Icons.flagIcon 24 24 Icons.prosspectreColorPalette.spectre
@@ -523,6 +538,11 @@ spectreFlagIcon =
 realFlagIcon : H.Html msg
 realFlagIcon =
     Icons.flagIcon 24 24 Icons.prosspectreColorPalette.real_flag
+
+
+realFlagSmallIcon : H.Html msg
+realFlagSmallIcon =
+    Icons.flagIcon 10 10 Icons.prosspectreColorPalette.real_flag
 
 
 spectreIcon : H.Html msg
@@ -535,9 +555,19 @@ helpIcon =
     Icons.helpIcon 24 24 Icons.prosspectreColorPalette.help
 
 
+helpSmallIcon : H.Html msg
+helpSmallIcon =
+    Icons.helpIcon 10 10 Icons.prosspectreColorPalette.help
+
+
 newGameIcon : H.Html msg
 newGameIcon =
     Icons.newGameIcon 24 24 Icons.prosspectreColorPalette.new_game
+
+
+newGameSmallIcon : H.Html msg
+newGameSmallIcon =
+    Icons.newGameIcon 10 10 Icons.prosspectreColorPalette.new_game
 
 
 areaGPRIcon : H.Html msg
@@ -546,6 +576,17 @@ areaGPRIcon =
         [ HA.css
             [ Tw.w_8
             , Tw.h_8
+            ]
+        ]
+        [ Icons.areaGPRIcon ]
+
+
+areaGPRSmallIcon : H.Html msg
+areaGPRSmallIcon =
+    H.div
+        [ HA.css
+            [ Tw.w_3
+            , Tw.h_3
             ]
         ]
         [ Icons.areaGPRIcon ]
@@ -562,9 +603,25 @@ pointGPRIcon =
         [ Icons.pointGPRIcon ]
 
 
+pointGPRSmallIcon : H.Html msg
+pointGPRSmallIcon =
+    H.div
+        [ HA.css
+            [ Tw.w_3
+            , Tw.h_3
+            ]
+        ]
+        [ Icons.pointGPRIcon ]
+
+
 digIcon : H.Html msg
 digIcon =
     Icons.digIcon 24 24 Icons.prosspectreColorPalette.dig
+
+
+digSmallIcon : H.Html msg
+digSmallIcon =
+    Icons.digIcon 10 10 Icons.prosspectreColorPalette.dig
 
 
 pointXGPRIcon : H.Html msg
@@ -897,12 +954,447 @@ area19GPRIcon =
         [ Icons.area19GPRIcon ]
 
 
+helpSpectriteSpan : H.Html msg
+helpSpectriteSpan =
+    H.span
+        [ HA.css
+            [ Tw.inline_flex
+            , Tw.items_baseline
+            , Tw.font_bold
+            ]
+        ]
+        [ spectriteSmallIcon, H.text "spectrite" ]
+
+
+helpSpectralPositivesSpan : H.Html msg
+helpSpectralPositivesSpan =
+    H.span
+        [ HA.css
+            [ Tw.inline_flex
+            , Tw.items_baseline
+            , Tw.font_bold
+            ]
+        ]
+        [ spectralPositiveSmallIcon, H.text "spectral positives" ]
+
+
+helpProsSpectreSpan : H.Html msg
+helpProsSpectreSpan =
+    H.span
+        [ HA.css
+            [ Tw.inline_flex
+            , Tw.items_baseline
+            , Tw.font_bold
+            ]
+        ]
+        [ H.text "ProsSpectre", spectreSmallIcon ]
+
+
+helpCred : H.Html msg
+helpCred =
+    H.span
+        [ HA.css
+            [ Tw.text_color Icons.prosspectreColorPalette.creds
+            , Tw.font_bold
+            ]
+        ]
+        [ H.text "¢red" ]
+
+
+helpHour : H.Html msg
+helpHour =
+    H.span
+        [ HA.css
+            [ Tw.text_color Icons.prosspectreColorPalette.hours
+            , Tw.font_bold
+            ]
+        ]
+        [ H.text "hour" ]
+
+
+helpCreds : H.Html msg
+helpCreds =
+    H.span
+        [ HA.css
+            [ Tw.text_color Icons.prosspectreColorPalette.creds
+            , Tw.font_bold
+            ]
+        ]
+        [ H.text "¢reds" ]
+
+
+helpHours : H.Html msg
+helpHours =
+    H.span
+        [ HA.css
+            [ Tw.text_color Icons.prosspectreColorPalette.hours
+            , Tw.font_bold
+            ]
+        ]
+        [ H.text "hours" ]
+
+
+helpUndug : H.Html msg
+helpUndug =
+    H.span
+        [ HA.css
+            [ Tw.italic
+            , Tw.font_bold
+            ]
+        ]
+        [ H.text "undug " ]
+
+
+helpRealFlag : H.Html msg
+helpRealFlag =
+    H.span
+        [ HA.css
+            [ Tw.inline_flex
+            , Tw.items_baseline
+            , Tw.font_bold
+            ]
+        ]
+        [ realFlagSmallIcon, H.text "flag" ]
+
+
+helpAreaGPR : H.Html msg
+helpAreaGPR =
+    H.span
+        [ HA.css
+            [ Tw.inline_flex
+            , Tw.items_baseline
+            , Tw.font_bold
+            ]
+        ]
+        [ areaGPRSmallIcon, H.text "Area GPR" ]
+
+
+helpPointGPR : H.Html msg
+helpPointGPR =
+    H.span
+        [ HA.css
+            [ Tw.inline_flex
+            , Tw.items_baseline
+            , Tw.font_bold
+            ]
+        ]
+        [ pointGPRSmallIcon, H.span [ HA.css [ Tw.ml_1 ] ] [ H.text "Point GPR" ] ]
+
+
+helpDiggingRig : H.Html msg
+helpDiggingRig =
+    H.span
+        [ HA.css
+            [ Tw.inline_flex
+            , Tw.items_baseline
+            , Tw.font_bold
+            ]
+        ]
+        [ digSmallIcon, H.text "Digging Rig" ]
+
+
+helpHelp : H.Html msg
+helpHelp =
+    H.span
+        [ HA.css
+            [ Tw.inline_flex
+            , Tw.items_baseline
+            , Tw.font_bold
+            ]
+        ]
+        [ helpSmallIcon, H.text "Help" ]
+
+
+helpNewGame : H.Html msg
+helpNewGame =
+    H.span
+        [ HA.css
+            [ Tw.inline_flex
+            , Tw.items_baseline
+            , Tw.font_bold
+            ]
+        ]
+        [ newGameSmallIcon, H.text "New Game" ]
+
+
+helpEndEarly : H.Html msg
+helpEndEarly =
+    H.span
+        [ HA.css
+            [ Tw.inline_flex
+            , Tw.items_baseline
+            , Tw.font_bold
+            ]
+        ]
+        [ newGameSmallIcon, H.text "New Game" ]
+
+
 helpView : msg -> List (H.Html msg)
 helpView fn_message =
     [ H.div
         [ HE.onClick fn_message
         ]
-        [ H.text "Welcome to help. Link to source code." ]
+        [ H.text "Welcome to help. Link to source code. feedback email address" ]
+    , H.h1
+        [ HA.css
+            [ Tw.font_bold
+            ]
+        ]
+        [ H.text "Inroduction" ]
+    , H.p []
+        [ H.text "You are a "
+        , helpProsSpectreSpan
+        , H.text " – a prospector who searches the asteroid belt for the rare "
+        , helpSpectriteSpan
+        , H.text
+            ". But "
+        , helpSpectriteSpan
+        , H.text " is illusive, and often sends back an echo to your ground penetrating radar (GPR) that shows up as additional deposits; these are called "
+        , helpSpectralPositivesSpan
+        , H.text ", and are indistinguishable from the real thing. Using your GPR, and good bit of intuition, your goal is to leave your prospecting site with positive "
+        , helpCreds
+        , H.text ". However, you only get 12 "
+        , helpHours
+        , H.text " to prospect, and each time you use your GPR or do a dig, it costs both "
+        , helpCreds
+        , H.text " and "
+        , helpHours
+        , H.text ". So, if you want to stay in business, use your resources wisely. Good luck, "
+        , helpProsSpectreSpan
+        , H.text "!"
+        ]
+    , H.h1
+        [ HA.css
+            [ Tw.font_bold
+            ]
+        ]
+        [ H.text "How to Play" ]
+    , H.p []
+        [ H.text "You start prospecting with 12 "
+        , helpHours
+        , H.text " and 5 "
+        , helpCreds
+        , H.text ". Your goal is to come away with as much "
+        , helpCreds
+        , H.text " as possible, hopefully more than you started with."
+        ]
+    , H.p
+        [ HA.css
+            [ Tw.self_start
+            ]
+        ]
+        [ H.text "You have 2 tools at your disposal:"
+        ]
+    , H.ol
+        [ HA.css
+            [ Tw.self_start
+            , Tw.list_decimal
+            , Tw.ml_5
+            ]
+        ]
+        [ H.li
+            [ HA.css
+                [ Tw.font_bold
+                ]
+            ]
+            [ H.text "Ground Penetrating Radar (GPR)"
+            ]
+        , H.li
+            []
+            [ helpDiggingRig
+            ]
+        ]
+    , H.h1
+        [ HA.css
+            [ Tw.font_bold
+            ]
+        ]
+        [ H.text "Ground Penetrating Radar (GPR)" ]
+    , H.p []
+        [ H.text "The GPR has 2 modes: Area and Point. "
+        , helpAreaGPR
+        , H.text " has a radius of 2 from center. It reports any possible "
+        , helpUndug
+        , helpSpectriteSpan
+        , H.text " deposits it sees within that radius. Some of these deposits are real, and some are "
+        , helpSpectralPositivesSpan
+        , H.text ". Thankfully, your GPR is smart enough to predict the number of real deposits there are in the total, however, it cannot tell you which of the deposits they are. You will need your "
+        , helpPointGPR
+        , H.text " to help you determine that."
+        ]
+    , H.p []
+        [ helpPointGPR
+        , H.text " is a more focused radar, and therefore cannot be fooled by "
+        , helpSpectralPositivesSpan
+        , H.text ", however, it can only report how close it is to the nearest "
+        , helpUndug
+        , H.text "real deposit and not its actual location - "
+        , helpSpectriteSpan
+        , H.text " is just too illusive."
+        ]
+    , H.p []
+        [ H.text "Whether you use "
+        , helpAreaGPR
+        , H.text " or "
+        , helpPointGPR
+        , H.text ", it costs 1 "
+        , helpHour
+        , H.text " and 1 "
+        , helpCred
+        , H.text " to use it."
+        ]
+    , H.h1
+        [ HA.css
+            [ Tw.font_bold
+            ]
+        ]
+        [ helpDiggingRig ]
+    , H.p []
+        [ H.text "Using both your "
+        , helpAreaGPR
+        , H.text " and "
+        , helpPointGPR
+        , H.text ", you should be able to pinpoint with some certainty where the real "
+        , helpSpectriteSpan
+        , H.text " deposits are and use your "
+        , helpDiggingRig
+        , H.text " to extract them. Digging costs 1 "
+        , helpHour
+        , H.text " and 2 "
+        , helpCreds
+        , H.text ". If you dig in the wrong place, you will come up empty handed, having spent the resources for nothing, so use your intuition and pray for a healthy dose of good fortune when you start digging."
+        ]
+    , H.p []
+        [ H.text "Each time you dig, you either uncover a real "
+        , helpSpectriteSpan
+        , H.text " deposit, or you leave an empty hole. Each "
+        , helpSpectriteSpan
+        , H.text " deposit is worth 7 "
+        , helpCreds
+        , H.text ", holes are worth nothing. Note that once you dig in a location, you can no longer use GPR there, so be careful where and when you choose to dig."
+        ]
+    , H.h1
+        [ HA.css
+            [ Tw.font_bold
+            ]
+        ]
+        [ H.text "Flagging" ]
+    , H.p []
+        [ H.text "To help you keep track of where you think the real "
+        , helpSpectriteSpan
+        , H.text " deposits are, you may set a black "
+        , helpRealFlag
+        , H.text " on the propsecting map at any "
+        , helpUndug
+        , H.text " location. This will help you avoid digging in the wrong place. There is no "
+        , helpHours
+        , H.text " or "
+        , helpCreds
+        , H.text " cost to placing or removing a "
+        , helpRealFlag
+        , H.text "."
+        ]
+    , H.h1
+        [ HA.css
+            [ Tw.font_bold
+            ]
+        ]
+        [ H.text "Scoring" ]
+    , H.p []
+        [ H.text "Your have a maximum of 12 "
+        , helpHours
+        , H.text " to complete your prospecting. However, you can either end your prospecting early by selecting "
+        , helpEndEarly
+        , H.text " , or you can prospect until you run out of time."
+        , H.text " Either way, you want to have ended your prospecting with a positive amount of "
+        , helpCreds
+        , H.text "; the more "
+        , helpCreds
+        , H.text " you have, the greater your reputation. Should you end your prospecting early with "
+        , helpHours
+        , H.text " remaining, you will also earn yourself a fitting title."
+        ]
+    , H.p
+        [ HA.css
+            [ Tw.self_start
+            ]
+        ]
+        [ H.text "Scoring is as follows:" ]
+    , H.ul
+        [ HA.css
+            [ Tw.self_start
+            , Tw.list_disc
+            , Tw.ml_5
+            ]
+        ]
+        [ H.li
+            []
+            [ H.text "End with <1 "
+            , helpCreds
+            , H.text ": Bankrupt "
+            , helpProsSpectreSpan
+            ]
+        , H.li
+            []
+            [ H.text "End with 1-5 "
+            , helpCreds
+            , H.text ": Novice "
+            , helpProsSpectreSpan
+            ]
+        , H.li
+            []
+            [ H.text "End with 6-15 "
+            , helpCreds
+            , H.text ": Experienced "
+            , helpProsSpectreSpan
+            ]
+        , H.li
+            []
+            [ H.text "End with 16-25 "
+            , helpCreds
+            , H.text ": Expert "
+            , helpProsSpectreSpan
+            ]
+        , H.li
+            []
+            [ H.text "End with 26-40 "
+            , helpCreds
+            , H.text ": Master "
+            , helpProsSpectreSpan
+            ]
+        , H.li
+            []
+            [ H.text "End with 41+ "
+            , helpCreds
+            , H.text ": Legendary "
+            , helpProsSpectreSpan
+            ]
+        ]
+    , H.div []
+        [ H.text """
+
+""
+
+# Help
+
+If at any time you want to review these instructions, click on the Help button.
+
+# New Prospecting Site
+
+Should you go bankrupt or you just want to try again, click on the New button to head to a new prospecting site.
+
+# Legend
+
+The icons on the in the game are as follows:
+
+# Thanks!
+
+Thanks to Lua for organizing the Elm Game Jam 6 this year. Thanks to all the participants for making this such a fun event. And thanks to the entire Elm community over the years who have helped keep the Elm ecosystem moving forward!
+
+# Source Code
+
+        """
+        ]
     , spectreIcon
     ]
 

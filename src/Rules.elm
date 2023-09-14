@@ -641,6 +641,11 @@ payForDigging location model =
     updated_model
 
 
+
+-- TODO When you find them all the game should end early - and give you a bonus to your score for your reputation.
+-- TODO Get fonts working
+
+
 payForAreaGPR : FrontendModel -> FrontendModel
 payForAreaGPR model =
     let

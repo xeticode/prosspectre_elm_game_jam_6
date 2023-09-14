@@ -67,7 +67,7 @@ type alias ProsspectreColorPalette =
     , dig : Tw.Color
     , tool_selected : Tw.Color
     , hours : Tw.Color
-    , score : Tw.Color
+    , creds : Tw.Color
     , final_score : Tw.Color
     , game_paused : Tw.Color
     }
@@ -86,7 +86,7 @@ prosspectreColorPalette =
     , dig = Tw.amber_800
     , tool_selected = Tw.indigo_600
     , hours = Tw.lime_600
-    , score = Tw.indigo_600
+    , creds = Tw.sky_600
     , final_score = Tw.red_700
     , game_paused = Tw.fuchsia_700
     }
