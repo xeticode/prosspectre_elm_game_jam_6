@@ -631,11 +631,11 @@ payForDigging location model =
                 | hours = model.hours - 1
                 , creds =
                     if locationHasMaterials location then
-                        model.creds + 5
+                        model.creds + 7 - 2
                         -- 6 for finding spectrite, -1 for digging
 
                     else
-                        model.creds - 1
+                        model.creds - 2
             }
     in
     updated_model
@@ -673,13 +673,13 @@ reputationGivenCreds creds =
     else if creds <= 5 then
         Novice
 
-    else if creds <= 10 then
+    else if creds <= 15 then
         Experienced
 
-    else if creds <= 15 then
+    else if creds <= 25 then
         Expert
 
-    else if creds <= 20 then
+    else if creds <= 40 then
         Master
 
     else

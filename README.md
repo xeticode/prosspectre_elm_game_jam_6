@@ -25,9 +25,9 @@ Whether you use Area or Point GPR, it costs 1 hour and 1 ¢red to use it.
 
 ## Digging Rig
 
-Using both your Area and Point GPR, you should be able to pinpoint with some certainty where the real spectrite deposits are and use your Digging Rig to extract them. As with GPR, 1 dig costs 1 hour and 1 ¢red. If you dig in the wrong place, you will come up empty handed, having spent the hour and ¢red for nothing, so use your intuition and pray for a healthy dose of good fortune when you start digging.
+Using both your Area and Point GPR, you should be able to pinpoint with some certainty where the real spectrite deposits are and use your Digging Rig to extract them. Digging costs 1 hour and 2 ¢reds. If you dig in the wrong place, you will come up empty handed, having spent the hour and ¢red for nothing, so use your intuition and pray for a healthy dose of good fortune when you start digging.
 
-Each time you dig, you either uncover a real spectrite deposit, or you leave an empty hole. Each spectrite deposit is worth 6 ¢reds, holes are worth nothing. Note that once you dig in a location, you can no longer use GPR there, so be careful where and when you choose to dig.
+Each time you dig, you either uncover a real spectrite deposit, or you leave an empty hole. Each spectrite deposit is worth 7 ¢reds, holes are worth nothing. Note that once you dig in a location, you can no longer use GPR there, so be careful where and when you choose to dig.
 
 ## Flags
 
@@ -39,10 +39,10 @@ When you run out of time, you want to have at least ended your prospecting with 
 
 - End with <1 ¢reds: Bankrupt ProsSpectre - find a new profession
 - End with 1-5 ¢reds: Novice ProsSpectre
-- End with 6-10 ¢reds: Experienced ProsSpectre
-- End with 11-15 ¢reds: Expert ProsSpectre
-- End with 16-20 ¢reds: Master ProsSpectre
-- End with 21+ ¢reds: Legendary ProsSpectre
+- End with 6-15 ¢reds: Experienced ProsSpectre
+- End with 16-25 ¢reds: Expert ProsSpectre
+- End with 26-40 ¢reds: Master ProsSpectre
+- End with 41+ ¢reds: Legendary ProsSpectre
 
 # Help
 
