@@ -209,8 +209,8 @@ type Terrain
     | CraggyMountains
 
 
-terrainList : ( Terrain, List Terrain )
-terrainList =
+terrain_list : ( Terrain, List Terrain )
+terrain_list =
     ( NoTerrain
     , [ PointedPeaks
       , RoundedHills
@@ -221,6 +221,177 @@ terrainList =
       , CraggyMountains
       ]
     )
+
+
+type AsteroidSeries
+    = AsteroidSeriesA
+    | AsteroidSeriesB
+    | AsteroidSeriesC
+    | AsteroidSeriesD
+    | AsteroidSeriesE
+    | AsteroidSeriesF
+    | AsteroidSeriesG
+    | AsteroidSeriesH
+    | AsteroidSeriesI
+    | AsteroidSeriesJ
+    | AsteroidSeriesK
+    | AsteroidSeriesL
+    | AsteroidSeriesM
+    | AsteroidSeriesN
+    | AsteroidSeriesO
+    | AsteroidSeriesP
+    | AsteroidSeriesQ
+    | AsteroidSeriesR
+    | AsteroidSeriesS
+    | AsteroidSeriesT
+    | AsteroidSeriesU
+    | AsteroidSeriesV
+    | AsteroidSeriesW
+    | AsteroidSeriesX
+    | AsteroidSeriesY
+    | AsteroidSeriesZ
+
+
+asteroid_series_list : ( AsteroidSeries, List AsteroidSeries )
+asteroid_series_list =
+    ( AsteroidSeriesA
+    , [ AsteroidSeriesB
+      , AsteroidSeriesC
+      , AsteroidSeriesD
+      , AsteroidSeriesE
+      , AsteroidSeriesF
+      , AsteroidSeriesG
+      , AsteroidSeriesH
+      , AsteroidSeriesI
+      , AsteroidSeriesJ
+      , AsteroidSeriesK
+      , AsteroidSeriesL
+      , AsteroidSeriesM
+      , AsteroidSeriesN
+      , AsteroidSeriesO
+      , AsteroidSeriesP
+      , AsteroidSeriesQ
+      , AsteroidSeriesR
+      , AsteroidSeriesS
+      , AsteroidSeriesT
+      , AsteroidSeriesU
+      , AsteroidSeriesV
+      , AsteroidSeriesW
+      , AsteroidSeriesX
+      , AsteroidSeriesY
+      , AsteroidSeriesZ
+      ]
+    )
+
+
+stringFromAsteroidSeries : AsteroidSeries -> String
+stringFromAsteroidSeries series =
+    case series of
+        AsteroidSeriesA ->
+            "A"
+
+        AsteroidSeriesB ->
+            "B"
+
+        AsteroidSeriesC ->
+            "C"
+
+        AsteroidSeriesD ->
+            "D"
+
+        AsteroidSeriesE ->
+            "E"
+
+        AsteroidSeriesF ->
+            "F"
+
+        AsteroidSeriesG ->
+            "G"
+
+        AsteroidSeriesH ->
+            "H"
+
+        AsteroidSeriesI ->
+            "I"
+
+        AsteroidSeriesJ ->
+            "J"
+
+        AsteroidSeriesK ->
+            "K"
+
+        AsteroidSeriesL ->
+            "L"
+
+        AsteroidSeriesM ->
+            "M"
+
+        AsteroidSeriesN ->
+            "N"
+
+        AsteroidSeriesO ->
+            "O"
+
+        AsteroidSeriesP ->
+            "P"
+
+        AsteroidSeriesQ ->
+            "Q"
+
+        AsteroidSeriesR ->
+            "R"
+
+        AsteroidSeriesS ->
+            "S"
+
+        AsteroidSeriesT ->
+            "T"
+
+        AsteroidSeriesU ->
+            "U"
+
+        AsteroidSeriesV ->
+            "V"
+
+        AsteroidSeriesW ->
+            "W"
+
+        AsteroidSeriesX ->
+            "X"
+
+        AsteroidSeriesY ->
+            "Y"
+
+        AsteroidSeriesZ ->
+            "Z"
+
+
+type AsteroidClass
+    = AsteroidClassC
+    | AsteroidClassS
+    | AsteroidClassM
+
+
+asteroid_class_list : ( AsteroidClass, List AsteroidClass )
+asteroid_class_list =
+    ( AsteroidClassC
+    , [ AsteroidClassS
+      , AsteroidClassM
+      ]
+    )
+
+
+stringFromAsteroidClass : AsteroidClass -> String
+stringFromAsteroidClass asteroid_class =
+    case asteroid_class of
+        AsteroidClassC ->
+            "C"
+
+        AsteroidClassS ->
+            "S"
+
+        AsteroidClassM ->
+            "M"
 
 
 type alias Location =

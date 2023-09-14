@@ -151,7 +151,7 @@ randomLayoutContents seed locations =
             List.length non_mat_locs
 
         ( t1, ts ) =
-            Types.terrainList
+            Types.terrain_list
 
         ( mat_locs_terrain, nseed_ ) =
             Random.uniform t1 ts
@@ -227,7 +227,30 @@ Each asteroid is divided up into 1 or more mining sectors which are leased for 1
 -}
 randomAsteroidDesignation : Random.Seed -> ( String, Random.Seed )
 randomAsteroidDesignation seed =
-    ( "FM01279 : Sector 1", seed )
+    let
+        ( series, seed_ ) =
+            asteroid_series_list
+                |> (\( as1, asl ) -> Random.uniform as1 asl)
+                |> (\gen -> Random.step gen seed)
+                |> (\( ser, sd ) -> ( stringFromAsteroidSeries ser, sd ))
+
+        ( class_, seed__ ) =
+            asteroid_class_list
+                |> (\( ac1, acl ) -> Random.uniform ac1 acl)
+                |> (\gen -> Random.step gen seed_)
+                |> (\( cls, sd ) -> ( stringFromAsteroidClass cls, sd ))
+
+        ( sector, seed___ ) =
+            Random.int 1 9
+                |> (\gen -> Random.step gen seed__)
+                |> (\( sct, sd ) -> ( String.fromInt sct, sd ))
+
+        ( num, seed____ ) =
+            Random.int 1 99999
+                |> (\gen -> Random.step gen seed___)
+                |> (\( nm, sd ) -> ( String.fromInt nm, sd ))
+    in
+    ( series ++ class_ ++ num ++ " : Sector " ++ sector, seed____ )
 
 
 
@@ -671,21 +694,19 @@ newGameModel model =
         ( designation, seed_ ) =
             randomAsteroidDesignation model.seed
 
-        ( locations, seed__ ) =
-            randomLayoutContents seed_ model.locations
+        model_ =
+            newModel model.url model.key
 
-        --    , locations = initLayoutContents
+        ( locations, seed__ ) =
+            randomLayoutContents seed_ model_.locations
     in
-    newModel model.url model.key
-        |> (\m ->
-                { m
-                    | seed = seed__
-                    , designation = designation
-                    , locations = locations
-                    , showing_help = False
-                    , selected_tool = SpectreFlagTool
-                }
-           )
+    { model_
+        | seed = seed__
+        , designation = designation
+        , locations = locations
+        , showing_help = False
+        , selected_tool = SpectreFlagTool
+    }
 
 
 updateForEndOfGame : FrontendModel -> FrontendModel
