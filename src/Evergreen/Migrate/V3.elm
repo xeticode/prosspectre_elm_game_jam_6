@@ -179,12 +179,7 @@ migrate_Types_LocationFlag old =
             Evergreen.V3.Types.SpectreFlag
 
         Evergreen.V1.Types.RealFlag ->
-            (Unimplemented
-             {- `RealFlag` was removed or renamed in V3 so I couldn't figure out how to migrate it.
-                I need you to decide what happens to this Evergreen.V1.Types.RealFlag value in a migration.
-                See https://lamdera.com/tips/modified-custom-type for more info.
-             -}
-            )
+            Evergreen.V3.Types.SpectreFlag
 
 
 migrate_Types_LocationGPR : Evergreen.V1.Types.LocationGPR -> Evergreen.V3.Types.LocationGPR
@@ -293,12 +288,7 @@ migrate_Types_Tool old =
             Evergreen.V3.Types.SpectreFlagTool
 
         Evergreen.V1.Types.RealFlagTool ->
-            (Unimplemented
-             {- `RealFlagTool` was removed or renamed in V3 so I couldn't figure out how to migrate it.
-                I need you to decide what happens to this Evergreen.V1.Types.RealFlagTool value in a migration.
-                See https://lamdera.com/tips/modified-custom-type for more info.
-             -}
-            )
+            Evergreen.V3.Types.SpectreFlagTool
 
         Evergreen.V1.Types.AreaGPRTool ->
             Evergreen.V3.Types.AreaGPRTool
@@ -308,10 +298,3 @@ migrate_Types_Tool old =
 
         Evergreen.V1.Types.DigTool ->
             Evergreen.V3.Types.DigTool
-
-        notices ->
-            {- @NOTICE `ClockOutTool` was added in V3.
-               This is just a reminder in case migrating some subset of the old data to this new value was important.
-               See https://lamdera.com/tips/modified-custom-type for more info.
-            -}
-            (Unimplemented {- New constructors were added. I need you to resolve the above notices and then remove this case. -})
