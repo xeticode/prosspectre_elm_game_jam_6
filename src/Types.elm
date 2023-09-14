@@ -26,8 +26,8 @@ type Tool
     = NoTool
     | HelpTool
     | NewGameTool
+    | ClockOutTool
     | SpectreFlagTool
-    | RealFlagTool
     | AreaGPRTool
     | PointGPRTool
     | DigTool
@@ -36,7 +36,6 @@ type Tool
 type LocationFlag
     = NoFlag
     | SpectreFlag
-    | RealFlag
 
 
 type LocationGPR
@@ -409,7 +408,6 @@ type Action
     | ActionDig Location
     | ActionClearFlag Location
     | ActionSetSpectreFlag Location
-    | ActionSetRealFlag Location
     | AreaGPRAction Location
     | PointGPRAction Location
 
@@ -440,6 +438,87 @@ type ProsSpectreReputation
     | Expert
     | Master
     | Legendary
+
+
+stringFromProsSpectreReputation : ProsSpectreReputation -> String
+stringFromProsSpectreReputation reputation =
+    case reputation of
+        Bankrupt ->
+            "Bankrupt"
+
+        Novice ->
+            "Novice"
+
+        Experienced ->
+            "Experienced"
+
+        Expert ->
+            "Expert"
+
+        Master ->
+            "Master"
+
+        Legendary ->
+            "Legendary"
+
+
+type ProsSpectreEarlyBirdTitle
+    = Wannabee
+    | Bulwarker
+    | Molerat
+    | Digger
+    | Hewer
+    | Miner
+    | Haulier
+    | Diggity
+    | PitStomper
+    | Groover
+    | Groundbreaker
+    | Landbaster
+    | MajorMiner
+
+
+stringFromProsSpectreEarlyBirdTitle : ProsSpectreEarlyBirdTitle -> String
+stringFromProsSpectreEarlyBirdTitle title =
+    case title of
+        Wannabee ->
+            "Wannabee"
+
+        Bulwarker ->
+            "Bulwarker"
+
+        Molerat ->
+            "Molerat"
+
+        Digger ->
+            "Digger"
+
+        Hewer ->
+            "Hewer"
+
+        Miner ->
+            "Miner"
+
+        Haulier ->
+            "Haulier"
+
+        Diggity ->
+            "Diggity"
+
+        PitStomper ->
+            "Pit Stomper"
+
+        Groover ->
+            "Groover"
+
+        Groundbreaker ->
+            "Groundbreaker"
+
+        Landbaster ->
+            "Landbaster"
+
+        MajorMiner ->
+            "Major Miner"
 
 
 type FrontendMsg

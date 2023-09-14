@@ -388,13 +388,14 @@ locationsFromHexes locs hexes =
 
 -- !SECTION
 -- SECTION Locations
+-- TODO Better victory screen
 
 
 actionFromToolAtLocation : Tool -> Location -> Action
 actionFromToolAtLocation tool location =
     -- If the dig_status is Digged then return ActionDoNothing
     -- else If the tool is the DigTool then return ActionDig
-    -- else If the tool is one of the flag tools then (If the location flag is the same as the tool then return ActionClearFlag else if the flag tool is the SpectreFlag then return ActionSetSpectreFlag else ActionSetRealFlag)
+    -- else If the tool is the flag tool then (If the location flag is the same as the tool then return ActionClearFlag else return ActionSetSpectreFlag)
     -- else If the tool is the AreaGPRTool then if location gpr is not the same as the tool then return AreaGPRAction else return ActionDoNothing
     -- else If the tool is the PointGPRTool then if location gpr is not the same as the tool then return PointGPRAction else return ActionDoNothing
     let
@@ -407,19 +408,13 @@ actionFromToolAtLocation tool location =
     else if tool == DigTool then
         ActionDig location
 
-    else if List.member tool [ SpectreFlagTool, RealFlagTool ] then
+    else if List.member tool [ SpectreFlagTool, ClockOutTool ] then
         case ( tool, loc_flag ) of
             ( SpectreFlagTool, SpectreFlag ) ->
                 ActionClearFlag location
 
-            ( RealFlagTool, RealFlag ) ->
-                ActionClearFlag location
-
             ( SpectreFlagTool, _ ) ->
                 ActionSetSpectreFlag location
-
-            ( RealFlagTool, _ ) ->
-                ActionSetRealFlag location
 
             _ ->
                 ActionDoNothing
@@ -483,19 +478,6 @@ performActionOnModel action model =
 
                 updated_location =
                     { location | state = ( SpectreFlag, gpr_state, echo_state ) }
-
-                updated_locations =
-                    Dict.insert location.axial_hex_index updated_location model.locations
-            in
-            { model | locations = updated_locations }
-
-        ActionSetRealFlag location ->
-            let
-                ( _, gpr_state, echo_state ) =
-                    location.state
-
-                updated_location =
-                    { location | state = ( RealFlag, gpr_state, echo_state ) }
 
                 updated_locations =
                     Dict.insert location.axial_hex_index updated_location model.locations

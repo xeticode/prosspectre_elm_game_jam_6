@@ -93,6 +93,9 @@ update msg model =
                         NewGameTool ->
                             R.newGameModel model
 
+                        ClockOutTool ->
+                            { model | selected_tool = NoTool }
+
                         _ ->
                             if model.selected_tool == NoTool then
                                 -- If selected tool is NoTool then we have disabled the tools on the toolbar

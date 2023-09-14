@@ -167,9 +167,6 @@ locationDetailsFromLocation { state, dig_status, materials, terrain } =
 addIconElementForFlag : LocationFlag -> List (H.Html msg) -> List (H.Html msg)
 addIconElementForFlag flag icon_elements =
     case flag of
-        RealFlag ->
-            realFlagIcon :: icon_elements
-
         SpectreFlag ->
             spectreFlagIcon :: icon_elements
 
@@ -338,9 +335,9 @@ toolBar selected_tool fn_message =
         ]
         [ toolBarItem selected_tool fn_message HelpTool helpIcon
         , toolBarItem selected_tool fn_message NewGameTool newGameIcon
+        , toolBarItem selected_tool fn_message ClockOutTool clockOutIcon
         , verticalRulerLeft
         , toolBarItem selected_tool fn_message SpectreFlagTool spectreFlagIcon
-        , toolBarItem selected_tool fn_message RealFlagTool realFlagIcon
         , verticalRulerRight
         , toolBarItem selected_tool fn_message AreaGPRTool areaGPRIcon
         , toolBarItem selected_tool fn_message PointGPRTool pointGPRIcon
@@ -401,23 +398,7 @@ scoreboardView : Int -> Int -> Tool -> H.Html msg
 scoreboardView hours creds selected_tool =
     let
         ( message, outline_attributes ) =
-            if hours > 0 && selected_tool == NoTool then
-                ( H.div
-                    [ HA.css
-                        [ Tw.text_2xl
-                        , Tw.text_color Icons.prosspectreColorPalette.game_paused
-                        , Tw.text_center
-                        ]
-                    ]
-                    [ H.text "Game Paused" ]
-                , [ Tw.border_2
-                  , Tw.rounded_md
-                  , Tw.border_color Icons.prosspectreColorPalette.game_paused
-                  , Tw.p_4
-                  ]
-                )
-
-            else if selected_tool == NoTool then
+            if selected_tool == NoTool then
                 ( H.div
                     [ HA.css
                         [ Tw.text_2xl
@@ -425,7 +406,7 @@ scoreboardView hours creds selected_tool =
                         , Tw.text_center
                         ]
                     ]
-                    [ H.text <| scorePhraseForProsSpectreReputation (R.reputationGivenCreds creds) ]
+                    [ H.text <| scorePhraseForReputationHoursAndCreds (R.reputationGivenCreds creds) hours creds ]
                 , [ Tw.border_2
                   , Tw.rounded_md
                   , Tw.border_color Icons.prosspectreColorPalette.final_score
@@ -473,31 +454,61 @@ scoreboardView hours creds selected_tool =
         ]
 
 
-scorePhraseForProsSpectreReputation : ProsSpectreReputation -> String
-scorePhraseForProsSpectreReputation reputation =
-    "Your reputation is " ++ descriptorForProsSpectreReputation reputation ++ "."
+scorePhraseForReputationHoursAndCreds : ProsSpectreReputation -> Int -> Int -> String
+scorePhraseForReputationHoursAndCreds reputation hours creds =
+    "Your reputation is " ++ descriptorForProsSpectreReputation reputation ++ " " ++ descriptorForProsSpectreHoursAndCreds hours creds ++ "."
 
 
 descriptorForProsSpectreReputation : ProsSpectreReputation -> String
-descriptorForProsSpectreReputation reputation =
-    case reputation of
-        Bankrupt ->
-            "Bankrupt"
+descriptorForProsSpectreReputation =
+    stringFromProsSpectreReputation
 
-        Novice ->
-            "Novice"
 
-        Experienced ->
-            "Experienced"
+descriptorForProsSpectreHoursAndCreds : Int -> Int -> String
+descriptorForProsSpectreHoursAndCreds hours creds =
+    if creds <= 0 then
+        stringFromProsSpectreEarlyBirdTitle Wannabee
 
-        Expert ->
-            "Expert"
+    else if creds <= 5 then
+        stringFromProsSpectreEarlyBirdTitle Bulwarker
 
-        Master ->
-            "Master"
+    else
+        case hours of
+            1 ->
+                stringFromProsSpectreEarlyBirdTitle Molerat
 
-        Legendary ->
-            "Legendary"
+            2 ->
+                stringFromProsSpectreEarlyBirdTitle Digger
+
+            3 ->
+                stringFromProsSpectreEarlyBirdTitle Hewer
+
+            4 ->
+                stringFromProsSpectreEarlyBirdTitle Miner
+
+            5 ->
+                stringFromProsSpectreEarlyBirdTitle Haulier
+
+            6 ->
+                stringFromProsSpectreEarlyBirdTitle Diggity
+
+            7 ->
+                stringFromProsSpectreEarlyBirdTitle PitStomper
+
+            8 ->
+                stringFromProsSpectreEarlyBirdTitle Groover
+
+            9 ->
+                stringFromProsSpectreEarlyBirdTitle Groundbreaker
+
+            10 ->
+                stringFromProsSpectreEarlyBirdTitle Landbaster
+
+            11 ->
+                stringFromProsSpectreEarlyBirdTitle MajorMiner
+
+            _ ->
+                stringFromProsSpectreEarlyBirdTitle Bulwarker
 
 
 emptyHoleIcon : H.Html msg
@@ -535,14 +546,9 @@ spectreFlagIcon =
     Icons.flagIcon 24 24 Icons.prosspectreColorPalette.spectre
 
 
-realFlagIcon : H.Html msg
-realFlagIcon =
-    Icons.flagIcon 24 24 Icons.prosspectreColorPalette.real_flag
-
-
-realFlagSmallIcon : H.Html msg
-realFlagSmallIcon =
-    Icons.flagIcon 10 10 Icons.prosspectreColorPalette.real_flag
+spectreFlagSmallIcon : H.Html msg
+spectreFlagSmallIcon =
+    Icons.flagIcon 10 10 Icons.prosspectreColorPalette.spectre
 
 
 spectreIcon : H.Html msg
@@ -622,6 +628,16 @@ digIcon =
 digSmallIcon : H.Html msg
 digSmallIcon =
     Icons.digIcon 10 10 Icons.prosspectreColorPalette.dig
+
+
+clockOutIcon : H.Html msg
+clockOutIcon =
+    Icons.clockOutIcon 24 24 Icons.prosspectreColorPalette.clock_out
+
+
+clockOutSmallIcon : H.Html msg
+clockOutSmallIcon =
+    Icons.clockOutIcon 14 14 Icons.prosspectreColorPalette.clock_out
 
 
 pointXGPRIcon : H.Html msg
@@ -1045,8 +1061,8 @@ helpUndug =
         [ H.text "undug " ]
 
 
-helpRealFlag : H.Html msg
-helpRealFlag =
+helpSpectreFlag : H.Html msg
+helpSpectreFlag =
     H.span
         [ HA.css
             [ Tw.inline_flex
@@ -1054,7 +1070,7 @@ helpRealFlag =
             , Tw.font_bold
             ]
         ]
-        [ realFlagSmallIcon, H.text "flag" ]
+        [ spectreFlagSmallIcon, H.text "flag" ]
 
 
 helpAreaGPR : H.Html msg
@@ -1117,8 +1133,8 @@ helpNewGame =
         [ newGameSmallIcon, H.text "New Game" ]
 
 
-helpEndEarly : H.Html msg
-helpEndEarly =
+helpClockOut : H.Html msg
+helpClockOut =
     H.span
         [ HA.css
             [ Tw.inline_flex
@@ -1126,7 +1142,15 @@ helpEndEarly =
             , Tw.font_bold
             ]
         ]
-        [ newGameSmallIcon, H.text "New Game" ]
+        [ H.span
+            [ HA.css
+                [ Tw.relative
+                , Tw.top_1
+                ]
+            ]
+            [ clockOutSmallIcon ]
+        , H.span [] [ H.text "Clock Out Early" ]
+        ]
 
 
 helpView : msg -> List (H.Html msg)
@@ -1241,7 +1265,7 @@ helpView fn_message =
         , helpHour
         , H.text " and 1 "
         , helpCred
-        , H.text " to use it."
+        , H.text " to use."
         ]
     , H.h1
         [ HA.css
@@ -1280,18 +1304,18 @@ helpView fn_message =
         ]
         [ H.text "Flagging" ]
     , H.p []
-        [ H.text "To help you keep track of where you think the real "
-        , helpSpectriteSpan
-        , H.text " deposits are, you may set a black "
-        , helpRealFlag
+        [ H.text "To help you keep track of where you think the "
+        , helpSpectreFlag
+        , H.text " are, you may set a purple "
+        , helpSpectreFlag
         , H.text " on the propsecting map at any "
         , helpUndug
-        , H.text " location. This will help you avoid digging in the wrong place. There is no "
+        , H.text " location. This will help you avoid digging in the wrong place. There are no "
         , helpHours
         , H.text " or "
         , helpCreds
         , H.text " cost to placing or removing a "
-        , helpRealFlag
+        , helpSpectreFlag
         , H.text "."
         ]
     , H.h1
@@ -1304,7 +1328,7 @@ helpView fn_message =
         [ H.text "Your have a maximum of 12 "
         , helpHours
         , H.text " to complete your prospecting. However, you can either end your prospecting early by selecting "
-        , helpEndEarly
+        , helpClockOut
         , H.text " , or you can prospect until you run out of time."
         , H.text " Either way, you want to have ended your prospecting with a positive amount of "
         , helpCreds
