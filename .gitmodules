@@ -1,3 +1,4 @@
 [submodule "vendor/hexlib"]
 	path = vendor/hexlib
 	url = git@github.com:xeticode/hexlib.git
+	branch = main
