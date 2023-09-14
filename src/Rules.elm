@@ -508,8 +508,8 @@ performActionOnModel action model =
                 -- 2. update echo state for returned locations
                 -- 3. update reading for location
                 -- 4. insert updated locations into model
-                ( reading, echo_locations ) =
-                    performAreaGPRAtLocation location model.locations
+                ( ( reading, echo_locations ), seed ) =
+                    performAreaGPRAtLocation model.seed location model.locations
 
                 updated_locations =
                     List.map
@@ -539,7 +539,10 @@ performActionOnModel action model =
                     Dict.insert location.axial_hex_index updated_location updated_locations
 
                 model_ =
-                    { model | locations = final_locations }
+                    { model
+                        | seed = seed
+                        , locations = final_locations
+                    }
             in
             payForAreaGPR model_
 
@@ -566,8 +569,8 @@ performActionOnModel action model =
             payForPointGPR model_
 
 
-performAreaGPRAtLocation : Location -> AxialHexLocations -> ( AreaGPRReading, List Location )
-performAreaGPRAtLocation loc locs =
+performAreaGPRAtLocation : Random.Seed -> Location -> AxialHexLocations -> ( ( AreaGPRReading, List Location ), Random.Seed )
+performAreaGPRAtLocation seed loc locs =
     let
         hex =
             axialHexWithAxialHexIndex loc.axial_hex_index
@@ -575,16 +578,21 @@ performAreaGPRAtLocation loc locs =
         neighbors =
             locationsFromHexes locs (neighborListFromHexInclusiveRadius2 hex)
 
-        -- neighborListFromHexInclusiveRadius2 hex
-        --     |> List.map (\hx -> Dict.get (axialHexIndexFromHex hx) locs)
-        --     |> List.filterMap identity
-        echo_locs =
-            List.filter (\neighbor -> locationHasMaterials neighbor) neighbors
+        ( echo_locs, non_echo_locs ) =
+            L.partition
+                (\neighbor -> locationHasMaterials neighbor && locationIsUndug neighbor)
+                neighbors
 
         read =
             areaGPRReadingFromInt (List.length echo_locs)
+
+        ( ( non_echo_echo_locs, _ ), seed_ ) =
+            -- Yes, non_echo_locs will include dug locations, but that is OK - false echos can occur anywhere
+            Random.int 0 (toFloat (List.length non_echo_locs) * 0.2 |> ceiling)
+                |> Random.andThen (\count -> Random.List.choices count non_echo_locs)
+                |> (\gen -> Random.step gen seed)
     in
-    ( read, echo_locs )
+    ( ( read, echo_locs ++ non_echo_echo_locs ), seed_ )
 
 
 performPointGPRAtLocation : Location -> AxialHexLocations -> PointGPRReading
@@ -599,9 +607,9 @@ performPointGPRAtLocation loc locs =
                     else
                         hexes
                             |> locationsFromHexes locs
-                            |> List.any (\neighbor -> locationHasMaterials neighbor)
-                            |> (\has_materials ->
-                                    if has_materials then
+                            |> List.any (\neighbor -> locationHasMaterials neighbor && locationIsUndug neighbor)
+                            |> (\has_materials_and_undug ->
+                                    if has_materials_and_undug then
                                         radius
 
                                     else
@@ -686,6 +694,16 @@ locationHasMaterials location =
 
         SpectriteMaterials ->
             True
+
+
+locationIsUndug : Location -> Bool
+locationIsUndug location =
+    case location.dig_status of
+        Undug ->
+            True
+
+        Dug ->
+            False
 
 
 newGameModel : FrontendModel -> FrontendModel

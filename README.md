@@ -17,9 +17,9 @@ You have 2 tools at your disposal:
 
 ## Ground Penetrating Radar (GPR)
 
-The GPR has 2 modes: Area and Point. Area GPR has a radius of 2 from center. It reports any possible spectrite deposits it sees within that radius. Some of these deposits are real, and some are spectral positives. Thankfully, your GPR is smart enough to predict the number of real deposits there are in the total, however, it cannot tell you which of the deposits they are. You will need your Point GPR to help you determine that.
+The GPR has 2 modes: Area and Point. Area GPR has a radius of 2 from center. It reports any possible **undug** spectrite deposits it sees within that radius. Some of these deposits are real, and some are spectral positives. Thankfully, your GPR is smart enough to predict the number of real deposits there are in the total, however, it cannot tell you which of the deposits they are. You will need your Point GPR to help you determine that.
 
-Point GPR is a more focused radar, and therefore cannot be fooled by spectral positives, however, it can only report how close it is to the nearest real deposit and not its actual location - spectrite is just too illusive.
+Point GPR is a more focused radar, and therefore cannot be fooled by spectral positives, however, it can only report how close it is to the nearest **undug** real deposit and not its actual location - spectrite is just too illusive.
 
 Whether you use Area or Point GPR, it costs 1 hour and 1 ¢red to use it.
 
