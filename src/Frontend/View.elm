@@ -1198,6 +1198,38 @@ helpPlay fn_message =
         [ H.text "Play" ]
 
 
+helpCCGLogo : H.Html msg
+helpCCGLogo =
+    H.a
+        [ HA.href "https://crazy-cockatoo-games.com"
+        , HA.target "_blank"
+        ]
+        [ H.img
+            [ HA.src "/assets/images/ccg-logo-256x384.png"
+            , HA.css
+                [ Tw.w_5
+                , Tw.object_contain
+                , Tw.object_center
+                ]
+            ]
+            []
+        ]
+
+
+footer : H.Html msg
+footer =
+    H.div
+        [ HA.css
+            [ Tw.flex
+            , Tw.flex_row
+            , Tw.gap_1
+            ]
+        ]
+        [ spectreIcon
+        , helpCCGLogo
+        ]
+
+
 helpView : msg -> List (H.Html msg)
 helpView fn_message =
     [ helpPlay fn_message
@@ -1481,7 +1513,7 @@ helpView fn_message =
         , H.text " is available. Have fun! And remember this was just written in one week. ;)"
         ]
     , helpPlay fn_message
-    , spectreIcon
+    , footer
     ]
 
 
@@ -1491,5 +1523,5 @@ gameView designation hours creds layout_contents fn_message_int_int selected_too
     , sectorMap layout_contents fn_message_int_int
     , toolBar selected_tool fn_message_tool
     , scoreboardView hours creds selected_tool
-    , spectreIcon
+    , footer
     ]
