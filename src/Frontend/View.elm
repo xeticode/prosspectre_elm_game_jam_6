@@ -1171,7 +1171,6 @@ helpEmailLink : String -> H.Html msg
 helpEmailLink display =
     H.a
         [ HA.href "mailto:prosspectre@crazy-cockatoo.com"
-        , HA.target "_blank"
         , HA.css
             [ Tw.text_color Icons.prosspectreColorPalette.link
             , Tw.underline
