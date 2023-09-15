@@ -59,7 +59,7 @@ prosspectreHeader =
             ]
             [ H.div [] [ H.text "Elm Game Jam 6 Edition" ]
             , H.div [] [ H.text "Design and engineering by Dirk Johnson" ]
-            , H.div [] [ H.text "Copyright 2023 Crazy Cockatoo Games™" ]
+            , H.div [] [ helpLink "Copyright 2023 Crazy Cockatoo Games™" "https://crazy-cockatoo-games.com" ]
             ]
         ]
 
@@ -1118,7 +1118,7 @@ helpHelp =
             , Tw.font_bold
             ]
         ]
-        [ helpSmallIcon, H.text "Help" ]
+        [ helpSmallIcon, H.span [ HA.css [ Tw.ml_1 ] ] [ H.text "Help" ] ]
 
 
 helpNewGame : H.Html msg
@@ -1153,12 +1153,54 @@ helpClockOut =
         ]
 
 
+helpLink : String -> String -> H.Html msg
+helpLink display href =
+    H.a
+        [ HA.href href
+        , HA.target "_blank"
+        , HA.css
+            [ Tw.text_color Icons.prosspectreColorPalette.link
+            , Tw.underline
+            , Tw.font_bold
+            ]
+        ]
+        [ H.text display ]
+
+
+helpEmailLink : String -> H.Html msg
+helpEmailLink display =
+    H.a
+        [ HA.href "mailto:prosspectre@crazy-cockatoo.com"
+        , HA.target "_blank"
+        , HA.css
+            [ Tw.text_color Icons.prosspectreColorPalette.link
+            , Tw.underline
+            , Tw.font_bold
+            ]
+        ]
+        [ H.text display ]
+
+
+helpPlay : msg -> H.Html msg
+helpPlay fn_message =
+    H.div
+        [ HE.onClick fn_message
+        , HA.css
+            [ Tw.py_2
+            , Tw.px_6
+            , Tw.border_2
+            , Tw.cursor_pointer
+            , Tw.rounded_md
+            , Tw.border_color Icons.prosspectreColorPalette.spectre
+            , Tw.bg_color Tw.white
+            ]
+        ]
+        [ H.text "Play" ]
+
+
 helpView : msg -> List (H.Html msg)
 helpView fn_message =
-    [ H.div
-        [ HE.onClick fn_message
-        ]
-        [ H.text "Welcome to help. Link to source code. feedback email address" ]
+    [ helpPlay fn_message
     , H.h1
         [ HA.css
             [ Tw.font_bold
@@ -1394,31 +1436,51 @@ helpView fn_message =
             , helpProsSpectreSpan
             ]
         ]
-    , H.div []
-        [ H.text """
-
-""
-
-# Help
-
-If at any time you want to review these instructions, click on the Help button.
-
-# New Prospecting Site
-
-Should you go bankrupt or you just want to try again, click on the New button to head to a new prospecting site.
-
-# Legend
-
-The icons on the in the game are as follows:
-
-# Thanks!
-
-Thanks to Lua for organizing the Elm Game Jam 6 this year. Thanks to all the participants for making this such a fun event. And thanks to the entire Elm community over the years who have helped keep the Elm ecosystem moving forward!
-
-# Source Code
-
-        """
+    , H.h1
+        [ HA.css
+            [ Tw.font_bold
+            ]
         ]
+        [ H.text "Help" ]
+    , H.p []
+        [ H.text "If at any time you want to review these instructions, click on "
+        , helpHelp
+        , H.text ". Or, if you want to contact us directly, feel free to "
+        , helpEmailLink "send us an email."
+        ]
+    , H.h1
+        [ HA.css
+            [ Tw.font_bold
+            ]
+        ]
+        [ H.text "New Prospecting Site" ]
+    , H.p []
+        [ H.text "Should you go bankrupt or you just want to try again, click on "
+        , helpNewGame
+        , H.text " to head to a new prospecting site."
+        ]
+    , H.h1
+        [ HA.css
+            [ Tw.font_bold
+            ]
+        ]
+        [ H.text "Thanks!" ]
+    , H.p []
+        [ H.text "Thanks to "
+        , helpLink "Lue" "https://lue-bird.itch.io/"
+        , H.text " for organizing the Elm Game Jam 6 this year. Thanks to all the participants for making this such a fun event. And thanks to the entire Elm community over the years who have helped keep the Elm ecosystem moving forward!"
+        ]
+    , H.h1
+        [ HA.css
+            [ Tw.font_bold
+            ]
+        ]
+        [ H.text "Source Code" ]
+    , H.p []
+        [ helpLink "The source code" "https://github.com/xeticode/prosspectre_elm_game_jam_6"
+        , H.text " is available. Have fun! And remember this was just written in one week. ;)"
+        ]
+    , helpPlay fn_message
     , spectreIcon
     ]
 

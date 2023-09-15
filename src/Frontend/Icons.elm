@@ -70,6 +70,7 @@ type alias ProsspectreColorPalette =
     , creds : Tw.Color
     , final_score : Tw.Color
     , clock_out : Tw.Color
+    , link : Tw.Color
     }
 
 
@@ -89,6 +90,7 @@ prosspectreColorPalette =
     , creds = Tw.sky_600
     , final_score = Tw.red_700
     , clock_out = Tw.emerald_700
+    , link = Tw.teal_500
     }
 
 
