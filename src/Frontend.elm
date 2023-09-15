@@ -134,46 +134,11 @@ view model =
     { title = "ProsSpectre"
     , body =
         List.map H.toUnstyled
-            [ Css.Global.global
-                (Tw.globalStyles
-                    ++ [ Css.Global.typeSelector "@font-face"
-                            [ Css.property "font-faimly" "aspergit"
-                            , Css.fontWeight Css.normal
-                            , Css.fontStyle Css.normal
-                            , Css.property "src" "url(\"https://prosspectre-elm-game-jam-6.lamdera.app/assets/css/Aspergit.otf\") format(\"opentype\")"
-                            ]
-                       , Css.Global.typeSelector "@font-face"
-                            [ Css.property "font-faimly" "aspergit"
-                            , Css.fontWeight Css.lighter
-                            , Css.fontStyle Css.normal
-                            , Css.property "src" "url(\"https://prosspectre-elm-game-jam-6.lamdera.app/assets/css/Aspergit+Light.otf\") format(\"opentype\")"
-                            ]
-                       , Css.Global.typeSelector "@font-face"
-                            [ Css.property "font-faimly" "aspergit"
-                            , Css.fontWeight Css.lighter
-                            , Css.fontStyle Css.italic
-                            , Css.property "src" "url(\"https://prosspectre-elm-game-jam-6.lamdera.app/assets/css/Aspergit+Light+Italic.otf\") format(\"opentype\")"
-                            ]
-                       , Css.Global.typeSelector "@font-face"
-                            [ Css.property "font-faimly" "aspergit"
-                            , Css.fontWeight Css.normal
-                            , Css.fontStyle Css.italic
-                            , Css.property "src" "url(\"https://prosspectre-elm-game-jam-6.lamdera.app/assets/css/Aspergit+Italic.otf\") format(\"opentype\")"
-                            ]
-                       , Css.Global.typeSelector "@font-face"
-                            [ Css.property "font-faimly" "aspergit"
-                            , Css.fontWeight Css.bold
-                            , Css.fontStyle Css.normal
-                            , Css.property "src" "url(\"https://prosspectre-elm-game-jam-6.lamdera.app/assets/css/Aspergit+Bold.otf\") format(\"opentype\")"
-                            ]
-                       , Css.Global.typeSelector "@font-face"
-                            [ Css.property "font-faimly" "aspergit"
-                            , Css.fontWeight Css.bold
-                            , Css.fontStyle Css.italic
-                            , Css.property "src" "url(\"https://prosspectre-elm-game-jam-6.lamdera.app/assets/css/Aspergit+Bold+Italic.otf\") format(\"opentype\")"
-                            ]
-                       ]
-                )
+            [ H.node "style"
+                []
+                [ H.text "@import \"/assets/css/style.css\";" ]
+            , Css.Global.global
+                Tw.globalStyles
             , pageView model
             ]
     }
