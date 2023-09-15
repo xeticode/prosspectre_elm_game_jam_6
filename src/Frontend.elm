@@ -201,10 +201,3 @@ pageView model =
                     V.gameView model.designation model.hours model.creds model.locations MapClick model.selected_tool ToolClick
                )
         )
-
-
-
--- TODO - have a V.spectreIcon flit across the screen at random intervals
--- Random start loc and random end loc and random duration and use css animation to do it
--- non-clickable
--- PERHAPSE have it start at the spectre in the logo
