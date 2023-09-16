@@ -1378,7 +1378,7 @@ helpView fn_message =
         [ H.text "Flagging" ]
     , H.p []
         [ H.text "To help you keep track of where you think the "
-        , helpSpectreFlag
+        , helpSpectralPositivesSpan
         , H.text " are, you may set a purple "
         , helpSpectreFlag
         , H.text " on the propsecting map at any "
